@@ -12,6 +12,7 @@ function Message({ msg }) {
   const [saving, setSaving] = useState(false)
   const [saveName, setSaveName] = useState('')
   const [saved, setSaved] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   const doSave = () => {
     const name = saveName.trim() || 'AI Song'
@@ -19,6 +20,12 @@ function Message({ msg }) {
     setSaved(true)
     setSaving(false)
     setTimeout(() => setSaved(false), 2000)
+  }
+
+  const doCopy = () => {
+    navigator.clipboard.writeText(msg.content)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   return (
@@ -34,7 +41,7 @@ function Message({ msg }) {
       </div>
       <div className="max-w-[80%] flex flex-col gap-2">
         <div
-          className={`rounded-xl px-4 py-3 text-sm font-ui leading-relaxed ${
+          className={`rounded-xl px-4 py-3 text-sm font-ui leading-relaxed select-text cursor-text ${
             isUser
               ? 'bg-studio-purple/20 border border-studio-purple/30 text-studio-text'
               : 'bg-studio-surface border border-studio-border text-studio-text'
@@ -52,16 +59,26 @@ function Message({ msg }) {
           })}
         </div>
 
-        {/* Save to AI Songs vault */}
-        {hasSections && !saved && !saving && (
-          <button
-            onClick={() => setSaving(true)}
-            className="self-start px-3 py-1.5 rounded-lg text-xs font-ui font-semibold border border-studio-purple/40 text-studio-purple hover:border-studio-purple hover:bg-studio-purple/10 transition-colors"
-          >
-            💾 Save to AI Songs
-          </button>
+        {/* Action buttons for AI messages */}
+        {!isUser && (
+          <div className="flex gap-2 flex-wrap">
+            <button
+              onClick={doCopy}
+              className="self-start px-3 py-1.5 rounded-lg text-xs font-ui font-semibold border border-studio-border text-studio-dim hover:border-studio-cyan hover:text-studio-cyan transition-colors"
+            >
+              {copied ? '✓ Copied!' : '📋 Copy'}
+            </button>
+            {hasSections && !saved && !saving && (
+              <button
+                onClick={() => setSaving(true)}
+                className="self-start px-3 py-1.5 rounded-lg text-xs font-ui font-semibold border border-studio-purple/40 text-studio-purple hover:border-studio-purple hover:bg-studio-purple/10 transition-colors"
+              >
+                💾 Save to AI Songs
+              </button>
+            )}
+          </div>
         )}
-        {hasSections && saving && (
+        {!isUser && hasSections && saving && (
           <div className="flex items-center gap-2">
             <input
               autoFocus
@@ -76,7 +93,7 @@ function Message({ msg }) {
             <button onClick={() => setSaving(false)} className="text-xs text-studio-dim hover:text-white">✕</button>
           </div>
         )}
-        {saved && (
+        {!isUser && saved && (
           <span className="text-xs font-mono text-studio-purple self-start">✓ Saved to AI Songs</span>
         )}
       </div>
