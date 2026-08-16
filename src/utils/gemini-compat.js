@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk'
 
-const MODEL = 'claude-haiku-4-5-20251001'
+const MODEL = 'claude-sonnet-4-6'
 const MAX_TOKENS = 8192
 
 function getClient() {
@@ -97,7 +97,6 @@ class CompatModel {
 }
 
 class GoogleGenerativeAI {
-  // apiKey param kept for interface compatibility but Claude key is used instead
   constructor(apiKey) {}
 
   getGenerativeModel({ model, systemInstruction, generationConfig } = {}) {
