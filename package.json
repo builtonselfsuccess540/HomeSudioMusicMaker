@@ -1,0 +1,65 @@
+{
+  "name": "home-studio-music-maker",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "dev:electron": "node scripts/clear-port.cjs && concurrently -k \"vite\" \"wait-on http://localhost:5174 && electron .\"",
+    "build": "vite build",
+    "build:electron": "cross-env ELECTRON_BUILD=true vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.homestudiomusicmaker.app",
+    "productName": "Home Studio Music Maker",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "requestedExecutionLevel": "asInvoker",
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true
+    }
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.27.0",
+    "@google/genai": "^2.17.1",
+    "@google/generative-ai": "^0.24.1",
+    "firebase": "^12.14.0",
+    "lamejs": "^1.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tone": "^15.1.22",
+    "zustand": "^4.5.4"
+  },
+  "optionalDependencies": {
+    "wavesurfer.js": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0",
+    "electron": "^42.0.0",
+    "electron-builder": "^26.15.2",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "vite": "^8.0.16",
+    "wait-on": "^9.0.10"
+  }
+}

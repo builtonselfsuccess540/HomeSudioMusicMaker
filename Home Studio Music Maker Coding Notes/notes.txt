@@ -1,0 +1,171 @@
+6/14/2026 8:44AM
+
+
+
+Here's a complete tour of your Home Studio Music Maker — all 25,598 lines of
+  it:
+
+  ---
+  Your App at a Glance
+
+  Your project has 3 core files that power everything, plus 38 feature screens.
+
+  ---
+  1. src/audio/audioEngine.js — The Sound Engine (1,001 lines)
+
+  This is the brain of your app. It's a single shared audio system (called a
+  "singleton") that every feature plugs into.
+
+  What it does:
+  - getCtx() — creates one AudioContext (the browser's audio system) that the
+  whole app shares
+  - playDrum(type, velocity) — synthesizes 12 different drum sounds (Kick, Snare,
+   Hi-Hats, Clap, Toms, Perc, FX) entirely from math — no samples needed
+  - startRecording() / stopRecording() — handles your microphone and saves takes
+  - detectBpm(file) — analyzes any audio file and figures out the tempo
+  - Master FX chain — Reverb → Delay → Compressor → Distortion → EQ that applies
+  to all drum/synth sounds at once
+  - Mastering chain — a professional-grade signal path: Transient Shaper →
+  Multiband Compressor → Stereo Imager → Limiter → LUFS Analyzer, wired in after
+  the FX chain
+  - bufferToMp3Blob() — exports audio as an MP3 file using the lamejs library
+  - bufferToWavBlob() — exports as WAV
+
+  ---
+  2. src/store/useStudioStore.js — Global Memory (1,066 lines)
+
+  This uses a library called Zustand to store everything that needs to be
+  remembered across tabs. Think of it as your app's RAM + hard drive combo.
+  Almost everything auto-saves to localStorage (your browser's storage) so your
+  work survives page refreshes.
+
+  What it stores:
+
+  ┌─────────────────┬─────────────────────────────────────────────────────────┐
+  │      State      │                       Description                       │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ lyrics          │ Every verse/chorus/bridge you're writing                │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ savedSongs      │ All your named song saves (up to 50)                    │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ aiSongs         │ AI-generated songs vault (up to 100, auto-saved)        │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ styleProfile    │ Your lyric style — themes, rhyme schemes, vocabulary —  │
+  │                 │ fed to the AI                                           │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ pianoRollNotes  │ Every note on the piano roll                            │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ songPatterns    │ Beat/melody patterns                                    │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ songArrangement │ Which patterns go where on the timeline                 │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ mixerChannels   │ Fader positions, panning, mute/solo, inserts            │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ annotations     │ Word stress, tone tags, beat mapping per lyric line     │
+  ├─────────────────┼─────────────────────────────────────────────────────────┤
+  │ streak          │ Your daily writing streak count                         │
+  └─────────────────┴─────────────────────────────────────────────────────────┘
+
+  ---
+  3. src/App.jsx — The Shell (341 lines)
+
+  This is what you see on screen — the tab bar at the top and the content area
+  below.
+
+  The keep-alive system (what we fixed last session):
+  mountedTabs = Set of all tabs ever clicked
+  → First click on a tab: mounts the component for the first time
+  → Later clicks: just CSS display:block/none — component stays alive
+  This means Auto-Tune can be running, you switch to Vocal Removal, and both keep
+   working simultaneously.
+
+  ---
+  4. Your 38 Feature Screens (src/components/)
+
+  ┌───────────────────┬─────────────────────────────────────────────────┐
+  │        Tab        │                  What it does                   │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Arrange           │ Timeline view with tracks and clips             │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Session           │ Live session recording                          │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Mixer             │ Faders, panning, sends, channel inserts         │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Instruments       │ Virtual instrument keyboard                     │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Piano Roll        │ Draw MIDI notes on a grid                       │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Patterns          │ Saved pattern library                           │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Beat Maker        │ 16-step drum sequencer                          │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Chords            │ Chord progression builder                       │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Samples           │ Sample browser                                  │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ FX Rack           │ Effect plugin rack                              │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Arpeggiator       │ Auto-generates arpeggios from chords            │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Bus Routing       │ Route signals between channels                  │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Plugins           │ Master FX (reverb, delay, comp, distortion, EQ) │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Edison            │ Audio clip editor (trim, splice)                │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Elastic Audio     │ Time-stretch without changing pitch             │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Newtone           │ Pitch editor for recordings                     │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Region Loop       │ Loop a region of audio                          │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Collaborate       │ Cloud collaboration                             │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Library           │ Loop library browser                            │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Export            │ Bounce to MP3/WAV                               │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Visualizer        │ Real-time audio visualizer                      │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Notepad           │ Song notes/journal                              │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Marketplace       │ Sound/preset marketplace                        │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Tone Synth        │ Synthesizer with waveforms and envelopes        │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Waveform          │ Waveform viewer                                 │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Mastering Suite   │ Professional mastering chain UI                 │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Spectrum Analyzer │ Real-time frequency display                     │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Transient Shaper  │ Control attack/sustain of sounds                │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Auto-Tune         │ Real-time pitch correction (mic)                │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Turntable         │ DJ turntable simulation                         │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Vocal Remove      │ AI stem separation (vocals vs. instrumental)    │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Templates         │ Project starter templates                       │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Granular Synth    │ Granular synthesis from audio                   │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Sample Slicer     │ Chop loops into MPC-style pads                  │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Vocoder           │ Robot voice effect                              │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Chord Dictionary  │ Chord lookup/reference                          │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ AI Co-Pilot       │ Gemini AI for lyric writing                     │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Lyrics            │ Lyric editor with sections                      │
+  ├───────────────────┼─────────────────────────────────────────────────┤
+  │ Projects          │ All your saved songs                            │
+  └───────────────────┴─────────────────────────────────────────────────┘
+
+  ---
+  That's the full picture. You've got a seriously complete DAW here — the audio
+  engine alone handles synthesis, recording, mastering, and MP3 export from
+  scratch. Is there a specific part you want to dig into further, or something
+  you'd like to improve next?

@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --scrollbar-bg: #111120;
+  --scrollbar-thumb: #252540;
+  --scrollbar-thumb-hover: #00e5ff;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #080810;
+  color: #e0e0f0;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track { background: var(--scrollbar-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+
+/* Neon text glow utility */
+.glow-cyan { text-shadow: 0 0 8px rgba(0,229,255,0.8); }
+.glow-purple { text-shadow: 0 0 8px rgba(180,79,255,0.8); }
+.glow-green { text-shadow: 0 0 8px rgba(0,255,157,0.8); }
+
+/* Knob base style */
+.knob {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: conic-gradient(from 210deg, #1c1c30 0deg, #252540 360deg);
+  border: 1.5px solid #252540;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+.knob::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 10px;
+  background: #00e5ff;
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(0,229,255,0.8);
+}
+
+/* VU meter bar */
+@keyframes vu-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Playhead animation */
+@keyframes playhead-move {
+  from { left: 180px; }
+  to { left: calc(100% - 4px); }
+}
+
+.playhead-active {
+  animation: playhead-move 8s linear infinite;
+}
+
+/* Waveform pulse */
+@keyframes wave-pulse {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.3); }
+}
+
+/* Tab active indicator */
+.tab-active {
+  position: relative;
+}
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00e5ff, #b44fff);
+  box-shadow: 0 0 8px rgba(0,229,255,0.6);
+}
+
+/* Grid scan line effect */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+}
+
+/* Fader track */
+.fader-track {
+  background: linear-gradient(to bottom, #0d0d18, #1c1c30, #0d0d18);
+  border: 1px solid #252540;
+  border-radius: 3px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-track {
+  background: #252540;
+  height: 4px;
+  border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #00e5ff;
+  box-shadow: 0 0 8px rgba(0,229,255,0.7);
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+input[type="range"].vertical {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 4px;
+  height: 100%;
+}
+
+input[type="range"].vertical::-webkit-slider-thumb {
+  margin-top: 0;
+  margin-left: -5px;
+}
+
+/* Beat pad active flash */
+@keyframes pad-flash {
+  0% { background: rgba(0,229,255,0.4); box-shadow: 0 0 20px rgba(0,229,255,0.6); }
+  100% { background: transparent; box-shadow: none; }
+}
+
+.pad-active {
+  animation: pad-flash 0.15s ease-out;
+}
+
+/* Record blink */
+@keyframes rec-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.rec-blink {
+  animation: rec-blink 1s ease-in-out infinite;
+}
+
+/* Typing cursor in AI chat */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '▋';
+  animation: cursor-blink 0.8s ease-in-out infinite;
+  color: #00e5ff;
+}
