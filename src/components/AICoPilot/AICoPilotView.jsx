@@ -1240,7 +1240,7 @@ Write the complete song now. Do not cut it short.`
         <div className="flex items-center gap-3 px-4 py-2 bg-studio-panel border-b border-studio-border">
           <div className="w-2 h-2 rounded-full bg-studio-cyan shadow-cyan" />
           <span className="font-display text-xs font-semibold text-studio-dim tracking-widest uppercase">AI Co-Pilot</span>
-          <span className="text-xs text-studio-dim font-mono">gemini-2.0-flash</span>
+          <span className="text-xs text-studio-dim font-mono">claude-sonnet-4-6</span>
           <button
             onClick={() => { if (window.confirm('Clear all chat messages?')) useStudioStore.getState().clearAiChat() }}
             className="ml-auto text-xs font-mono text-studio-dim hover:text-studio-red transition-colors"
