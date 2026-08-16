@@ -367,6 +367,7 @@ Return a focused guide (under 300 words) starting with "${name.toUpperCase()} ST
         <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-1.5 block">What's the song about?</label>
         <input
           ref={topicRef}
+          autoFocus
           type="text"
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
