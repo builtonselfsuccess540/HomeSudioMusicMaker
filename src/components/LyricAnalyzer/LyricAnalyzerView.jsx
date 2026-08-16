@@ -442,7 +442,7 @@ Return ONLY the 16 bare lines, one per line. No section labels, no numbering, no
     copyGenerated()
   }
 
-  const noKey = !import.meta.env.VITE_GEMINI_API_KEY
+  const noKey = !import.meta.env.VITE_ANTHROPIC_API_KEY
 
   return (
     <div className="flex h-full bg-studio-void overflow-hidden">
@@ -572,7 +572,7 @@ Return ONLY the 16 bare lines, one per line. No section labels, no numbering, no
 
           {noKey && (
             <div className="text-xs font-mono text-studio-red bg-studio-red/10 border border-studio-red/30 rounded-lg px-3 py-2">
-              No Gemini API key. Add VITE_GEMINI_API_KEY to .env
+              No Anthropic API key. Add VITE_ANTHROPIC_API_KEY to .env
             </div>
           )}
 

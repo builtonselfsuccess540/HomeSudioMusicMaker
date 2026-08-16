@@ -285,8 +285,8 @@ export default function ChordProgressionView() {
   const generateAI = useCallback(async () => {
     setAiLoading(true); setAiError(''); setAiSugs([])
     try {
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY
-      if (!apiKey) throw new Error('VITE_GEMINI_API_KEY not set')
+      const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY
+      if (!apiKey) throw new Error('VITE_ANTHROPIC_API_KEY not set')
       const genAI = new GoogleGenerativeAI(apiKey)
       const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
       const prompt = `You are a music theory expert. Suggest 4 chord progressions for ${aiGenre} music with a ${aiMood} mood in the key of ${rootNote} ${scaleName}.

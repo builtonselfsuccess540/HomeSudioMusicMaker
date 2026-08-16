@@ -1213,7 +1213,7 @@ Write the complete song now. Do not cut it short.`
     'Suggest rhyme schemes I should try',
   ]
 
-  const noKey = !import.meta.env.VITE_GEMINI_API_KEY
+  const noKey = !import.meta.env.VITE_ANTHROPIC_API_KEY
 
   return (
     <div className="flex h-full bg-studio-void">
@@ -1234,7 +1234,7 @@ Write the complete song now. Do not cut it short.`
 
         {noKey && (
           <div className="mx-4 mt-3 p-3 bg-studio-red/10 border border-studio-red/30 rounded-lg text-xs font-mono text-studio-red">
-            No Gemini API key found. Add VITE_GEMINI_API_KEY to your .env file.
+            No Anthropic API key found. Add VITE_ANTHROPIC_API_KEY to your .env file.
           </div>
         )}
 
