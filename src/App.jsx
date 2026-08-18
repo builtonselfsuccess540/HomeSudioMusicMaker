@@ -1,54 +1,57 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, Suspense, lazy } from 'react'
 import Transport from './components/shared/Transport'
-import ArrangeView from './components/Arrange/ArrangeView'
-import MixerView from './components/Mixer/MixerView'
-import InstrumentsView from './components/Instruments/InstrumentsView'
-import AICoPilotView from './components/AICoPilot/AICoPilotView'
-import LyricsView from './components/Lyrics/LyricsView'
-import ProjectsView from './components/Projects/ProjectsView'
-import PianoRollView from './components/PianoRoll/PianoRollView'
-import PatternsView from './components/Patterns/PatternsView'
-import PluginsView  from './components/Plugins/PluginsView'
-import EdisonView   from './components/Edison/EdisonView'
-import NewtoneView  from './components/Newtone/NewtoneView'
-import SessionView    from './components/Session/SessionView'
-import ElasticAudioView from './components/ElasticAudio/ElasticAudioView'
-import BeatMakerView  from './components/BeatMaker/BeatMakerView'
-import ChordProgressionView from './components/ChordProgression/ChordProgressionView'
-import SampleBrowserView from './components/SampleBrowser/SampleBrowserView'
-import EffectsRackView   from './components/EffectsRack/EffectsRackView'
-import ArpeggiatorView   from './components/Arpeggiator/ArpeggiatorView'
-import BusRoutingView    from './components/BusRouting/BusRoutingView'
-import RegionLoopView    from './components/RegionLoop/RegionLoopView'
-import CollaborationView from './components/Collaboration/CollaborationView'
-import LoopLibraryView  from './components/LoopLibrary/LoopLibraryView'
-import ExportView       from './components/Export/ExportView'
-import VisualizerView   from './components/Visualizer/VisualizerView'
-import NotepadView      from './components/Notepad/NotepadView'
-import MarketplaceView  from './components/Marketplace/MarketplaceView'
-import ToneSynthView    from './components/ToneSynth/ToneSynthView'
-import WaveformView     from './components/Waveform/WaveformView'
-import MasteringSuiteView  from './components/MasteringSuite/MasteringSuiteView'
-import SpectrumAnalyzerView from './components/SpectrumAnalyzer/SpectrumAnalyzerView'
-import TransientShaperView  from './components/TransientShaper/TransientShaperView'
-import AutoTuneView         from './components/AutoTune/AutoTuneView'
-import TurntableView        from './components/Turntable/TurntableView'
-import VocalRemovalView     from './components/VocalRemoval/VocalRemovalView'
-import ProjectTemplatesView  from './components/ProjectTemplates/ProjectTemplatesView'
-import GranularSynthView    from './components/GranularSynth/GranularSynthView'
-import SampleSlicerView     from './components/SampleSlicer/SampleSlicerView'
-import VocoderView          from './components/Vocoder/VocoderView'
-import ChordDictionaryView  from './components/ChordDictionary/ChordDictionaryView'
-import VocalChainView       from './components/VocalChain/VocalChainView'
-import VocalDoublerView     from './components/VocalDoubler/VocalDoublerView'
-import DeEsserView          from './components/DeEsser/DeEsserView'
-import LyricAnalyzerView    from './components/LyricAnalyzer/LyricAnalyzerView'
-import VideoEditorView      from './components/VideoEditor/VideoEditorView'
-import AIVideoCreatorView   from './components/AIVideoCreator/AIVideoCreatorView'
-import AIMusicVideoGenView  from './components/AIMusicVideoGen/AIMusicVideoGenView'
-import AIDreamStudioView    from './components/AIDreamStudio/AIDreamStudioView'
 
-// Maps tab id → component so we can render dynamically
+// Lazy-loaded tab views — each tab only loads its JS when first visited,
+// keeping startup fast even with 50+ components.
+const ArrangeView         = lazy(() => import('./components/Arrange/ArrangeView'))
+const MixerView           = lazy(() => import('./components/Mixer/MixerView'))
+const InstrumentsView     = lazy(() => import('./components/Instruments/InstrumentsView'))
+const AICoPilotView       = lazy(() => import('./components/AICoPilot/AICoPilotView'))
+const LyricsView          = lazy(() => import('./components/Lyrics/LyricsView'))
+const ProjectsView        = lazy(() => import('./components/Projects/ProjectsView'))
+const PianoRollView       = lazy(() => import('./components/PianoRoll/PianoRollView'))
+const PatternsView        = lazy(() => import('./components/Patterns/PatternsView'))
+const PluginsView         = lazy(() => import('./components/Plugins/PluginsView'))
+const EdisonView          = lazy(() => import('./components/Edison/EdisonView'))
+const NewtoneView         = lazy(() => import('./components/Newtone/NewtoneView'))
+const SessionView         = lazy(() => import('./components/Session/SessionView'))
+const ElasticAudioView    = lazy(() => import('./components/ElasticAudio/ElasticAudioView'))
+const BeatMakerView       = lazy(() => import('./components/BeatMaker/BeatMakerView'))
+const ChordProgressionView= lazy(() => import('./components/ChordProgression/ChordProgressionView'))
+const SampleBrowserView   = lazy(() => import('./components/SampleBrowser/SampleBrowserView'))
+const EffectsRackView     = lazy(() => import('./components/EffectsRack/EffectsRackView'))
+const ArpeggiatorView     = lazy(() => import('./components/Arpeggiator/ArpeggiatorView'))
+const BusRoutingView      = lazy(() => import('./components/BusRouting/BusRoutingView'))
+const RegionLoopView      = lazy(() => import('./components/RegionLoop/RegionLoopView'))
+const CollaborationView   = lazy(() => import('./components/Collaboration/CollaborationView'))
+const LoopLibraryView     = lazy(() => import('./components/LoopLibrary/LoopLibraryView'))
+const ExportView          = lazy(() => import('./components/Export/ExportView'))
+const VisualizerView      = lazy(() => import('./components/Visualizer/VisualizerView'))
+const NotepadView         = lazy(() => import('./components/Notepad/NotepadView'))
+const MarketplaceView     = lazy(() => import('./components/Marketplace/MarketplaceView'))
+const ToneSynthView       = lazy(() => import('./components/ToneSynth/ToneSynthView'))
+const WaveformView        = lazy(() => import('./components/Waveform/WaveformView'))
+const MasteringSuiteView  = lazy(() => import('./components/MasteringSuite/MasteringSuiteView'))
+const SpectrumAnalyzerView= lazy(() => import('./components/SpectrumAnalyzer/SpectrumAnalyzerView'))
+const TransientShaperView = lazy(() => import('./components/TransientShaper/TransientShaperView'))
+const AutoTuneView        = lazy(() => import('./components/AutoTune/AutoTuneView'))
+const TurntableView       = lazy(() => import('./components/Turntable/TurntableView'))
+const VocalRemovalView    = lazy(() => import('./components/VocalRemoval/VocalRemovalView'))
+const ProjectTemplatesView= lazy(() => import('./components/ProjectTemplates/ProjectTemplatesView'))
+const GranularSynthView   = lazy(() => import('./components/GranularSynth/GranularSynthView'))
+const SampleSlicerView    = lazy(() => import('./components/SampleSlicer/SampleSlicerView'))
+const VocoderView         = lazy(() => import('./components/Vocoder/VocoderView'))
+const ChordDictionaryView = lazy(() => import('./components/ChordDictionary/ChordDictionaryView'))
+const VocalChainView      = lazy(() => import('./components/VocalChain/VocalChainView'))
+const VocalDoublerView    = lazy(() => import('./components/VocalDoubler/VocalDoublerView'))
+const DeEsserView         = lazy(() => import('./components/DeEsser/DeEsserView'))
+const LyricAnalyzerView   = lazy(() => import('./components/LyricAnalyzer/LyricAnalyzerView'))
+const VideoEditorView     = lazy(() => import('./components/VideoEditor/VideoEditorView'))
+const AIVideoCreatorView  = lazy(() => import('./components/AIVideoCreator/AIVideoCreatorView'))
+const AIMusicVideoGenView = lazy(() => import('./components/AIMusicVideoGen/AIMusicVideoGenView'))
+const AIDreamStudioView   = lazy(() => import('./components/AIDreamStudio/AIDreamStudioView'))
+
+// Maps tab id → lazy component
 const TAB_VIEWS = {
   arrange:    ArrangeView,
   session:    SessionView,
@@ -339,26 +342,28 @@ export default function App() {
 
       {/* Main content — keep-alive: each tab mounts once, then hides/shows via CSS */}
       <div className="flex-1 overflow-hidden relative">
-        {[...mountedTabs].map(id => {
-          const View = TAB_VIEWS[id]
-          if (!View) return null
-          const isActive = id === activeTab
-          return (
-            <div
-              key={id}
-              style={{
-                position: 'absolute', inset: 0,
-                display: isActive ? 'block' : 'none',
-                overflow: 'auto',
-              }}
-            >
-              {id === 'projects'
-                ? <View onSwitchToLyrics={() => handleTabClick('lyrics')} />
-                : <View />
-              }
-            </div>
-          )
-        })}
+        <Suspense fallback={<div style={{ color: '#666', padding: 24, fontFamily: 'monospace' }}>Loading…</div>}>
+          {[...mountedTabs].map(id => {
+            const View = TAB_VIEWS[id]
+            if (!View) return null
+            const isActive = id === activeTab
+            return (
+              <div
+                key={id}
+                style={{
+                  position: 'absolute', inset: 0,
+                  display: isActive ? 'block' : 'none',
+                  overflow: 'auto',
+                }}
+              >
+                {id === 'projects'
+                  ? <View onSwitchToLyrics={() => handleTabClick('lyrics')} />
+                  : <View />
+                }
+              </div>
+            )
+          })}
+        </Suspense>
       </div>
 
       {/* Bottom status bar */}

@@ -319,6 +319,28 @@ export const useStudioStore = create((set, get) => ({
   // Lyric Analyzer — session result shared with AI Co-Pilot
   lyricAnalysis: null,
 
+  // Reload all persisted state from localStorage (use after loading a project cloud snapshot)
+  rehydrate: () => {
+    const d = loadDraft()
+    set({
+      mixerChannels:   loadMixer() || DEFAULT_MIXER_CHANNELS,
+      lyrics:          d?.lyrics ?? DEFAULT_LYRICS,
+      nextSectionId:   d?.nextSectionId ?? 3,
+      currentSongName: d?.currentSongName ?? 'Untitled Song',
+      savedSongs:      loadSavedSongs(),
+      aiSongs:         loadAiSongs(),
+      folders:         loadFolders(),
+      pianoRollNotes:  loadPRNotes(),
+      patterns:        loadPatterns(),
+      songPatterns:    loadSongPatterns(),
+      songArrangement: loadArrangement(),
+      annotations:     loadAnnotations(),
+      automation:      loadAutomation(),
+      styleProfile:    loadProfile(),
+      aiMessages:      loadChat(),
+    })
+  },
+
   // Actions: Transport
   setPlaying: (v) => set({ isPlaying: v }),
   setRecording: (v) => set({ isRecording: v }),

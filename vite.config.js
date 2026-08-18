@@ -22,7 +22,6 @@ export default defineConfig({
               port: 443,
               path: req.url,
               method: req.method,
-              rejectUnauthorized: false,
               headers: {
                 'content-type': 'application/json',
                 'content-length': bodyBuf.length,

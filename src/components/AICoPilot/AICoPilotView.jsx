@@ -1088,7 +1088,7 @@ export default function AICoPilotView() {
       const model = genAI.getGenerativeModel({
         model: 'gemini-2.0-flash',
         systemInstruction: systemPrompt,
-        generationConfig: { temperature: 1.2 },
+        generationConfig: { temperature: 1.0 },
       })
 
       // Build chat history (Gemini uses 'model' instead of 'assistant')
@@ -1117,7 +1117,7 @@ export default function AICoPilotView() {
     } catch (err) {
       addAiMessage({
         role: 'assistant',
-        content: `Error: ${err.message}\n\nCheck that your Gemini API key is set correctly in the .env file.`,
+        content: `Error: ${err.message}\n\nCheck that your Anthropic API key (VITE_ANTHROPIC_API_KEY) is set correctly in the .env file.`,
       })
     } finally {
       setAiTyping(false)
@@ -1197,7 +1197,7 @@ Write the complete song now. Do not cut it short.`
       const model = genAI.getGenerativeModel({
         model: 'gemini-2.0-flash',
         systemInstruction: systemPrompt,
-        generationConfig: { temperature: 1.5 },
+        generationConfig: { temperature: 1.0 },
       })
 
       const result = await model.generateContentStream(prompt)
@@ -1480,7 +1480,7 @@ Write the complete song now. Do not cut it short.`
                 <button
                   key={song.id}
                   onClick={() => {
-                    const msg = `I want to work on my AI-generated song called "${song.name}". Here are the lyrics:\n\n${song.content}\n\nHelp me improve, refine, or continue working on this.`
+                    const msg = `I want to work on my AI-generated song called "${song.name}". Here are the lyrics:\n\n${song.rawText}\n\nHelp me improve, refine, or continue working on this.`
                     setInput(msg)
                     textareaRef.current?.focus()
                   }}

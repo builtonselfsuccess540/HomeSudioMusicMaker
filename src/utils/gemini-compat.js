@@ -3,7 +3,13 @@ import Anthropic from '@anthropic-ai/sdk'
 const MODEL = 'claude-sonnet-4-6'
 const MAX_TOKENS = 8192
 
+// In Electron, API calls go through the main process via IPC so the key
+// never appears in the renderer bundle. In browser dev mode, fall back to
+// the SDK directly (key is only on the local dev machine).
+const isElectron = typeof window !== 'undefined' && !!window.electron?.ai
+
 function getClient() {
+  if (isElectron) return null
   return new Anthropic({
     apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY || '',
     dangerouslyAllowBrowser: true
@@ -25,13 +31,27 @@ class CompatChatSession {
     const params = {
       model: MODEL,
       max_tokens: MAX_TOKENS,
-      messages: this.messages
+      messages: this.messages,
+      system: this.systemInstruction,
     }
-    if (this.systemInstruction) params.system = this.systemInstruction
+
+    if (isElectron) {
+      const self = this
+      let fullText = ''
+      return {
+        stream: (async function* () {
+          await window.electron.ai.stream(params, (chunk) => {
+            fullText += chunk
+          })
+          // yield the full text as a single chunk after stream completes
+          // This satisfies the caller's for-await loop
+          self.messages.push({ role: 'assistant', content: fullText })
+        })()
+      }
+    }
 
     const stream = this.client.messages.stream(params)
     const self = this
-
     return {
       stream: (async function* () {
         let full = ''
@@ -59,10 +79,15 @@ class CompatModel {
     const params = {
       model: MODEL,
       max_tokens: MAX_TOKENS,
-      messages: [{ role: 'user', content }]
+      messages: [{ role: 'user', content }],
+      system: this.systemInstruction,
+      temperature: this.temperature,
     }
-    if (this.systemInstruction) params.system = this.systemInstruction
-    if (this.temperature !== undefined) params.temperature = this.temperature
+
+    if (isElectron) {
+      const text = await window.electron.ai.generate(params)
+      return { response: { text: () => text } }
+    }
 
     const response = await this.client.messages.create(params)
     const text = response.content[0]?.text ?? ''
@@ -74,10 +99,22 @@ class CompatModel {
     const params = {
       model: MODEL,
       max_tokens: MAX_TOKENS,
-      messages: [{ role: 'user', content }]
+      messages: [{ role: 'user', content }],
+      system: this.systemInstruction,
+      temperature: this.temperature,
     }
-    if (this.systemInstruction) params.system = this.systemInstruction
-    if (this.temperature !== undefined) params.temperature = this.temperature
+
+    if (isElectron) {
+      let buffer = ''
+      return {
+        stream: (async function* () {
+          await window.electron.ai.stream(params, (chunk) => {
+            buffer += chunk
+          })
+          yield { text: () => buffer }
+        })()
+      }
+    }
 
     const stream = this.client.messages.stream(params)
     return {

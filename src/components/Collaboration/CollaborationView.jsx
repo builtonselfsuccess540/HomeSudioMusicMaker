@@ -5,12 +5,16 @@ import {
   saveProjectCloud, listProjects, loadProjectCloud, deleteProjectCloud,
   createRoom, joinRoom, subscribeRoom, pushRoomUpdate, applyRoomData,
 } from '../../firebase/firebaseDb'
+import { useStudioStore } from '../../store/useStudioStore'
 
 const GITHUB_API = 'https://api.github.com'
-const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN || ''
 
-const GH_HEADERS = {
-  'Authorization': `Bearer ${GITHUB_TOKEN}`,
+// GitHub token stays in the Electron main process when running as desktop app.
+// In browser dev mode, fall back to the env var.
+const isElectron = typeof window !== 'undefined' && !!window.electron?.github
+
+const GH_HEADERS = isElectron ? {} : {
+  'Authorization': `Bearer ${import.meta.env.VITE_GITHUB_TOKEN || ''}`,
   'Accept': 'application/vnd.github+json',
   'X-GitHub-Api-Version': '2022-11-28',
   'Content-Type': 'application/json',
@@ -66,6 +70,14 @@ function restoreSessionSnapshot(snapshot) {
 }
 
 async function ghFetch(path, options = {}) {
+  if (isElectron) {
+    const result = await window.electron.github.request(path, {
+      method: options.method,
+      body: options.body ? JSON.parse(options.body) : undefined,
+    })
+    if (!result.ok) throw new Error(result.body?.message || `GitHub API ${result.status}`)
+    return result.body
+  }
   const res = await fetch(`${GITHUB_API}${path}`, {
     ...options,
     headers: { ...GH_HEADERS, ...(options.headers || {}) },
@@ -208,6 +220,7 @@ function CommitRow({ commit, onRestore }) {
 // ── main component ────────────────────────────────────────────────────────────
 
 export default function CollaborationView() {
+  const rehydrate = useStudioStore(s => s.rehydrate)
   const [status, setStatus]           = useState('idle')
   const [gistId, setGistId]           = useState(() => localStorage.getItem('hs-collab-gistId') || '')
   const [gistDesc, setGistDesc]       = useState('')
@@ -268,8 +281,8 @@ export default function CollaborationView() {
     setFbLoading(true); setFbMsg('')
     try {
       await loadProjectCloud(projectId)
-      setFbMsg('Project loaded! Reloading…')
-      setTimeout(() => window.location.reload(), 1200)
+      rehydrate()
+      setFbMsg('Project loaded!')
     } catch (e) { setFbMsg(`Error: ${e.message}`) }
     finally { setFbLoading(false) }
   }, [])
@@ -418,8 +431,8 @@ export default function CollaborationView() {
       const count = restoreSessionSnapshot(snapshot)
       setLastSynced(new Date())
       setStatus(liveSync ? 'polling' : 'synced')
-      setRestoreMsg(`Loaded ${count} data stores from cloud. Reloading…`)
-      setTimeout(() => window.location.reload(), 1200)
+      rehydrate()
+      setRestoreMsg(`Loaded ${count} data stores from cloud.`)
     } catch (e) {
       setErrorMsg(e.message)
       setStatus('error')
@@ -442,8 +455,8 @@ export default function CollaborationView() {
       setShareUrl(gistUrl(id))
       setLastSynced(new Date())
       setStatus('synced')
-      setRestoreMsg(`Imported session (${count} stores). Reloading…`)
-      setTimeout(() => window.location.reload(), 1200)
+      rehydrate()
+      setRestoreMsg(`Imported session (${count} stores).`)
       setImportInput('')
     } catch (e) {
       setErrorMsg(e.message)
@@ -480,8 +493,8 @@ export default function CollaborationView() {
       if (!content) throw new Error('No session data at this revision')
       const snapshot = JSON.parse(content)
       const count = restoreSessionSnapshot(snapshot)
-      setRestoreMsg(`Restored revision ${sha.slice(0,7)} (${count} stores). Reloading…`)
-      setTimeout(() => window.location.reload(), 1200)
+      rehydrate()
+      setRestoreMsg(`Restored revision ${sha.slice(0,7)} (${count} stores).`)
     } catch (e) { setErrorMsg(e.message) }
   }, [gistId])
 

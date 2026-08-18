@@ -585,7 +585,7 @@ export default function VideoEditorView() {
         const blob = new Blob(chunks, { type: mime })
         const url = URL.createObjectURL(blob)
         const a = document.createElement('a')
-        a.href = url; a.download = `${projectName.replace(/[^a-z0-9]/gi,'_')}.${fmt === 'mp4' ? 'webm' : 'webm'}`
+        a.href = url; a.download = `${projectName.replace(/[^a-z0-9]/gi,'_')}.${fmt === 'mp4' ? 'mp4' : 'webm'}`
         document.body.appendChild(a); a.click(); document.body.removeChild(a)
         URL.revokeObjectURL(url)
         setExporting(false); setExportPct(0)
@@ -593,19 +593,20 @@ export default function VideoEditorView() {
 
       recorder.start(100)
 
-      // Drive playback frame by frame
+      // Drive playback frame by frame — async loop yields between frames
+      // so the UI stays responsive and the progress bar updates
       let t = 0
       const dur = totalDurRef.current
       const frameTime = 1 / fps
+      const yieldToUI = () => new Promise(r => setTimeout(r, 0))
 
-      const renderLoop = () => {
-        if (t > dur) { recorder.stop(); return }
+      while (t <= dur) {
         renderFrame(canvas, t, clipsRef.current, tracksRef.current, mediaEls.current, textRef.current)
         setExportPct(Math.min(99, Math.round((t / dur) * 100)))
         t += frameTime
-        setTimeout(renderLoop, 0)
+        await yieldToUI()
       }
-      renderLoop()
+      recorder.stop()
     } catch (err) {
       alert(`Export failed: ${err.message}`)
       setExporting(false)
