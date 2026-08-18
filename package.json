@@ -9,7 +9,9 @@
     "dev:electron": "node scripts/clear-port.cjs && concurrently -k \"vite\" \"wait-on http://localhost:5174 && electron .\"",
     "build": "vite build",
     "build:electron": "cross-env ELECTRON_BUILD=true vite build && electron-builder",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky",
+    "check-secrets": "node scripts/check-secrets.cjs"
   },
   "build": {
     "appId": "com.homestudiomusicmaker.app",
@@ -57,6 +59,7 @@
     "cross-env": "^10.1.0",
     "electron": "^42.0.0",
     "electron-builder": "^26.15.2",
+    "husky": "^9.1.7",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
     "vite": "^8.0.16",

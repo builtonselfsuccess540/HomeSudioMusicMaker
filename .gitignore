@@ -5,6 +5,8 @@ node_modules/
 .env
 .env.local
 .env.*.local
+.env.production
+.env.staging
 
 # Build output
 dist/
@@ -24,3 +26,12 @@ npm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Secret / credential files — never commit these
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+service-account*.json
