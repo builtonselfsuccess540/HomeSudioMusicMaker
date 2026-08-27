@@ -306,7 +306,23 @@ This song tells a complete story with a clear arc. Verse 1 establishes the situa
     color: '#ff2d55',
     desc: 'Every 2–3 bars must land a knockout — setups and payoffs throughout',
     instruction: `SONG STYLE — PUNCHLINE HEAVY:
-Structure every verse as a series of knockout punches. Every 2–3 bars = one setup and one payoff. Use misdirection (lead the listener one way, snap the other), comparison punchlines (similes that stop you cold), wordplay punchlines (a phrase that flips meaning), and contrast punchlines (opposites that illuminate each other). There should be no neutral bars — every line either builds tension or releases it. The listener must be rewinding constantly.`,
+Every verse is a sequence of knockout punches. No neutral bars — every line either builds tension or releases it. Apply ALL of these techniques across the song:
+
+MISDIRECTION: Set up an expectation in bar 1 — then completely subvert it in bar 2. The listener should go one direction and get snapped the other way. The farther the misdirection, the harder the landing.
+
+DOUBLE MEANING: Write phrases where every word can be read two ways simultaneously — one literal, one metaphorical or spiritual. Both readings must be relevant. "I been grinding till the sun come up" = the work AND the spiritual discipline.
+
+COMPARISON PUNCHLINES: Drop a simile so accurate it stops the listener cold. Not "I'm cold like ice" — find the exact unexpected comparison that no one has used before. The more surprising the vehicle, the better the punchline.
+
+CONTRAST PUNCHLINES: Slam two opposites in the same bar. The gap between them is the punchline. "They said I'd never make it — now they asking for my table."
+
+CALLBACK: Plant a word, image, or idea in bar 1 of a verse. Don't pay it off until the last 2 bars — by then the listener forgot it was coming. The delayed payoff hits twice as hard.
+
+ESCALATION PUNCHLINE: Build a series of 3–4 bars that each raise the stakes, culminating in a final line that is the peak of everything before it. The listener feels the momentum and the crash simultaneously.
+
+UNDERSTATEMENT: Say the least powerful-sounding version of the most powerful fact. Let the listener do the work of recognizing the weight. The gap between what's said and what's meant IS the punchline.
+
+STRUCTURE: Every 3 bars maximum = one complete punch (1–2 setup bars + 1 payoff bar). Never waste a payoff bar position on setup. Count your punches — a 16-bar verse should have at least 5 distinct punchlines.`,
   },
 ]
 
@@ -1283,6 +1299,261 @@ Words called out by the crowd, in order: ${words.join(', ')}`
   )
 }
 
+const PUNCHLINE_TECHNIQUES = [
+  {
+    id: 'misdirection',
+    label: 'Misdirection',
+    color: '#ff2d55',
+    desc: 'Set up an expectation — snap it the other way completely',
+    instruction: 'MISDIRECTION: Set up a clear expectation in the first half, then snap it in the exact opposite direction. The farther the subversion, the harder the landing.',
+  },
+  {
+    id: 'doublemeaning',
+    label: 'Double Meaning',
+    color: '#00e5ff',
+    desc: 'One phrase, two meanings — both land simultaneously',
+    instruction: 'DOUBLE MEANING: Write a phrase where every key word operates on two levels at once — literal and figurative, secular and spiritual, surface and deep. Both readings must be equally valid and relevant.',
+  },
+  {
+    id: 'comparison',
+    label: 'Comparison',
+    color: '#00ff9d',
+    desc: 'A simile so accurate and unexpected it stops the listener cold',
+    instruction: 'COMPARISON PUNCHLINE: Find the exact unexpected comparison — not the obvious vehicle, the surprising one nobody has used. The more specific and unlikely the simile, the harder it lands.',
+  },
+  {
+    id: 'contrast',
+    label: 'Contrast',
+    color: '#ff9500',
+    desc: 'Slam two opposites in one bar — the gap is the punch',
+    instruction: 'CONTRAST PUNCHLINE: Place two extreme opposites in the same bar or couplet. The emotional gap between where they were and where they are now IS the punchline.',
+  },
+  {
+    id: 'callback',
+    label: 'Callback',
+    color: '#b44fff',
+    desc: 'Plant it early, pay it off late — the delayed hit lands hardest',
+    instruction: 'CALLBACK PUNCHLINE: Drop a word, image, or idea early in the verse without drawing attention to it. Return to it in the final 2 bars and pay it off. The delayed payoff doubles the impact.',
+  },
+  {
+    id: 'escalation',
+    label: 'Escalation',
+    color: '#ffe600',
+    desc: '3–4 bars raising stakes to a peak line that makes everything before it count',
+    instruction: 'ESCALATION PUNCHLINE: Build a 3–4 bar sequence where each bar raises the stakes higher than the last, culminating in a final line that is the peak of everything before it. The listener feels the momentum and the landing simultaneously.',
+  },
+  {
+    id: 'understatement',
+    label: 'Understatement',
+    color: '#aaaacc',
+    desc: 'Say the least powerful version — the gap between words and weight is the punch',
+    instruction: 'UNDERSTATEMENT PUNCHLINE: Deliver the most powerful fact in the least dramatic-sounding language. The listener has to do the work of recognizing the weight. The gap between what is said and what it means IS the punchline.',
+  },
+]
+
+function PunchlineWorkshopModal({ onClose }) {
+  const [mode, setMode] = useState('generate')
+  const [topic, setTopic] = useState('')
+  const [setupBar, setSetupBar] = useState('')
+  const [techniques, setTechniques] = useState(['misdirection', 'doublemeaning', 'comparison', 'contrast'])
+  const [output, setOutput] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  const toggleTech = (id) => setTechniques(prev =>
+    prev.includes(id) ? (prev.length > 1 ? prev.filter(x => x !== id) : prev) : [...prev, id]
+  )
+
+  const generate = async () => {
+    if (loading) return
+    if (mode === 'generate' && !topic.trim()) return
+    if (mode === 'setup' && !setupBar.trim()) return
+    setLoading(true)
+    setOutput('')
+    try {
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+      let prompt
+      if (mode === 'generate') {
+        const selectedTechs = PUNCHLINE_TECHNIQUES.filter(t => techniques.includes(t.id))
+        const techInstructions = selectedTechs.map(t => `- ${t.instruction}`).join('\n')
+        prompt = `You are an elite rap ghostwriter specializing in punchline craft. Generate 8–10 standalone punchlines on the topic: "${topic.trim()}"
+
+For each punchline, use one of the following techniques and label it:
+${techInstructions}
+
+FORMAT — output each punchline exactly like this, one per line:
+[TECHNIQUE NAME] punchline bar here
+
+Rules:
+- Each punchline must be one bar (one line) — a setup couplet counts as two bars max
+- Make each one genuinely surprising — no generic or safe bars
+- Every punchline must be complete: the payoff is in the same line or the line immediately after
+- Do not number them, do not add explanation, do not add any text other than the labeled punchlines`
+      } else {
+        prompt = `You are an elite rap ghostwriter. The rapper has written a setup bar and needs 5 different payoff completions — each using a distinct punchline technique.
+
+Setup bar: "${setupBar.trim()}"
+
+Write 5 payoff bars that complete this punchline, each using a different technique from this list:
+${PUNCHLINE_TECHNIQUES.map(t => `- ${t.instruction}`).join('\n')}
+
+FORMAT — output each payoff exactly like this:
+[TECHNIQUE NAME] payoff bar here
+
+Rules:
+- The payoff must rhyme with or directly respond to the setup bar
+- Each payoff uses a different technique
+- One line each — no explanation, no numbering, just the labeled payoffs`
+      }
+      const result = await model.generateContent(prompt)
+      setOutput(result.response.text().trim())
+    } catch { setOutput('(something broke — try again)') }
+    finally { setLoading(false) }
+  }
+
+  const formatOutput = (text) => {
+    if (!text) return null
+    return text.split('\n').filter(l => l.trim()).map((line, i) => {
+      const match = line.match(/^\[([^\]]+)\]\s*(.+)$/)
+      if (match) {
+        const tech = PUNCHLINE_TECHNIQUES.find(t => t.label.toLowerCase() === match[1].toLowerCase()) || null
+        return (
+          <div key={i} className="mb-3">
+            <div className="text-xs font-mono uppercase tracking-wider mb-0.5" style={{ color: tech?.color || '#666688' }}>
+              {match[1]}
+            </div>
+            <div className="text-sm font-ui text-studio-text leading-relaxed pl-1">{match[2]}</div>
+          </div>
+        )
+      }
+      return <div key={i} className="text-sm font-ui text-studio-text leading-relaxed mb-1">{line}</div>
+    })
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={onClose}>
+      <div
+        className="bg-studio-panel border border-studio-border rounded-2xl flex flex-col shadow-2xl"
+        style={{ width: 600, maxHeight: '88vh', borderTop: '3px solid #ff2d55' }}
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-5 py-4 border-b border-studio-border">
+          <div>
+            <div className="font-display text-sm font-semibold text-studio-text">🥊 Punchline Workshop</div>
+            <div className="text-xs text-studio-dim font-ui mt-0.5">Generate labeled punchlines or complete a setup bar</div>
+          </div>
+          <button onClick={onClose} className="text-studio-dim hover:text-white text-lg leading-none">✕</button>
+        </div>
+
+        {/* Mode tabs */}
+        <div className="flex border-b border-studio-border">
+          {[{ id: 'generate', label: 'Generate Punchlines' }, { id: 'setup', label: 'Setup → Payoff' }].map(m => (
+            <button
+              key={m.id}
+              onClick={() => { setMode(m.id); setOutput('') }}
+              className="px-5 py-2.5 text-xs font-mono tracking-wide transition-colors relative"
+              style={{ color: mode === m.id ? '#e0e0f0' : '#666688', fontWeight: mode === m.id ? 700 : 400 }}
+            >
+              {m.label}
+              {mode === m.id && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-studio-red" />}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
+          {mode === 'generate' ? (
+            <>
+              <div>
+                <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-2 block">Topic / Subject / Angle</label>
+                <input
+                  autoFocus
+                  type="text"
+                  value={topic}
+                  onChange={e => setTopic(e.target.value)}
+                  onKeyDown={e => { if (e.key === 'Enter') generate() }}
+                  placeholder="e.g. grinding through hard times, faith over fear, outworking everyone..."
+                  className="w-full bg-studio-void border border-studio-border rounded-xl px-4 py-2.5 text-sm font-ui text-studio-text placeholder-studio-dim focus:outline-none focus:border-studio-red"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-2 block">
+                  Techniques <span className="text-studio-dim normal-case">({techniques.length} selected)</span>
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {PUNCHLINE_TECHNIQUES.map(t => {
+                    const active = techniques.includes(t.id)
+                    return (
+                      <button
+                        key={t.id}
+                        onClick={() => toggleTech(t.id)}
+                        title={t.desc}
+                        className="px-3 py-1.5 rounded-full text-xs font-mono border transition-all"
+                        style={{
+                          borderColor: active ? t.color : '#252540',
+                          color: active ? t.color : '#666688',
+                          background: active ? t.color + '18' : 'transparent',
+                        }}
+                      >
+                        {active ? '✓ ' : ''}{t.label}
+                      </button>
+                    )
+                  })}
+                </div>
+                <div className="mt-2 flex flex-col gap-1">
+                  {PUNCHLINE_TECHNIQUES.filter(t => techniques.includes(t.id)).map(t => (
+                    <div key={t.id} className="text-xs font-ui leading-5" style={{ color: t.color + 'cc' }}>
+                      <span className="font-semibold">{t.label}:</span> <span className="text-studio-dim">{t.desc}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div>
+              <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-2 block">Your Setup Bar</label>
+              <textarea
+                autoFocus
+                value={setupBar}
+                onChange={e => setSetupBar(e.target.value)}
+                placeholder="e.g. They said I'd never make it out the bottom of the pit..."
+                rows={2}
+                className="w-full bg-studio-void border border-studio-border rounded-xl px-4 py-3 text-sm font-ui text-studio-text placeholder-studio-dim focus:outline-none focus:border-studio-red resize-none"
+              />
+              <div className="text-xs font-mono text-studio-dim mt-2">
+                AI writes 5 payoff bars — one for each punchline technique, labeled.
+              </div>
+            </div>
+          )}
+
+          <button
+            onClick={generate}
+            disabled={loading || (mode === 'generate' ? !topic.trim() : !setupBar.trim())}
+            className="w-full py-3 rounded-xl font-ui font-bold text-sm text-white disabled:opacity-40 transition-all"
+            style={{ background: loading ? '#444' : '#ff2d55' }}
+          >
+            {loading ? 'Writing...' : mode === 'generate' ? '🥊 Generate Punchlines' : '🥊 Complete the Setup'}
+          </button>
+
+          {output && (
+            <div className="bg-studio-void border border-studio-border rounded-xl p-4" style={{ borderLeft: '3px solid #ff2d55' }}>
+              <div className="flex items-center justify-between mb-3">
+                <div className="text-xs font-mono text-studio-dim uppercase tracking-widest">Output</div>
+                <button
+                  onClick={() => { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500) }}
+                  className="text-xs font-mono border border-studio-border text-studio-dim hover:border-studio-red hover:text-studio-red px-3 py-1 rounded-lg transition-colors"
+                >
+                  {copied ? '✓ Copied' : '📋 Copy All'}
+                </button>
+              </div>
+              {formatOutput(output)}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function BeatSuggestionsPanel() {
   const { lyrics } = useStudioStore()
   const [open, setOpen] = useState(false)
@@ -1424,6 +1695,7 @@ export default function AICoPilotView() {
   const [showGenerateModal, setShowGenerateModal] = useState(false)
   const [showFreestyle, setShowFreestyle] = useState(false)
   const [showWordDrop, setShowWordDrop] = useState(false)
+  const [showPunchlineWorkshop, setShowPunchlineWorkshop] = useState(false)
   const [vaultTab, setVaultTab] = useState('ai')
   const messagesEndRef = useRef(null)
   const textareaRef = useRef(null)
@@ -1736,6 +2008,15 @@ Write the complete song now. Do not cut it short.`
           🎤 Word Drop — Harry Mack
         </button>
 
+        {/* Punchline Workshop */}
+        <button
+          onClick={() => setShowPunchlineWorkshop(true)}
+          disabled={noKey}
+          className="w-full py-2.5 rounded-xl font-ui font-semibold text-xs border border-studio-border text-studio-dim hover:border-studio-red hover:text-studio-red transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          🥊 Punchline Workshop
+        </button>
+
         {/* Beat ideas from lyrics */}
         <BeatSuggestionsPanel />
 
@@ -1927,6 +2208,10 @@ Write the complete song now. Do not cut it short.`
 
       {showWordDrop && (
         <WordDropModal onClose={() => setShowWordDrop(false)} />
+      )}
+
+      {showPunchlineWorkshop && (
+        <PunchlineWorkshopModal onClose={() => setShowPunchlineWorkshop(false)} />
       )}
     </div>
   )
