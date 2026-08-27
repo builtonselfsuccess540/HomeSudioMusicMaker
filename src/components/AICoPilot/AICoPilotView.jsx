@@ -931,6 +931,36 @@ export const ARTIST_STYLES = [
 30. PREEMPTIVE OPPOSITION: Predict future cancellation or opposition in advance and frame it as confirmation that you're currently speaking truth. The anticipation itself is the badge.
     Real example: "One day they gon' cancel Mike / I mean I speak too much truth" — calls the cancellation before it happens. Anyone willing to be canceled for truth has nothing to hide. Keep it brief — one or two bars, then move on.
 
+31. SPELLING AS THEOLOGY: Use the literal letters or spelling of a word to prove the theological point — the word itself becomes the evidence.
+    Real example: "Jesus on me, look at how it's spelt, there's only one U" — "Jesus" contains one letter U; "there's only one You" = Jesus is the only one. The spelling of His name IS the declaration. Works best when the letter or letter arrangement mirrors the theological truth exactly.
+
+32. RAPID BIBLICAL CHARACTER CHAIN: Stack 4+ biblical figures in 4+ consecutive bars, each one mapping a specific story to his current situation — rapid-fire, no repetition, no explanation needed.
+    Real example: "I feel like Noah in the boat / favour from my Father like I'm Joseph in the coat / Satan, let my people go, I feel like Moses with the quote / God's a living well, I'm living well, like I'm Jonah off the boat" — Noah (faith through chaos), Joseph (favor despite betrayal), Moses (authority over the enemy), Jonah (second chance after failure). Each reference is complete in one bar. The chain proves the biblical pattern is real and recurring.
+
+33. HOMOPHONE DOUBLE: Use a word whose sound is shared by two words — one spiritual, one physical — and let both meanings activate simultaneously without explaining either.
+    Real example: "All I am is a reflection of a Son like I'm the moon" — "Son" (Jesus, the Son of God) and "sun" (the physical sun the moon reflects) are the same sound. The moon reflects the sun's light; he reflects the Son's glory. Both meanings are live at the same time. Never explain the double — just let it land.
+
+34. SACRED/MUNDANE COLLISION: Drop the most casual, specific pop culture reference imaginable into the most sacred theological moment — the contrast between the depth of the subject and the lightness of the reference IS the technique.
+    Real example: "They put holes in His feet, but no, He was not wearing some Crocs" — the crucifixion is the most sacred moment in Christian theology; Crocs (the shoe brand known for holes) is the most mundane possible reference. The collision makes the listener laugh then immediately feel the weight of what was just said. Works only when the sacred subject is solid enough that the humor can't undermine it.
+
+35. COLOR BAR: Build one bar where multiple colors each carry a different theological meaning simultaneously.
+    Real example: "Jesus turned my sin from red to white and Satan's turning blue" — red = sin (Isaiah 1:18 "though your sins be as scarlet"), white = forgiveness ("they shall be as white as snow"), blue = Satan losing/going cold. Three colors, one bar, three theological truths at once. The bar reads like a spectrum that tells the entire redemption story.
+
+36. ONE-LETTER TRANSFORMATION: Find two words that differ by exactly one letter — the one letter IS the entire transformation.
+    Real example: "Left the world for the Word" — world → Word, one letter removed. He traded "the world" (worldly life) for "the Word" (scripture/Jesus). The subtraction of one letter encodes the entire spiritual journey. Build the bar around the moment of transformation — don't explain it.
+
+37. FOOTBALL PLAY DIAGRAM: Lay out a complete sports play sequence — snap count, handoff, running — as a diagram of the spiritual battle, position by position.
+    Real example: "God's the center hut one hut two / Toss it back then hand it off / Satan running back but I'm running through" — God is the center (the one who snaps the ball = the source), hut one hut two (the count = obedience), the handoff (receiving from God), Satan as running back (trying to stop the play) vs. running through (breaking the tackle). The entire play is the theology. Works only when every position in the play has a spiritual parallel.
+
+38. PLOT TWIST BAR: Use narrative terminology against the enemy — their "plot" (scheme) becomes the setup for Jesus's "plot twist" (redemption story).
+    Real example: "Satan plotting on me / Jesus made the plot twist" — plot = scheme (Satan's plan against him) AND plot = story structure (the narrative arc of his life). Plot twist = unexpected story turn AND the twist being that Satan loses. The same words operate in two entirely different registers at once.
+
+39. OPPOSITION AS EVIDENCE: The presence of spiritual opposition proves you're on the right side — and the ABSENCE of it proves you're on the wrong side.
+    Real example: "If you don't run into Satan does that mean you running with him" — reframes the logic. If the enemy isn't bothering you, you're not threatening him. Opposition is confirmation, not a problem. One bar, no explanation.
+
+40. PROPHETS MIC DROP: Set up a "flip" (hustle term for turning a profit), reveal that the flip is actually flipping Bible pages, then list the prophets one by one as the punchline.
+    Real example: "People think I'm doing this to flip a profit / But I'm in the Bible and I'm flipping to the Prophets / Let me flip this quick / Isaiah / Jeremiah / Daniel / Ezekiel" — the reveal is that the hustle IS the scripture study. Listing the names one by one is the delivery — each name is its own bar, landing like a countdown.
+
 CADENCE RULES:
 - Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
 - Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
