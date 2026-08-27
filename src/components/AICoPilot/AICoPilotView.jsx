@@ -327,6 +327,7 @@ STRUCTURE: Every 3 bars maximum = one complete punch (1–2 setup bars + 1 payof
 ]
 
 function GenerateSongModal({ onGenerate, onClose }) {
+  const { artistLibrary } = useStudioStore()
   const [topic, setTopic] = useState('')
   const [songStyle, setSongStyle] = useState('balanced')
   const [moods, setMoods] = useState(['motivational'])
@@ -466,7 +467,25 @@ Return a focused guide (under 300 words) starting with "${name.toUpperCase()} ST
                     <span style={{ color: artistId === a.id ? a.color : '#c0c0d0', fontSize: 10 }} className="font-ui font-semibold leading-tight">{a.label}</span>
                   </button>
                 ))}
-                {lookedUpInstruction && (
+                {artistLibrary.map(entry => {
+                  const libId = `_lib_${entry.name}`
+                  const active = artistId === libId
+                  return (
+                    <button
+                      key={entry.name}
+                      onClick={() => { setArtistId(libId); setLookedUpInstruction(entry.instruction); setCustomArtist(entry.name) }}
+                      className="flex flex-col items-start gap-0.5 px-2 py-1.5 rounded-lg border text-left transition-all"
+                      style={{
+                        borderColor: active ? '#b44fff' : '#252540',
+                        background: active ? '#b44fff15' : 'transparent',
+                      }}
+                    >
+                      <span style={{ color: '#b44fff', fontSize: 11 }}>📚</span>
+                      <span style={{ color: active ? '#b44fff' : '#c0c0d0', fontSize: 10 }} className="font-ui font-semibold leading-tight">{entry.name}</span>
+                    </button>
+                  )
+                })}
+                {lookedUpInstruction && !artistLibrary.some(e => `_lib_${e.name}` === artistId) && (
                   <button
                     onClick={() => setArtistId('_looked_up')}
                     className="flex flex-col items-start gap-0.5 px-2 py-1.5 rounded-lg border text-left transition-all"
@@ -1299,6 +1318,184 @@ Words called out by the crowd, in order: ${words.join(', ')}`
   )
 }
 
+const STUDY_PROMPT = (name, lyrics) =>
+`You are a professional ghostwriter and rap analyst. Analyze the following lyrics from "${name}" and write a detailed ghostwriter style guide that a skilled writer can follow to produce new lyrics that convincingly replicate this artist's exact style.
+
+LYRICS TO ANALYZE:
+${lyrics}
+
+Write the style guide starting with "${name.toUpperCase()} STYLE — apply every technique:" and cover ALL of the following in specific detail:
+
+1. FLOW & CADENCE: How syllables land on the beat — is the delivery ahead of, behind, or on the beat? What pocket does this artist prefer? How dense are the bars?
+2. RHYME SCHEMES: What types of rhymes dominate — end rhymes, internal rhymes, multisyllabic matches, slant rhymes, chain rhymes? Give specific examples from the lyrics.
+3. WORDPLAY & DOUBLE MEANINGS: How does this artist construct phrases with two meanings? Show specific examples from the lyrics and explain how the double meaning works.
+4. PUNCHLINE STRUCTURE: How are setups and payoffs built? How many bars between setup and payoff? What techniques (misdirection, contrast, callback) appear most?
+5. SPIRITUAL/BIBLICAL REFERENCES: Which specific figures, stories, scriptures, and theological concepts appear? How are they integrated into secular language?
+6. CONTRAST PAIRS: What opposites appear regularly? (e.g. lost/found, hard/harder, flesh/spirit)
+7. VOCABULARY & SIGNATURE PHRASES: What specific words, phrases, or constructions recur? What does this artist say that no one else would say the same way?
+8. HOOK CONSTRUCTION: How are hooks built — repetition, call-and-response, single anchor phrase? What makes them sticky?
+9. EMOTIONAL TONE & CONFIDENCE LEVEL: How does this artist hold themselves in the bars — humble, confident, aggressive, joyful? How does that tone show up in word choice?
+10. WHAT TO AVOID: What would sound out of character? What clichés does this artist specifically avoid?
+
+Be specific — reference actual lines from the lyrics. This guide will be used to generate new songs that sound authentically like ${name}.`
+
+function StudyArtistModal({ onClose }) {
+  const { artistLibrary, saveArtistStyle, deleteArtistStyle } = useStudioStore()
+  const [artistName, setArtistName] = useState('')
+  const [lyrics, setLyrics] = useState('')
+  const [instruction, setInstruction] = useState('')
+  const [analyzing, setAnalyzing] = useState(false)
+  const [saved, setSaved] = useState(false)
+  const [tab, setTab] = useState('study')
+
+  const analyze = async () => {
+    if (!artistName.trim() || !lyrics.trim() || analyzing) return
+    setAnalyzing(true)
+    setInstruction('')
+    setSaved(false)
+    try {
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+      const result = await model.generateContent(STUDY_PROMPT(artistName.trim(), lyrics.trim()))
+      setInstruction(result.response.text().trim())
+    } catch { setInstruction('(analysis failed — check your connection and try again)') }
+    finally { setAnalyzing(false) }
+  }
+
+  const save = () => {
+    if (!instruction || !artistName.trim()) return
+    saveArtistStyle(artistName.trim(), instruction, lyrics.trim().slice(0, 300))
+    setSaved(true)
+    setTimeout(() => setSaved(false), 2000)
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={onClose}>
+      <div
+        className="bg-studio-panel border border-studio-border rounded-2xl flex flex-col shadow-2xl"
+        style={{ width: 640, maxHeight: '90vh', borderTop: '3px solid #b44fff' }}
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-5 py-4 border-b border-studio-border">
+          <div>
+            <div className="font-display text-sm font-semibold text-studio-text">📚 Artist Style Library</div>
+            <div className="text-xs text-studio-dim font-ui mt-0.5">Paste lyrics — AI studies and saves the full style to your library</div>
+          </div>
+          <button onClick={onClose} className="text-studio-dim hover:text-white text-lg leading-none">✕</button>
+        </div>
+
+        <div className="flex border-b border-studio-border">
+          {[{ id: 'study', label: 'Study New Artist' }, { id: 'library', label: `Library (${artistLibrary.length})` }].map(t => (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.id)}
+              className="px-5 py-2.5 text-xs font-mono tracking-wide transition-colors relative"
+              style={{ color: tab === t.id ? '#e0e0f0' : '#666688', fontWeight: tab === t.id ? 700 : 400 }}
+            >
+              {t.label}
+              {tab === t.id && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-studio-purple" />}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
+          {tab === 'study' ? (
+            <>
+              <div>
+                <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-1.5 block">Artist Name</label>
+                <input
+                  autoFocus
+                  type="text"
+                  value={artistName}
+                  onChange={e => setArtistName(e.target.value)}
+                  placeholder="e.g. Mike Malagies"
+                  className="w-full bg-studio-void border border-studio-border rounded-xl px-4 py-2.5 text-sm font-ui text-studio-text placeholder-studio-dim focus:outline-none focus:border-studio-purple"
+                />
+              </div>
+              <div>
+                <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-1.5 block">
+                  Paste Lyrics <span className="normal-case text-studio-dim">(one song or multiple — more = better analysis)</span>
+                </label>
+                <textarea
+                  value={lyrics}
+                  onChange={e => setLyrics(e.target.value)}
+                  placeholder="Paste the lyrics here..."
+                  rows={8}
+                  className="w-full bg-studio-void border border-studio-border rounded-xl px-4 py-3 text-sm font-ui text-studio-text placeholder-studio-dim focus:outline-none focus:border-studio-purple resize-none"
+                />
+              </div>
+              <button
+                onClick={analyze}
+                disabled={analyzing || !artistName.trim() || !lyrics.trim()}
+                className="w-full py-3 rounded-xl font-ui font-bold text-sm text-white disabled:opacity-40"
+                style={{ background: analyzing ? '#444' : 'linear-gradient(135deg,#b44fff,#00e5ff)' }}
+              >
+                {analyzing ? 'Analyzing style...' : '🔍 Analyze Style'}
+              </button>
+
+              {instruction && (
+                <div className="flex flex-col gap-3">
+                  <div className="bg-studio-void border border-studio-purple/30 rounded-xl p-4">
+                    <div className="text-xs font-mono text-studio-dim uppercase tracking-widest mb-2">Generated Style Guide</div>
+                    <div className="text-xs font-ui text-studio-text leading-6 whitespace-pre-wrap max-h-64 overflow-y-auto">{instruction}</div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={save}
+                      className="flex-1 py-2.5 rounded-xl font-ui font-semibold text-sm text-black"
+                      style={{ background: 'linear-gradient(135deg,#b44fff,#00e5ff)' }}
+                    >
+                      {saved ? '✓ Saved to Library!' : '💾 Save to Library'}
+                    </button>
+                    <button
+                      onClick={() => navigator.clipboard.writeText(instruction)}
+                      className="px-4 py-2.5 rounded-xl font-ui text-sm border border-studio-border text-studio-dim hover:text-white"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {artistLibrary.length === 0 ? (
+                <div className="text-xs font-mono text-studio-dim italic py-4 text-center">
+                  No artists studied yet — go to "Study New Artist" and paste some lyrics.
+                </div>
+              ) : artistLibrary.map(entry => (
+                <div key={entry.name} className="bg-studio-void border border-studio-border rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="font-display text-sm font-semibold text-studio-purple">{entry.name}</div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-mono text-studio-dim">
+                        {new Date(entry.savedAt).toLocaleDateString()}
+                      </span>
+                      <button
+                        onClick={() => deleteArtistStyle(entry.name)}
+                        className="text-xs font-mono text-studio-dim hover:text-studio-red transition-colors"
+                      >
+                        delete
+                      </button>
+                    </div>
+                  </div>
+                  {entry.lyricsSnippet && (
+                    <div className="text-xs font-ui text-studio-dim italic mb-2 leading-5">
+                      "{entry.lyricsSnippet.slice(0, 120)}..."
+                    </div>
+                  )}
+                  <div className="text-xs font-ui text-studio-text leading-5 whitespace-pre-wrap max-h-40 overflow-y-auto">
+                    {entry.instruction.slice(0, 400)}{entry.instruction.length > 400 ? '...' : ''}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const PUNCHLINE_TECHNIQUES = [
   {
     id: 'misdirection',
@@ -1696,6 +1893,7 @@ export default function AICoPilotView() {
   const [showFreestyle, setShowFreestyle] = useState(false)
   const [showWordDrop, setShowWordDrop] = useState(false)
   const [showPunchlineWorkshop, setShowPunchlineWorkshop] = useState(false)
+  const [showStudyArtist, setShowStudyArtist] = useState(false)
   const [vaultTab, setVaultTab] = useState('ai')
   const messagesEndRef = useRef(null)
   const textareaRef = useRef(null)
@@ -2008,6 +2206,15 @@ Write the complete song now. Do not cut it short.`
           🎤 Word Drop — Harry Mack
         </button>
 
+        {/* Artist Style Library */}
+        <button
+          onClick={() => setShowStudyArtist(true)}
+          disabled={noKey}
+          className="w-full py-2.5 rounded-xl font-ui font-semibold text-xs border border-studio-border text-studio-dim hover:border-studio-purple hover:text-studio-purple transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          📚 Artist Style Library
+        </button>
+
         {/* Punchline Workshop */}
         <button
           onClick={() => setShowPunchlineWorkshop(true)}
@@ -2212,6 +2419,10 @@ Write the complete song now. Do not cut it short.`
 
       {showPunchlineWorkshop && (
         <PunchlineWorkshopModal onClose={() => setShowPunchlineWorkshop(false)} />
+      )}
+
+      {showStudyArtist && (
+        <StudyArtistModal onClose={() => setShowStudyArtist(false)} />
       )}
     </div>
   )

@@ -3,6 +3,7 @@ import { create } from 'zustand'
 const PROFILE_KEY = 'hsmm_style_profile'
 const SONGS_KEY = 'hsmm_saved_songs'
 const AI_SONGS_KEY = 'hsmm_ai_songs'
+const ARTIST_LIBRARY_KEY = 'hsmm_artist_library'
 const DRAFT_KEY = 'hsmm_lyrics_draft'
 const CHAT_KEY = 'hsmm_ai_chat'
 const FOLDERS_KEY = 'hsmm_folders'
@@ -28,6 +29,14 @@ const DEFAULT_LYRICS = [
   { id: 1, type: 'verse', label: 'Verse 1', lines: ['', ''] },
   { id: 2, type: 'chorus', label: 'Chorus', lines: ['', ''] },
 ]
+
+function loadArtistLibrary() {
+  try { return JSON.parse(localStorage.getItem(ARTIST_LIBRARY_KEY)) || [] } catch { return [] }
+}
+
+function writeArtistLibrary(library) {
+  localStorage.setItem(ARTIST_LIBRARY_KEY, JSON.stringify(library))
+}
 
 function loadProfile() {
   try {
@@ -311,6 +320,9 @@ export const useStudioStore = create((set, get) => ({
   // Style profile (shared, persisted)
   styleProfile: loadProfile(),
 
+  // Artist style library — custom studied artists saved by the user
+  artistLibrary: loadArtistLibrary(),
+
   // AI
   aiMessages: loadChat(),
   aiSuggestion: null,
@@ -318,6 +330,19 @@ export const useStudioStore = create((set, get) => ({
 
   // Lyric Analyzer — session result shared with AI Co-Pilot
   lyricAnalysis: null,
+
+  // Artist style library actions
+  saveArtistStyle: (name, instruction, lyricsSnippet = '') => {
+    const entry = { name, instruction, lyricsSnippet, savedAt: Date.now() }
+    const updated = [entry, ...loadArtistLibrary().filter(a => a.name !== name)]
+    writeArtistLibrary(updated)
+    set({ artistLibrary: updated })
+  },
+  deleteArtistStyle: (name) => {
+    const updated = loadArtistLibrary().filter(a => a.name !== name)
+    writeArtistLibrary(updated)
+    set({ artistLibrary: updated })
+  },
 
   // Reload all persisted state from localStorage (use after loading a project cloud snapshot)
   rehydrate: () => {
@@ -337,6 +362,7 @@ export const useStudioStore = create((set, get) => ({
       annotations:     loadAnnotations(),
       automation:      loadAutomation(),
       styleProfile:    loadProfile(),
+      artistLibrary:   loadArtistLibrary(),
       aiMessages:      loadChat(),
     })
   },
