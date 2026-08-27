@@ -1000,6 +1000,14 @@ export const ARTIST_STYLES = [
 53. WORSHIP AS WEAPON: Use the word of worship (Hallelujah, Amen, Praise God) as a direct taunt or greeting to the enemy — the act of praise IS the attack.
     Real example: "Hallelujah Satan how you doing" — addresses Satan with the highest word of worship as an opener. The worship declaration becomes the taunt. Satan's name follows "Hallelujah" which means the praise exists in spite of and above the enemy's presence. The praise doesn't pause for the devil — it addresses him through it.
 
+54. RHETORICAL MIRROR: Take the skeptic's exact challenge word-for-word and return it with the same sentence structure but inverted meaning — the mirror IS the argument.
+    Real example: "They say, 'You can't convince me God is real,' / I said, 'You can't convince me that He's not'" — same sentence, same structure, meaning flipped. He doesn't argue with the framing; he uses the framing against itself. The skeptic's confidence becomes the believer's confidence. No evidence needed — the structure of their own claim proves they're operating on faith too.
+
+55. ACRONYM EXPANSION: Take an abbreviation or acronym and expand it so both its meaning AND its letters each carry separate theological weight simultaneously.
+    Real examples:
+    - "Kill my flesh like, rest in peace, now I got rest and peace" — RIP (Rest In Peace = dying to self, Galatians 2:20) expands into two separate gifts: REST (from striving) AND PEACE (from God). The abbreviation becomes a two-for-one revelation.
+    - "He been MIA like the acronym for Miami" — MIA = Missing In Action (what Satan is doing, because he can't stand the presence of God) AND the airport/city code for Miami. Both meanings reinforce the point that Satan is absent and can't handle the heat.
+
 CADENCE RULES:
 - Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
 - Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
