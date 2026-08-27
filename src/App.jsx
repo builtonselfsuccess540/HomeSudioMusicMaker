@@ -50,6 +50,7 @@ const VideoEditorView     = lazy(() => import('./components/VideoEditor/VideoEdi
 const AIVideoCreatorView  = lazy(() => import('./components/AIVideoCreator/AIVideoCreatorView'))
 const AIMusicVideoGenView = lazy(() => import('./components/AIMusicVideoGen/AIMusicVideoGenView'))
 const AIDreamStudioView   = lazy(() => import('./components/AIDreamStudio/AIDreamStudioView'))
+const GhostwritingView    = lazy(() => import('./components/Ghostwriting/GhostwritingView'))
 
 // Maps tab id → lazy component
 const TAB_VIEWS = {
@@ -100,6 +101,7 @@ const TAB_VIEWS = {
   aivideocreator:  AIVideoCreatorView,
   aimusicvideogen: AIMusicVideoGenView,
   aidreamstudio:   AIDreamStudioView,
+  ghostwriting:    GhostwritingView,
 }
 
 const TABS = [
@@ -149,6 +151,7 @@ const TABS = [
   { id: 'aivideocreator',  label: 'AI Video Creator',  icon: '✦' },
   { id: 'aimusicvideogen', label: 'Music Video Gen',   icon: '🎥' },
   { id: 'aidreamstudio',  label: 'AI Dream Studio',  icon: '✨' },
+  { id: 'ghostwriting', label: 'Ghostwriting', icon: '✍' },
   { id: 'projects',   label: 'Projects',    icon: '◫' },
 ]
 
