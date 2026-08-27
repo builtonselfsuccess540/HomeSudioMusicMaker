@@ -961,6 +961,27 @@ export const ARTIST_STYLES = [
 40. PROPHETS MIC DROP: Set up a "flip" (hustle term for turning a profit), reveal that the flip is actually flipping Bible pages, then list the prophets one by one as the punchline.
     Real example: "People think I'm doing this to flip a profit / But I'm in the Bible and I'm flipping to the Prophets / Let me flip this quick / Isaiah / Jeremiah / Daniel / Ezekiel" — the reveal is that the hustle IS the scripture study. Listing the names one by one is the delivery — each name is its own bar, landing like a countdown.
 
+41. MUSICAL SCALE WORDPLAY: Use the do-re-mi musical scale as a bar — cut it off before "mi" (me) to encode humility in the music notation itself.
+    Real example: "I don't even wanna sing about me, like do re" — he reaches "do re" and stops before "mi" because "mi" = "me." The musical scale structure encodes the theological point: he refuses to sing about himself. The listener has to hear the gap to feel the meaning.
+
+42. TRAP BECOMES TRAPPER'S GRAVE: The enemy's weapon, plan, or trap becomes the instrument of their own destruction — the same hole they dug becomes their grave.
+    Real example: "Jesus beat the grave and made the devil dig his own grave" — the devil orchestrated the crucifixion (the grave for Jesus) but it became the devil's own defeat (his own grave). What the enemy digs against you, they fall into. The reversal is complete and ironic.
+
+43. PERSONAL DETAIL → SCRIPTURE PIVOT: Set up a bar with a mundane personal fact or preference, then pivot to a scripture that uses the exact same key word — the personal detail is the setup, the scripture is the punchline.
+    Real example: "You know that I'm gluten-free, so I don't know how pizza tastes / But I taste and see the Lord is good, and I receive His grace" — gluten-free → can't taste pizza → Psalm 34:8 ("taste and see that the Lord is good"). The dietary restriction sets up the scripture's use of the word "taste." The sillier the personal detail, the harder the scripture lands.
+
+44. WORD HIDDEN INSIDE WORD: Find a loaded word physically embedded inside another word — the hidden word becomes the theological truth about the outer word.
+    Real examples: "Only time you'll see me in Hell / Is right before I exhale" — "hell" is literally inside "exhale" (ex-HELL). "Never gon' perish / Like where the Eiffel stay" — "Eiffel" is in "Paris" (Par-IS / per-ISH); the city name hides the word "perish." The technique requires finding words where a dangerous or sacred word is buried inside an ordinary one, and building the bar so the listener discovers the hidden word.
+
+45. NAME EMBEDDED AS THEOLOGY: Use a celebrity's actual name because the NAME ITSELF contains God's title or a theological reference — not the person, but the letters.
+    Real example: "I just wanna lift my hands and scream and shout like will.i.am" — will.i.am = "will I am" = "I AM" is God's name given to Moses in Exodus 3:14 ("I AM WHO I AM"). The rapper's name contains the divine name. The reference works on surface level (will.i.am = energy/performance) and theological level (shouting the name of I AM). Different from cultural references (tech 3) — the theology is encoded in the name's spelling itself.
+
+46. SPONTANEOUS BREAK: Drop out of rap completely for 1-3 lines and speak directly, pastorally, to the listener — no rhyme, no flow, just truth.
+    Real example: "Just because you don't hear God doesn't mean that He doesn't hear you / Just because you don't feel His presence doesn't mean that He's not with you" — it's labeled "Spontaneous" in the lyrics. The rap stops. Everything pauses. He speaks directly. This is his most vulnerable moment in any song and works because the entire verse earns it. Use once per song, only when the bar would carry more weight spoken than rapped.
+
+47. DOUBT-TO-DECLARATION BRIDGE: Open the bridge with raw, unresolved spiritual doubt — no answer yet — then let the declaration or divine response follow.
+    Real example: "Some days I don't feel like it / Some days I wonder should I quit / Some days I wonder where time went / Some days I wonder where God been" — four consecutive bars of honest doubt with no resolution. Then the Spontaneous Break answers. The doubt makes the declaration credible. If you skip the doubt, the declaration sounds like performance. Four "some days" bars is the pattern — the repetition of uncertainty is what makes the arrival of certainty land.
+
 CADENCE RULES:
 - Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
 - Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
