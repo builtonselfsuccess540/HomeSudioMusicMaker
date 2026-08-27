@@ -446,12 +446,31 @@ const SONG_MOODS_GW = [
 ]
 
 const SONG_RHYMES_GW = [
-  { value: 'Mixed',        instruction: 'Use a mix of all rhyme types freely — end rhymes, internal rhymes, multisyllabic, slant, chain, and cross rhymes. Switch it up bar to bar.' },
-  { value: 'Internal',     instruction: 'Load bars with internal rhymes — words within the middle of the line rhyme with each other AND with end words. Every bar should have at least one mid-bar rhyme.' },
-  { value: 'Multisyllabic',instruction: 'Use multisyllabic rhymes — 2 to 4 syllables rhyming together at a time. Prioritize complex rhyme matches over simple ones.' },
-  { value: 'Chain',        instruction: 'Lock onto a single rhyme sound and sustain it across 4 to 8 consecutive bars before switching. Creates relentless momentum.' },
-  { value: 'AABB Couplet', instruction: 'Every pair of consecutive bars rhymes together. Line 1 rhymes with line 2, line 3 with line 4.' },
-  { value: 'Slant / Near', instruction: 'Words that share similar sounds but don\'t perfectly rhyme. Gives a looser, conversational authenticity.' },
+  { value: 'Mixed',          instruction: 'Use a mix of all rhyme types freely — end rhymes, internal rhymes, multisyllabic, slant, chain, and cross rhymes. Switch it up bar to bar.' },
+  { value: 'Internal',       instruction: 'Load bars with internal rhymes — words within the middle of the line rhyme with each other AND with end words. Every bar should have at least one mid-bar rhyme.' },
+  { value: 'Multisyllabic',  instruction: 'Use multisyllabic rhymes — 2 to 4 syllables rhyming together at a time. Prioritize complex rhyme matches over simple ones.' },
+  { value: 'Chain',          instruction: 'Lock onto a single rhyme sound and sustain it across 4 to 8 consecutive bars before switching. Creates relentless momentum.' },
+  { value: 'AABB Couplet',   instruction: 'Every pair of consecutive bars rhymes together. Line 1 rhymes with line 2, line 3 with line 4.' },
+  { value: 'ABAB Alternating', instruction: 'Odd-numbered bars rhyme with each other, even-numbered bars rhyme with each other. Creates a woven, cross-stitched feel.' },
+  { value: 'ABBA Enclosed',  instruction: 'In each 4-bar block: line 1 and line 4 share one rhyme sound, lines 2 and 3 share a different rhyme sound. Wrapping, circular feel.' },
+  { value: 'AAAA Monorhyme', instruction: 'Every single bar ends on the same rhyme sound throughout the entire verse. Relentless and hypnotic — like a wall of sound.' },
+  { value: 'AABA Rubaiyat',  instruction: 'In each 4-bar block: lines 1, 2, and 4 rhyme together; line 3 is deliberately free (unrhymed). The free bar creates tension that bar 4 resolves.' },
+  { value: 'ABCB Ballad',    instruction: 'In each 4-bar block only lines 2 and 4 rhyme; lines 1 and 3 are unrhymed. Spacious and song-like.' },
+  { value: 'AAB-CCB Triplet', instruction: 'Bars 1 & 2 rhyme (AA), bar 3 is the pivot rhyme (B), bars 4 & 5 rhyme (CC), bar 6 returns to B. A 6-bar bridge rhyme anchor.' },
+  { value: 'Cross Rhyme',    instruction: 'Set up a rhyme in bar 1, resolve it in bar 3; set up another in bar 2, resolve in bar 4. Layered, puzzle-like rhyme structure.' },
+  { value: 'Slant / Near',   instruction: 'Words that share similar sounds but don\'t perfectly rhyme. Gives a looser, conversational authenticity.' },
+]
+
+const LYRIC_STRUCTURES_GW = [
+  { value: 'Free Form',           instruction: '' },
+  { value: 'Setup / Punchline',   instruction: 'LYRIC STRUCTURE — SETUP / PUNCHLINE: Every couplet must follow: BAR 1 (SETUP) plants the premise or image without resolving it. BAR 2 (PUNCHLINE) twists or subverts it — the listener didn\'t see it coming. Apply across all 8 couplets in each 16-bar verse. Never let a punchline be predictable.' },
+  { value: 'Question / Answer',   instruction: 'LYRIC STRUCTURE — QUESTION / ANSWER: Alternate bars — odd bars ask a question (explicit or rhetorical), even bars answer with a reveal, confession, truth, or twist. Creates call-and-response tension through each verse.' },
+  { value: 'Contrast Pairs',      instruction: 'LYRIC STRUCTURE — CONTRAST PAIRS: Each couplet follows before-and-after contrast: BAR 1 states the darkness/struggle/false belief, BAR 2 flips it to the victory/truth/transformation. Make bar 1 specific enough that bar 2 earns its impact.' },
+  { value: 'Metaphor Ladder',     instruction: 'LYRIC STRUCTURE — METAPHOR LADDER: Choose ONE central metaphor and commit to it through every bar. Each bar extends, deepens, or twists the same core image — starting surface-level and arriving at spiritual truth by bar 16. No metaphor-hopping.' },
+  { value: 'Storytelling Arc',    instruction: 'LYRIC STRUCTURE — STORYTELLING ARC: BARS 1-3: drop mid-scene with specific who/where/what. BARS 4-8: rising tension and conflict. BARS 9-12: climax or turning point. BARS 13-16: resolution or reveal of meaning. Make it feel like a short film.' },
+  { value: 'Repetition & Flip',   instruction: 'LYRIC STRUCTURE — REPETITION & FLIP: Plant one phrase at 2-3 anchor points across the verse. First usage: face value. Second: new context reframes the meaning. Third (optional): lands completely differently with all context built. The phrase stays the same — the context does the work.' },
+  { value: 'List / Accumulation', instruction: 'LYRIC STRUCTURE — LIST / ACCUMULATION: BARS 1-14 each add one more item to a mounting list — specific details, images, or truths escalating in weight. BARS 15-16 are the payoff — the conclusion that makes the whole list land. Don\'t state the point before bar 15.' },
+  { value: 'Cinematic Cold Open', instruction: 'LYRIC STRUCTURE — CINEMATIC COLD OPEN: BARS 1-4: pure scene-painting — who, where, what, sensory details. BARS 5-10: internal thoughts and complications. BARS 11-16: pull back and reveal the spiritual or emotional truth the scene was pointing at. Don\'t explain the scene — let it speak.' },
 ]
 
 async function callSongAI(prompt) {
@@ -490,6 +509,7 @@ function SongPanel({ onSaved }) {
   const [styleId, setStyleId] = useState('balanced')
   const [moods, setMoods] = useState(['motivational'])
   const [rhymes, setRhymes] = useState(['Mixed'])
+  const [structureVal, setStructureVal] = useState('Free Form')
   const [outputs, setOutputs] = useState([])
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState('')
@@ -502,6 +522,8 @@ function SongPanel({ onSaved }) {
     const style = SONG_STYLES_GW.find(s => s.id === styleId)
     const styleNote = style?.instruction ? `\n${style.instruction}` : ''
     const rhymeNotes = SONG_RHYMES_GW.filter(r => rhymes.includes(r.value)).map(r => `- ${r.value}: ${r.instruction}`).join('\n')
+    const structureEntry = LYRIC_STRUCTURES_GW.find(s => s.value === structureVal)
+    const structureNote = structureEntry?.instruction ? `\n${structureEntry.instruction}` : ''
     return {
       prompt: `[Generation ID: ${seed}] Write a BRAND NEW complete song about "${t}". Mood/energy: ${moods.join(', ')}.
 This song must be completely original — fresh words, fresh bars, fresh imagery.
@@ -509,6 +531,7 @@ ${styleNote}
 
 RHYME SCHEME — apply all of the following:
 ${rhymeNotes}
+${structureNote}
 
 FLOW INTELLIGENCE — every bar:
 - Write as natural speech first — never twist a sentence to reach a rhyme
@@ -579,6 +602,33 @@ Write the complete song now. Do not cut it short.`,
             <span className="text-xs font-ui font-semibold" style={{ color: styleId === s.id ? '#00e5ff' : '#c0c0d0' }}>{s.label}</span>
           </button>
         ))}
+      </div>
+
+      <FieldLabel>Lyric Structure</FieldLabel>
+      <div className="grid grid-cols-3 gap-1.5">
+        {LYRIC_STRUCTURES_GW.map(s => {
+          const active = structureVal === s.value
+          const colors = ['#ff2d55','#00e5ff','#ff9500','#00ff9d','#b44fff','#ffd23f','#44ddff','#ff6b9d']
+          const color = s.value === 'Free Form' ? '#666688' : colors[LYRIC_STRUCTURES_GW.indexOf(s) % colors.length]
+          const icons = { 'Free Form':'〜','Setup / Punchline':'🥊','Question / Answer':'❓','Contrast Pairs':'⚡','Metaphor Ladder':'🪜','Storytelling Arc':'📖','Repetition & Flip':'🔄','List / Accumulation':'📋','Cinematic Cold Open':'🎬' }
+          return (
+            <button
+              key={s.value}
+              onClick={() => setStructureVal(s.value)}
+              className="flex flex-col gap-0.5 px-2.5 py-2 rounded-xl border text-left transition-all"
+              style={{
+                borderColor: active ? color : '#252540',
+                background: active ? color + '15' : 'transparent',
+                boxShadow: active ? `0 0 8px ${color}33` : 'none',
+              }}
+            >
+              <div className="flex items-center gap-1">
+                <span style={{ fontSize: 10 }}>{icons[s.value] || '◆'}</span>
+                <span className="text-xs font-ui font-semibold leading-tight" style={{ color: active ? color : '#c0c0d0', fontSize: 10 }}>{s.value}</span>
+              </div>
+            </button>
+          )
+        })}
       </div>
 
       <FieldLabel>Mood / Energy <span className="normal-case text-studio-dim">({moods.length} selected)</span></FieldLabel>

@@ -252,6 +252,149 @@ const RHYME_TYPES = [
     color: '#ddaaff',
     instruction: 'Use cross rhymes — set up a rhyme in bar 1, resolve it in bar 3; set up another in bar 2, resolve in bar 4. Creates a layered, puzzle-like rhyme structure.',
   },
+  {
+    label: 'ABBA Enclosed',
+    desc: 'Lines 1 & 4 rhyme, lines 2 & 3 rhyme — circular and wrapping',
+    color: '#ee77cc',
+    instruction: 'Use ABBA enclosed rhyme scheme — in each 4-bar block: line 1 and line 4 share one rhyme sound, lines 2 and 3 share a different rhyme sound. Creates a wrapping, circular feel that pulls the listener back.',
+  },
+  {
+    label: 'AAAA Monorhyme',
+    desc: 'Every bar locks onto one single rhyme sound — relentless',
+    color: '#ff5544',
+    instruction: 'Use AAAA monorhyme — every single bar ends on the same rhyme sound. Sustain it through the entire verse, leaning on internal rhymes too. Creates a wall of sound that feels inevitable.',
+  },
+  {
+    label: 'AABA Rubaiyat',
+    desc: 'Lines 1, 2, 4 rhyme; line 3 is free — creates a surprising open bar',
+    color: '#88cc44',
+    instruction: 'Use AABA rubaiyat pattern — in each 4-bar block: lines 1, 2, and 4 rhyme together; line 3 is deliberately free (unrhymed). The free bar creates tension that the 4th bar resolves.',
+  },
+  {
+    label: 'ABCB Ballad',
+    desc: 'Only lines 2 & 4 rhyme — open and song-like',
+    color: '#cc9944',
+    instruction: 'Use ABCB ballad meter — in each 4-bar block only lines 2 and 4 rhyme; lines 1 and 3 are unrhymed. Creates a spacious, song-like feel with a natural cadence that breathes.',
+  },
+  {
+    label: 'AAB-CCB Triplet',
+    desc: 'Two couplets share a pivot rhyme at bar 3 and bar 6',
+    color: '#77aaff',
+    instruction: 'Use AAB-CCB triplet structure — bars 1 & 2 rhyme together (AA), bar 3 is the pivot rhyme (B), bars 4 & 5 rhyme together (CC), bar 6 returns to the B rhyme. Creates a 6-bar bridge rhyme anchor that feels satisfying and unexpected.',
+  },
+]
+
+const LYRIC_STRUCTURES = [
+  {
+    id: 'none',
+    label: 'Free Form',
+    icon: '〜',
+    color: '#666688',
+    desc: 'No forced structure — let the content flow naturally',
+    instruction: '',
+  },
+  {
+    id: 'setup_punchline',
+    label: 'Setup / Punchline',
+    icon: '🥊',
+    color: '#ff2d55',
+    desc: 'Bar 1 builds the premise; bar 2 lands the knockout. Every couplet.',
+    instruction: `LYRIC STRUCTURE — SETUP / PUNCHLINE:
+Every couplet in each verse MUST follow this pattern:
+- BAR 1 (SETUP): Plant the premise, image, or expectation. Don't resolve it yet.
+- BAR 2 (PUNCHLINE): Twist, subvert, or hit the knockout blow. The listener didn't see it coming.
+Apply this across all 8 couplets in each 16-bar verse. Never let a punchline be predictable. Force the unexpected.`,
+  },
+  {
+    id: 'question_answer',
+    label: 'Question / Answer',
+    icon: '❓',
+    color: '#00e5ff',
+    desc: 'Odd bars ask; even bars answer. Tension and release.',
+    instruction: `LYRIC STRUCTURE — QUESTION / ANSWER:
+Alternate bars throughout each verse:
+- ODD BARS: Ask a question (explicit or implied) — rhetorical, direct, or existential
+- EVEN BARS: Answer it — with a reveal, a confession, a truth, or a twist
+This creates a call-and-response feel that pulls the listener through each verse.`,
+  },
+  {
+    id: 'contrast_pairs',
+    label: 'Contrast Pairs',
+    icon: '⚡',
+    color: '#ff9500',
+    desc: 'Bar 1: the problem. Bar 2: the flip. Every couplet.',
+    instruction: `LYRIC STRUCTURE — CONTRAST PAIRS:
+Each couplet in every verse follows a before-and-after contrast:
+- BAR 1: State the darkness, failure, struggle, or false belief
+- BAR 2: Flip it — the victory, the truth, the transformation, the counter-punch
+Make bar 1 real and specific enough that bar 2 earns its impact. Never let the flip feel cheap.`,
+  },
+  {
+    id: 'metaphor_ladder',
+    label: 'Metaphor Ladder',
+    icon: '🪜',
+    color: '#00ff9d',
+    desc: 'One metaphor — each bar extends, deepens, or twists it.',
+    instruction: `LYRIC STRUCTURE — METAPHOR LADDER:
+Choose ONE central metaphor at the top of each verse and commit to it through every bar:
+- Every bar extends, deepens, or twists the same core metaphor
+- Start surface-level, go deeper, arrive at spiritual or emotional truth by bar 16
+- No metaphor-hopping — one metaphor climbs from literal to profound across the entire verse
+- The bridge can introduce a counter-metaphor that makes the original land harder.`,
+  },
+  {
+    id: 'storytelling',
+    label: 'Storytelling Arc',
+    icon: '📖',
+    color: '#b44fff',
+    desc: 'Open mid-scene, build tension, climax, resolve.',
+    instruction: `LYRIC STRUCTURE — STORYTELLING ARC:
+Structure each verse as a compressed narrative:
+- BARS 1-3: Drop into the middle of a scene — specific who, where, what is happening right now
+- BARS 4-8: Rising tension — internal conflict, obstacles, or stakes building
+- BARS 9-12: Climax — the turning point, breakthrough, darkest moment, or the decision
+- BARS 13-16: Resolution or reveal — the meaning behind the story, what changed, what it costs
+Make it feel like a short film, not a lecture.`,
+  },
+  {
+    id: 'repetition_flip',
+    label: 'Repetition & Flip',
+    icon: '🔄',
+    color: '#ffd23f',
+    desc: 'Repeat a phrase 3x across the verse — meaning shifts each time.',
+    instruction: `LYRIC STRUCTURE — REPETITION & FLIP:
+Plant one phrase or image at 2-3 anchor points across the verse:
+- FIRST USAGE: Introduce it at face value — seems like a simple statement
+- SECOND USAGE: Repeat it in a new context that reframes the meaning
+- THIRD USAGE: Drop it one final time — now it hits completely differently with all the context built
+The phrase itself doesn't change. The context around it does. That's the power move.`,
+  },
+  {
+    id: 'list_build',
+    label: 'List / Accumulation',
+    icon: '📋',
+    color: '#44ddff',
+    desc: 'Stack bars building a list; final 2 bars are the payoff.',
+    instruction: `LYRIC STRUCTURE — LIST / ACCUMULATION:
+Build each verse as a mounting list of evidence, observations, or images:
+- BARS 1-14: Each bar adds one more item to the list — a specific detail, fact, image, or truth
+- Items should escalate in weight and specificity as the list grows
+- BARS 15-16: The payoff — the conclusion, thesis, or knockout that makes the whole list land
+Do NOT state the point before bar 15. Let the list do the work.`,
+  },
+  {
+    id: 'cinematic',
+    label: 'Cinematic Cold Open',
+    icon: '🎬',
+    color: '#ff6b9d',
+    desc: 'Open in a vivid scene; later bars reveal the deeper meaning.',
+    instruction: `LYRIC STRUCTURE — CINEMATIC COLD OPEN:
+Open each verse by dropping the listener directly into a specific, vivid scene:
+- BARS 1-4: Pure scene-painting — who is in the frame, exactly where, what they're doing, sensory details
+- BARS 5-10: The scene shifts — internal thoughts, complications, the emotional undercurrent
+- BARS 11-16: Pull back and reveal what the scene means — the spiritual, emotional, or thematic truth
+Think of it like a film opening — you don't explain the scene, you let the scene speak.`,
+  },
 ]
 
 const SONG_STYLES = [
@@ -338,6 +481,7 @@ function GenerateSongModal({ onGenerate, onClose }) {
   const [lookingUp, setLookingUp] = useState(false)
   const [showArtistPicker, setShowArtistPicker] = useState(false)
   const [rhymeTypes, setRhymeTypes] = useState(['Mixed'])
+  const [lyricStructure, setLyricStructure] = useState('none')
   const topicRef = useRef(null)
 
   useEffect(() => { topicRef.current?.focus() }, [])
@@ -380,7 +524,7 @@ Return a focused guide (under 300 words) starting with "${name.toUpperCase()} ST
 
   const submit = () => {
     if (!topic.trim()) return
-    onGenerate(topic.trim(), moods.join(', '), artistId, customArtist, rhymeTypes, songStyle, lookedUpInstruction)
+    onGenerate(topic.trim(), moods.join(', '), artistId, customArtist, rhymeTypes, songStyle, lookedUpInstruction, lyricStructure)
     onClose()
   }
 
@@ -435,6 +579,32 @@ Return a focused guide (under 300 words) starting with "${name.toUpperCase()} ST
               <span className="text-xs font-ui text-studio-dim leading-4">{s.desc}</span>
             </button>
           ))}
+        </div>
+
+        {/* Lyric Structure */}
+        <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-2 block">Lyric Structure</label>
+        <div className="grid grid-cols-3 gap-1.5 mb-4">
+          {LYRIC_STRUCTURES.map((s) => {
+            const active = lyricStructure === s.id
+            return (
+              <button
+                key={s.id}
+                onClick={() => setLyricStructure(s.id)}
+                className="flex flex-col gap-0.5 px-2.5 py-2 rounded-xl border text-left transition-all"
+                style={{
+                  borderColor: active ? s.color : '#252540',
+                  background: active ? s.color + '15' : 'transparent',
+                  boxShadow: active ? `0 0 8px ${s.color}33` : 'none',
+                }}
+              >
+                <div className="flex items-center gap-1">
+                  <span style={{ fontSize: 10 }}>{s.icon}</span>
+                  <span className="text-xs font-ui font-semibold leading-tight" style={{ color: active ? s.color : '#c0c0d0' }}>{s.label}</span>
+                </div>
+                <span className="text-xs font-ui leading-tight" style={{ color: '#666688', fontSize: 10 }}>{s.desc}</span>
+              </button>
+            )
+          })}
         </div>
 
         {/* Artist Style Reference */}
@@ -620,18 +790,68 @@ export const ARTIST_STYLES = [
     label: 'Mike Malagies',
     icon: '✝',
     color: '#ffe600',
-    desc: 'Biblical wordplay, contrast pairs, spiritual punchlines',
-    instruction: `MIKE MALAGIES STYLE — apply every technique:
-1. WORDPLAY: Phrases that carry a second meaning. "Life gets hard but I'ma go harder" — hard = difficulty AND effort. Build 2–3 per verse.
-2. DOUBLE MEANINGS: Everyday phrases with a spiritual flip. "I got rest and peace" = relaxation AND rest in peace, redeemed.
-3. POP CULTURE REFERENCES: Find the sports/movie/brand parallel to the spiritual truth. Kobe, Michael Jordan, Mufasa, Tesla.
-4. BIBLICAL REFERENCES: Name specific figures and stories directly — Lazarus, Daniel, armor of God, the narrow road, Father/Son/Holy Spirit.
-5. INTERNAL RHYMES: Rhyme sounds mid-bar, not just at the end. "Confess and repent and believe" — every bar loaded with hidden rhyme.
-6. REPETITION/HOOKS: Short anchor phrase repeated with conviction. "I'ma go harder" / "Don't worry, just worship."
-7. CONTRAST PAIRS: Opposites side by side — lost/found · blind/see · bound/free · empty/filled · dead/alive.
-8. PUNCHLINES: Set up in bar 1, payoff lands in bar 2. Make the listener stop and replay.
-9. EXTENDED THEME: Every bar connects to the central idea — go deeper on it, don't restate it.
-10. MULTISYLLABIC RHYMES: 2–4 syllable matches. "handle me / hand on me" — "stand for God / stands with me."`,
+    desc: 'Biblical punchlines, internal rhyme chains, contrast pairs, self-aware humor',
+    instruction: `MIKE MALAGIES STYLE — studied from real lyrics. Apply every technique:
+
+1. INTERNAL RHYME CHAINS: Lock onto one rhyme sound and stack 6-10+ words on it mid-verse.
+   Real example: "digits / critics / opinions / business / sickness / witness / different / live it / get it" — all on the same "-it" sound across 9 bars. This is his signature. Build at least one chain per verse.
+
+2. DOUBLE-MEANING PUNCHLINES: One phrase, two interpretations — spiritual and literal.
+   Real examples:
+   - "God blessed me and I didn't even sneeze" — blessed = God's favor AND "bless you" after a sneeze
+   - "If Satan starts bumping my music in hell, then I guess that's the one time a demon could play me" — play music AND trick/deceive
+   - "I feel like a verb" — about that action (verb = action word, self-referential)
+   Always set up naturally, let the second meaning land on its own.
+
+3. CULTURAL REFERENCES AS SPIRITUAL PROOF: Drop a pop culture name to carry the spiritual point.
+   Real examples:
+   - "Shooting my shot like Caitlin Clark" — faith as precision, commitment to the goal
+   - "that letter right next to the K" — the letter L (devil takes the L/loss)
+   Build the reference so it works even if you don't know the reference.
+
+4. RESURRECTION ARGUMENT: Use the empty tomb as the theological knockout.
+   Real example: "Buddha, Muhammad, and all of 'em all in a tomb, where is Jesus? Go check in the grave" — names the other religions then pulls the contrast. Use comparison → empty claim as structure for spiritual proof bars.
+
+5. CONTRAST PAIRS (before/after, problem/flip):
+   Real examples:
+   - "I used to have critics, but now it's just crickets" — the rhyme IS the contrast
+   - "I prayed for strength and it came with the stress / But pressure makes diamonds and pain makes success"
+   - "I don't complain anymore because I know I'd be on a cross if life was fair"
+   Every contrast should surprise — not just negative/positive but a specific unexpected angle.
+
+6. BIBLICAL NAME-DROPS WITH ACTION:
+   Real examples:
+   - "I pray like I'm Daniel, I fight like I'm David" — name + specific action, not just the name
+   - "feeling like Noah, let's make this ark"
+   - "Can't even put into words, He gon' provide for me, look at the birds" — Matthew 6, birds of the air
+   Never drop a biblical name without a specific parallel action or image.
+
+7. SELF-AWARE HUMOR: Break the 4th wall mid-verse, then get right back to the point.
+   Real examples:
+   - "Wait, who that white kid from the 'burbs? I'm 'bout that action, I feel like a verb"
+   - "My life turned around, that's a Jesus one-eighty"
+   - Literally writes "Hahaha" in the bar after a punchline
+   The humor never undermines the message — it makes the listener trust the messenger.
+
+8. RUN-ON BARS FOR EMOTIONAL PEAK: One intentionally long breathless bar when the feeling is too big.
+   Real example: "If I start talking about all the things God has done for me, I won't be able to stop / If I start thinking 'bout how much He loves me, I don't think I'll even be able to talk"
+   Use this once per verse at the emotional peak. Don't repeat it.
+
+9. RHETORICAL CHALLENGE → OWN ANSWER:
+   Real example: "Huh, what you gon' say to me? / Tell me I'm worthless, alright, that's okay with me / That's not what Jesus thought when He was saving me / That's not what God thought when He was creating me"
+   Invite the attack, then deflect it with theological counter. Always end on God's position, not the hater's.
+
+10. TRIPLE REPETITION FOR CONVICTION: Repeat a short phrase exactly 3 times in a row.
+    Real example: "Tell him God's my strength / Tell him God's my strength / Tell him God's my strength"
+    Use this for anchor phrases only — the thing the whole verse is proving. Don't dilute it.
+
+CADENCE RULES:
+- Start with short punchy bars ("Woke up this morning with breath in my lungs / Giving God my praise")
+- Build to a rhyme chain in the middle of the verse
+- Drop one run-on bar at the emotional peak
+- End with quiet gratitude or declarative truth
+- Use "Huh" and "Yeah" as breath punctuation, not filler
+- Street-adjacent vocabulary but never forced — conversational faith, not church language`,
   },
   {
     id: 'jcole',
@@ -1960,7 +2180,7 @@ export default function AICoPilotView() {
     }
   }
 
-  const handleGenerate = async (topic, mood, artistId, customArtist, rhymeTypeLabels, songStyleId = 'balanced', lookedUpInstruction = null) => {
+  const handleGenerate = async (topic, mood, artistId, customArtist, rhymeTypeLabels, songStyleId = 'balanced', lookedUpInstruction = null, lyricStructureId = 'none') => {
     if (isAiTyping) return
 
     const hasProfile = profile.themes.length > 0 || profile.lyricsHistory.length > 0
@@ -1982,6 +2202,9 @@ ${selectedRhymes.map((r) => `- ${r.label}: ${r.instruction}`).join('\n')}`
       ? `\n${selectedSongStyle.instruction}`
       : ''
 
+    const selectedStructure = LYRIC_STRUCTURES.find((s) => s.id === lyricStructureId) || LYRIC_STRUCTURES[0]
+    const structureNote = selectedStructure.instruction ? `\n${selectedStructure.instruction}` : ''
+
     const seed = Math.random().toString(36).slice(2, 8).toUpperCase()
 
     const prompt = `[Generation ID: ${seed}] Write a BRAND NEW complete song about "${topic}". Mood/energy: ${mood}.
@@ -1991,6 +2214,7 @@ ${songStyleNote}
 ${flowNote}
 
 ${rhymeNote}
+${structureNote}
 
 FLOW INTELLIGENCE — every bar:
 - Write as natural speech first — never twist a sentence to reach a rhyme
@@ -2014,7 +2238,7 @@ Write the complete song now. Do not cut it short.`
     const artistLabel = artistId && artistId !== 'none'
       ? (customArtist || ARTIST_STYLES.find(a => a.id === artistId)?.label || null)
       : null
-    const userLabel = `✦ Generate song — "${topic}" · ${mood} · ${selectedSongStyle.label}${artistLabel ? ` · ${artistLabel} style` : ''} · ${rhymeTypeLabels.join(', ')}`
+    const userLabel = `✦ Generate song — "${topic}" · ${mood} · ${selectedSongStyle.label}${artistLabel ? ` · ${artistLabel} style` : ''} · ${rhymeTypeLabels.join(', ')}${selectedStructure.id !== 'none' ? ` · ${selectedStructure.label}` : ''}`
     addAiMessage({ role: 'user', content: userLabel })
     setAiTyping(true)
     setStreamedText('')
