@@ -725,6 +725,21 @@ export const ARTIST_STYLES = [
 - PLAIN WORDS, HEAVY WEIGHT: Country-hop lands through simple language carrying enormous emotional load. Not wordplay — the exactly right plain word in the exactly right place. "I still check my phone" hits harder than any lyrical gymnastics.`,
   },
   {
+    id: 'harrymack',
+    label: 'Harry Mack',
+    icon: '🎤',
+    color: '#ffd23f',
+    desc: 'Freestyle wordplay, crowd-word weaving, clever punchlines, smooth cadence',
+    instruction: `HARRY MACK STYLE — apply every technique:
+- WORD WEAVING: Crowd-called words are woven into bars naturally — not dropped randomly but as the anchor of a punchline, a clever transition, or a double meaning. Each word should feel inevitable, not forced.
+- THEMATIC CHAINING: Connect each called-out word to the next through a thread of meaning — "coffee" leads to "awake" leads to "grinding" leads to the next word. The listener should feel the logic.
+- INTERNAL RHYME DENSITY: Pack every bar with mid-line rhymes alongside end rhymes. Two or three rhyme hits per bar minimum.
+- PUNCHLINE ARCHITECTURE: Every 2–3 bars builds to a landing where the called-out word pays off with a double meaning or clever flip. Setup → wordplay → payoff.
+- DOUBLE MEANINGS: Use crowd words in ways where they carry two meanings simultaneously. "thunder" = the storm AND the authority in the delivery. The second meaning should feel like a reward.
+- SMOOTH EFFORTLESS CADENCE: Even dense bars should sound conversational and relaxed. If it sounds forced, it's wrong. The genius is in making complexity feel easy.
+- ESCALATING MOMENTUM: Each bar escalates in wit and energy. The final bars should be the most impressive. End on a line that makes the crowd react.`,
+  },
+  {
     id: 'custom',
     label: 'Custom',
     icon: '✎',
@@ -925,6 +940,213 @@ Drop your bar:`
   )
 }
 
+function WordDropModal({ onClose }) {
+  const [words, setWords] = useState([])
+  const [wordInput, setWordInput] = useState('')
+  const [bars, setBars] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [saved, setSaved] = useState(false)
+  const [saveName, setSaveName] = useState('')
+  const inputRef = useRef(null)
+  const { saveAiSong } = useStudioStore()
+
+  useEffect(() => { inputRef.current?.focus() }, [])
+
+  const addWord = () => {
+    const w = wordInput.trim()
+    if (!w) return
+    setWords(prev => [...prev, w])
+    setWordInput('')
+  }
+
+  const removeWord = (i) => setWords(prev => prev.filter((_, idx) => idx !== i))
+
+  const spit = async () => {
+    if (words.length === 0 || loading) return
+    setLoading(true)
+    setBars('')
+    try {
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+      const result = await model.generateContent(
+        `You are freestyling in the style of Harry Mack's street/public freestyles: clever wordplay, internal rhyme, punchlines built on double meanings, smooth cadence, confident delivery. You are given random crowd words. Weave ALL of them into a freestyle rap of exactly 14 lines, using them roughly in order, one every 2–3 lines, each landing as the anchor of a clever line or punchline. Transitions between words should feel natural and thematically connected. Do not use headers, intros, or explanations. Output ONLY the bars, one per line.
+
+Words called out by the crowd, in order: ${words.join(', ')}`
+      )
+      setBars(result.response.text().trim())
+    } catch {
+      setBars('(flow broke — check your connection and try again)')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const highlightWords = (text) => {
+    if (!text || words.length === 0) return [<span key="0">{text}</span>]
+    const regex = new RegExp(`\\b(${words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`, 'gi')
+    const parts = []
+    let lastIndex = 0
+    let match
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) parts.push(<span key={lastIndex}>{text.slice(lastIndex, match.index)}</span>)
+      parts.push(<span key={match.index} style={{ color: '#ffd23f', fontWeight: 700 }}>{match[0]}</span>)
+      lastIndex = regex.lastIndex
+    }
+    if (lastIndex < text.length) parts.push(<span key={lastIndex}>{text.slice(lastIndex)}</span>)
+    return parts
+  }
+
+  const doSave = () => {
+    const name = saveName.trim() || 'Harry Mack Freestyle'
+    saveAiSong(name, bars)
+    setSaved(true)
+    setSaving(false)
+    setTimeout(() => setSaved(false), 2000)
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={onClose}>
+      <div
+        className="bg-studio-panel border border-studio-border rounded-2xl flex flex-col shadow-2xl"
+        style={{ width: 580, maxHeight: '85vh', borderTop: '3px solid #ffd23f' }}
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-5 py-4 border-b border-studio-border">
+          <div>
+            <div className="font-display text-sm font-semibold" style={{ color: '#ffd23f' }}>🎤 Word Drop — Harry Mack Mode</div>
+            <div className="text-xs text-studio-dim font-ui mt-0.5">Drop random words — AI weaves them into 14 bars of fire</div>
+          </div>
+          <button onClick={onClose} className="text-studio-dim hover:text-white text-lg leading-none">✕</button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
+          <div>
+            <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-2 block">Crowd Words</label>
+            <div className="flex gap-2 mb-2">
+              <input
+                ref={inputRef}
+                type="text"
+                value={wordInput}
+                onChange={e => setWordInput(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter') addWord() }}
+                placeholder="Type a word, hit Enter (coffee, thunder, sneakers...)"
+                maxLength={24}
+                className="flex-1 bg-studio-void border border-studio-border rounded-xl px-4 py-2.5 text-sm font-ui text-studio-text placeholder-studio-dim focus:outline-none focus:border-studio-cyan"
+                style={{ fontFamily: 'monospace' }}
+              />
+              <button
+                onClick={addWord}
+                disabled={!wordInput.trim()}
+                className="px-4 py-2.5 rounded-xl text-sm font-ui font-semibold text-black disabled:opacity-40"
+                style={{ background: '#ffd23f' }}
+              >
+                Add
+              </button>
+            </div>
+            {words.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {words.map((w, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono"
+                    style={{ background: '#1a1a1d', border: '1px solid #3a3a3d', color: '#ffd23f' }}
+                  >
+                    {w}
+                    <button onClick={() => removeWord(i)} className="text-studio-dim hover:text-white ml-0.5">✕</button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="flex gap-2">
+            <button
+              onClick={spit}
+              disabled={words.length === 0 || loading}
+              className="flex-1 py-3 rounded-xl font-ui font-bold text-sm text-white disabled:opacity-40"
+              style={{ background: '#d1453b' }}
+            >
+              {loading ? 'Spitting...' : '🎤 Spit It'}
+            </button>
+            {(words.length > 0 || bars) && (
+              <button
+                onClick={() => { setWords([]); setBars('') }}
+                className="px-4 py-3 rounded-xl font-ui text-sm text-studio-dim border border-studio-border hover:text-white"
+              >
+                Clear
+              </button>
+            )}
+          </div>
+
+          {(loading || bars) && (
+            <div className="rounded-xl p-5 relative" style={{ background: '#1a1a1d', border: '1px solid #2c2c30' }}>
+              <div className="absolute top-3 right-4 font-mono tracking-widest" style={{ color: '#d1453b', fontSize: 10 }}>●REC</div>
+              {loading ? (
+                <div className="flex items-center gap-2 text-studio-dim font-mono text-sm">
+                  <span>Freestyling</span>
+                  <span className="inline-flex gap-1">
+                    {[0,1,2].map(i => (
+                      <span key={i} className="w-1.5 h-1.5 rounded-full bg-studio-dim inline-block"
+                        style={{ animation: `vu-pulse 1s ease-in-out ${i*0.2}s infinite` }} />
+                    ))}
+                  </span>
+                </div>
+              ) : (
+                <div className="font-ui text-sm leading-8 whitespace-pre-wrap" style={{ fontFamily: 'Georgia, serif', fontSize: 15 }}>
+                  {highlightWords(bars)}
+                </div>
+              )}
+            </div>
+          )}
+
+          {bars && !loading && (
+            <div className="flex gap-2 flex-wrap">
+              <button
+                onClick={() => { navigator.clipboard.writeText(bars); setCopied(true); setTimeout(() => setCopied(false), 1800) }}
+                className="px-3 py-1.5 rounded-lg text-xs font-ui font-semibold border border-studio-border text-studio-dim hover:border-studio-cyan hover:text-studio-cyan transition-colors"
+              >
+                {copied ? '✓ Copied!' : '📋 Copy'}
+              </button>
+              {!saved && !saving && (
+                <button
+                  onClick={() => setSaving(true)}
+                  className="px-3 py-1.5 rounded-lg text-xs font-ui font-semibold border text-studio-purple hover:bg-studio-purple/10 transition-colors"
+                  style={{ borderColor: 'rgba(180,79,255,0.4)' }}
+                >
+                  💾 Save to AI Songs
+                </button>
+              )}
+              {saving && (
+                <div className="flex items-center gap-2">
+                  <input
+                    autoFocus
+                    type="text"
+                    value={saveName}
+                    onChange={e => setSaveName(e.target.value)}
+                    onKeyDown={e => { if (e.key === 'Enter') doSave(); if (e.key === 'Escape') setSaving(false) }}
+                    placeholder="Name this freestyle..."
+                    className="bg-studio-void border border-studio-purple/50 rounded-lg px-3 py-1.5 text-xs font-ui text-studio-text placeholder-studio-dim focus:outline-none focus:border-studio-purple w-44"
+                  />
+                  <button onClick={doSave} className="px-3 py-1.5 rounded-lg text-xs font-ui font-semibold text-black" style={{ background: 'linear-gradient(135deg,#b44fff,#00e5ff)' }}>Save</button>
+                  <button onClick={() => setSaving(false)} className="text-xs text-studio-dim hover:text-white">✕</button>
+                </div>
+              )}
+              {saved && <span className="text-xs font-mono text-studio-purple self-center">✓ Saved to AI Songs</span>}
+            </div>
+          )}
+
+          {!bars && !loading && words.length === 0 && (
+            <div className="text-center text-studio-dim font-mono text-xs py-2">
+              Add 2–5 random words above, then hit "Spit It" — words light up gold in the bars
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function BeatSuggestionsPanel() {
   const { lyrics } = useStudioStore()
   const [open, setOpen] = useState(false)
@@ -1065,6 +1287,7 @@ export default function AICoPilotView() {
   const [streamedText, setStreamedText] = useState('')
   const [showGenerateModal, setShowGenerateModal] = useState(false)
   const [showFreestyle, setShowFreestyle] = useState(false)
+  const [showWordDrop, setShowWordDrop] = useState(false)
   const [vaultTab, setVaultTab] = useState('ai')
   const messagesEndRef = useRef(null)
   const textareaRef = useRef(null)
@@ -1365,6 +1588,18 @@ Write the complete song now. Do not cut it short.`
           🎤 Freestyle Cypher
         </button>
 
+        {/* Word Drop — Harry Mack mode */}
+        <button
+          onClick={() => setShowWordDrop(true)}
+          disabled={noKey}
+          className="w-full py-2.5 rounded-xl font-ui font-semibold text-xs border transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          style={{ borderColor: '#3a3a3d', color: '#ffd23f' }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = '#ffd23f'; e.currentTarget.style.background = 'rgba(255,210,63,0.08)' }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = '#3a3a3d'; e.currentTarget.style.background = 'transparent' }}
+        >
+          🎤 Word Drop — Harry Mack
+        </button>
+
         {/* Beat ideas from lyrics */}
         <BeatSuggestionsPanel />
 
@@ -1552,6 +1787,10 @@ Write the complete song now. Do not cut it short.`
 
       {showFreestyle && (
         <FreestyleModal onClose={() => setShowFreestyle(false)} />
+      )}
+
+      {showWordDrop && (
+        <WordDropModal onClose={() => setShowWordDrop(false)} />
       )}
     </div>
   )
