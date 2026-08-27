@@ -982,6 +982,12 @@ export const ARTIST_STYLES = [
 47. DOUBT-TO-DECLARATION BRIDGE: Open the bridge with raw, unresolved spiritual doubt — no answer yet — then let the declaration or divine response follow.
     Real example: "Some days I don't feel like it / Some days I wonder should I quit / Some days I wonder where time went / Some days I wonder where God been" — four consecutive bars of honest doubt with no resolution. Then the Spontaneous Break answers. The doubt makes the declaration credible. If you skip the doubt, the declaration sounds like performance. Four "some days" bars is the pattern — the repetition of uncertainty is what makes the arrival of certainty land.
 
+48. ETYMOLOGY BAR: Find two related words where one is literally contained in the other — then use the word relationship as the theological proof.
+    Real example: "Test after test but I passed 'em all / Now I call that testimony" — "test" is the root of "testimony." You can only give testimony about what you were tested in. The word etymology proves the theology — the experience IS already inside the word. Different from Word Hidden Inside Word (tech 44), which is about phonetics; this is about meaning and word roots.
+
+49. CURSIVE CONNECTION: Use a specific writing style (cursive) as a metaphor for continuous, unbroken relationship with God — cursive letters connect; staying with God means no breaks in the line.
+    Real example: "Stay together with God like cursive" — cursive handwriting connects every letter without lifting the pen. The relationship with God is the same — continuous, no gaps, no breaks. The visual of connected letters is the point.
+
 CADENCE RULES:
 - Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
 - Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
