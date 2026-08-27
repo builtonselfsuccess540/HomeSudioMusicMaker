@@ -940,10 +940,13 @@ Drop your bar:`
   )
 }
 
+const BAR_COUNTS = [8, 12, 16, 24, 32]
+
 function WordDropModal({ onClose }) {
   const [words, setWords] = useState([])
   const [wordInput, setWordInput] = useState('')
   const [bars, setBars] = useState('')
+  const [barCount, setBarCount] = useState(16)
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(false)
   const [saving, setSaving] = useState(false)
@@ -970,7 +973,7 @@ function WordDropModal({ onClose }) {
     try {
       const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
       const result = await model.generateContent(
-        `You are freestyling in the style of Harry Mack's street/public freestyles: clever wordplay, internal rhyme, punchlines built on double meanings, smooth cadence, confident delivery. You are given random crowd words. Weave ALL of them into a freestyle rap of exactly 14 lines, using them roughly in order, one every 2–3 lines, each landing as the anchor of a clever line or punchline. Transitions between words should feel natural and thematically connected. Do not use headers, intros, or explanations. Output ONLY the bars, one per line.
+        `You are freestyling in the style of Harry Mack's street/public freestyles: clever wordplay, internal rhyme, punchlines built on double meanings, smooth cadence, confident delivery. You are given random crowd words. Weave ALL of them into a freestyle rap of exactly ${barCount} lines, using them roughly in order, spacing them evenly throughout, each landing as the anchor of a clever line or punchline. Transitions between words should feel natural and thematically connected. Do not use headers, intros, or explanations. Output ONLY the bars, one per line.
 
 Words called out by the crowd, in order: ${words.join(', ')}`
       )
@@ -1015,12 +1018,32 @@ Words called out by the crowd, in order: ${words.join(', ')}`
         <div className="flex items-center justify-between px-5 py-4 border-b border-studio-border">
           <div>
             <div className="font-display text-sm font-semibold" style={{ color: '#ffd23f' }}>🎤 Word Drop — Harry Mack Mode</div>
-            <div className="text-xs text-studio-dim font-ui mt-0.5">Drop random words — AI weaves them into 14 bars of fire</div>
+            <div className="text-xs text-studio-dim font-ui mt-0.5">Drop random words — AI weaves them into {barCount} bars of fire</div>
           </div>
           <button onClick={onClose} className="text-studio-dim hover:text-white text-lg leading-none">✕</button>
         </div>
 
         <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
+          <div>
+            <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-2 block">Bar Count</label>
+            <div className="flex gap-2 mb-4">
+              {BAR_COUNTS.map(n => (
+                <button
+                  key={n}
+                  onClick={() => setBarCount(n)}
+                  className="flex-1 py-1.5 rounded-lg text-xs font-mono font-semibold border transition-all"
+                  style={{
+                    borderColor: barCount === n ? '#ffd23f' : '#3a3a3d',
+                    color: barCount === n ? '#ffd23f' : '#666688',
+                    background: barCount === n ? 'rgba(255,210,63,0.1)' : 'transparent',
+                  }}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div>
             <label className="text-xs font-mono text-studio-dim uppercase tracking-wider mb-2 block">Crowd Words</label>
             <div className="flex gap-2 mb-2">
