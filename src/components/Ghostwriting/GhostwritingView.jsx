@@ -399,8 +399,241 @@ function HistoryPanel({ history, onRestore }) {
   )
 }
 
+// ─── SONG PANEL ────────────────────────────────────────────────────────────
+const SONG_STYLES_GW = [
+  {
+    id: 'balanced',
+    label: 'Balanced',
+    icon: '◈',
+    instruction: '',
+  },
+  {
+    id: 'showcase',
+    label: 'Lyrical Showcase',
+    icon: '⬆',
+    instruction: `SONG STYLE — LYRICAL SHOWCASE: Every verse must have multisyllabic rhyme matches (2–4 syllables), internal rhymes mid-bar on most lines, at least 3 punchlines per verse with true setup/payoff structure, and wordplay where phrases operate on two levels.`,
+  },
+  {
+    id: 'gospel',
+    label: 'Street Gospel',
+    icon: '✝',
+    instruction: `SONG STYLE — STREET GOSPEL: Every verse must contain specific biblical figures and stories (name Lazarus, Daniel, David, Joseph), contrast pairs (lost/found, bound/free, dead/alive), and at least one bar per verse where street reality and scripture collide in the same line.`,
+  },
+  {
+    id: 'anthem',
+    label: 'Motivational Anthem',
+    icon: '🔥',
+    instruction: `SONG STYLE — MOTIVATIONAL ANTHEM: The chorus must be immediately singable — short, powerful phrases that lock in on the first listen. Verses build real momentum bar by bar. Use declarative, empowering language. The bridge is the emotional peak. Think stadium energy.`,
+  },
+  {
+    id: 'story',
+    label: 'Storytelling',
+    icon: '◎',
+    instruction: `SONG STYLE — STORYTELLING: Verse 1 establishes the situation. Verse 2 deepens the conflict or transformation. Bridge is the emotional turning point. Outro resolves the arc. Use specific vivid details — name places, describe moments, show don't tell.`,
+  },
+  {
+    id: 'punchlines',
+    label: 'Punchline Heavy',
+    icon: '🥊',
+    instruction: `SONG STYLE — PUNCHLINE HEAVY: Every 2–3 bars = one setup and one payoff. Use misdirection, comparison punchlines, wordplay punchlines, and contrast punchlines. There should be no neutral bars — every line either builds tension or releases it.`,
+  },
+]
+
+const SONG_MOODS_GW = [
+  'motivational', 'hype', 'spiritual', 'emotional', 'reflective',
+  'love', 'triumphant', 'melancholy', 'aggressive', 'grateful',
+  'storytelling', 'heartbreak', 'gospel', 'dark', 'uplifting',
+]
+
+const SONG_RHYMES_GW = [
+  { value: 'Mixed',        instruction: 'Use a mix of all rhyme types freely — end rhymes, internal rhymes, multisyllabic, slant, chain, and cross rhymes. Switch it up bar to bar.' },
+  { value: 'Internal',     instruction: 'Load bars with internal rhymes — words within the middle of the line rhyme with each other AND with end words. Every bar should have at least one mid-bar rhyme.' },
+  { value: 'Multisyllabic',instruction: 'Use multisyllabic rhymes — 2 to 4 syllables rhyming together at a time. Prioritize complex rhyme matches over simple ones.' },
+  { value: 'Chain',        instruction: 'Lock onto a single rhyme sound and sustain it across 4 to 8 consecutive bars before switching. Creates relentless momentum.' },
+  { value: 'AABB Couplet', instruction: 'Every pair of consecutive bars rhymes together. Line 1 rhymes with line 2, line 3 with line 4.' },
+  { value: 'Slant / Near', instruction: 'Words that share similar sounds but don\'t perfectly rhyme. Gives a looser, conversational authenticity.' },
+]
+
+async function callSongAI(prompt) {
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+  const result = await model.generateContent(prompt)
+  return result.response.text().trim()
+}
+
+function MultiChipGroup({ options, values, onChange }) {
+  const toggle = (v) => onChange(values.includes(v) ? (values.length > 1 ? values.filter(x => x !== v) : values) : [...values, v])
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map(opt => {
+        const active = values.includes(opt)
+        return (
+          <button
+            key={opt}
+            onClick={() => toggle(opt)}
+            className="px-3 py-1.5 rounded-full text-xs font-mono border transition-all"
+            style={{
+              borderColor: active ? '#b44fff' : '#252540',
+              color: active ? '#b44fff' : '#666688',
+              background: active ? 'rgba(180,79,255,0.1)' : 'transparent',
+            }}
+          >
+            {opt}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+function SongPanel({ onSaved }) {
+  const [topic, setTopic] = useState('')
+  const [styleId, setStyleId] = useState('balanced')
+  const [moods, setMoods] = useState(['motivational'])
+  const [rhymes, setRhymes] = useState(['Mixed'])
+  const [outputs, setOutputs] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState('')
+
+  const toggleMood = (m) => setMoods(prev => prev.includes(m) ? (prev.length > 1 ? prev.filter(x => x !== m) : prev) : [...prev, m])
+  const toggleRhyme = (r) => setRhymes(prev => prev.includes(r) ? (prev.length > 1 ? prev.filter(x => x !== r) : prev) : [...prev, r])
+
+  const buildPrompt = (seed) => {
+    const t = topic.trim() || 'overcoming hard times through faith'
+    const style = SONG_STYLES_GW.find(s => s.id === styleId)
+    const styleNote = style?.instruction ? `\n${style.instruction}` : ''
+    const rhymeNotes = SONG_RHYMES_GW.filter(r => rhymes.includes(r.value)).map(r => `- ${r.value}: ${r.instruction}`).join('\n')
+    return {
+      prompt: `[Generation ID: ${seed}] Write a BRAND NEW complete song about "${t}". Mood/energy: ${moods.join(', ')}.
+This song must be completely original — fresh words, fresh bars, fresh imagery.
+${styleNote}
+
+RHYME SCHEME — apply all of the following:
+${rhymeNotes}
+
+FLOW INTELLIGENCE — every bar:
+- Write as natural speech first — never twist a sentence to reach a rhyme
+- Read each bar aloud mentally — if it sounds stiff, rewrite it
+- Vary bar length and rhythm
+- No throwaway lines
+
+STRUCTURE — follow exactly:
+[Verse 1] — 16 bars (16 lines)
+[Pre-Chorus] — 4 bars
+[Chorus] — 8 bars
+[Verse 2] — 16 bars (16 lines)
+[Bridge] — 8 bars
+[Outro] — 4 bars
+
+Every verse = exactly 16 lines. Count them.
+Write the complete song now. Do not cut it short.`,
+      topic: t,
+    }
+  }
+
+  const run = async (count) => {
+    setLoading(true)
+    setStatus(count > 1 ? 'writing 3 variants...' : 'writing...')
+    setOutputs([])
+    try {
+      const results = await Promise.all(
+        Array.from({ length: count }, (_, i) => {
+          const seed = Math.random().toString(36).slice(2, 8).toUpperCase()
+          const { prompt } = buildPrompt(seed)
+          return callSongAI(prompt)
+        })
+      )
+      setOutputs(results)
+      const { topic } = buildPrompt('_')
+      onSaved('song', topic, results)
+      setStatus('done')
+      setTimeout(() => setStatus(''), 2000)
+    } catch { setStatus('error') } finally { setLoading(false) }
+  }
+
+  const activeStyle = SONG_STYLES_GW.find(s => s.id === styleId)
+
+  return (
+    <div>
+      <FieldLabel>What's the song about?</FieldLabel>
+      <textarea
+        value={topic}
+        onChange={e => setTopic(e.target.value)}
+        placeholder="e.g. never giving up, faith through hard times, grinding to the top, a relationship that changed you..."
+        rows={2}
+        className="w-full bg-studio-void border border-studio-border rounded-xl px-4 py-3 text-sm font-ui text-studio-text placeholder-studio-dim focus:outline-none focus:border-studio-cyan resize-none"
+      />
+
+      <FieldLabel>Song Style</FieldLabel>
+      <div className="grid grid-cols-3 gap-2">
+        {SONG_STYLES_GW.map(s => (
+          <button
+            key={s.id}
+            onClick={() => setStyleId(s.id)}
+            className="flex flex-col gap-0.5 px-3 py-2 rounded-xl border text-left transition-all"
+            style={{
+              borderColor: styleId === s.id ? '#00e5ff' : '#252540',
+              background: styleId === s.id ? 'rgba(0,229,255,0.08)' : 'transparent',
+            }}
+          >
+            <span className="text-xs" style={{ color: styleId === s.id ? '#00e5ff' : '#444460' }}>{s.icon}</span>
+            <span className="text-xs font-ui font-semibold" style={{ color: styleId === s.id ? '#00e5ff' : '#c0c0d0' }}>{s.label}</span>
+          </button>
+        ))}
+      </div>
+
+      <FieldLabel>Mood / Energy <span className="normal-case text-studio-dim">({moods.length} selected)</span></FieldLabel>
+      <div className="flex flex-wrap gap-2">
+        {SONG_MOODS_GW.map(m => {
+          const active = moods.includes(m)
+          return (
+            <button
+              key={m}
+              onClick={() => toggleMood(m)}
+              className="px-3 py-1 rounded-full text-xs font-mono border transition-all"
+              style={{
+                borderColor: active ? '#ff9500' : '#252540',
+                color: active ? '#ff9500' : '#666688',
+                background: active ? 'rgba(255,149,0,0.1)' : 'transparent',
+              }}
+            >
+              {m}
+            </button>
+          )
+        })}
+      </div>
+
+      <FieldLabel>Rhyme Type <span className="normal-case text-studio-dim">({rhymes.length} selected)</span></FieldLabel>
+      <div className="flex flex-col gap-1.5">
+        {SONG_RHYMES_GW.map(r => {
+          const active = rhymes.includes(r.value)
+          return (
+            <button
+              key={r.value}
+              onClick={() => toggleRhyme(r.value)}
+              className="flex items-center gap-3 px-3 py-2 rounded-lg border text-left transition-all"
+              style={{
+                borderColor: active ? '#b44fff' : '#252540',
+                background: active ? 'rgba(180,79,255,0.08)' : 'transparent',
+              }}
+            >
+              <div className="w-3 h-3 rounded-full shrink-0 border-2 flex items-center justify-center" style={{ borderColor: active ? '#b44fff' : '#444460' }}>
+                {active && <div className="w-1.5 h-1.5 rounded-full bg-studio-purple" />}
+              </div>
+              <span className="text-xs font-ui font-semibold" style={{ color: active ? '#b44fff' : '#c0c0d0' }}>{r.value}</span>
+            </button>
+          )
+        })}
+      </div>
+
+      <GenerateButtons onSingle={() => run(1)} onVariants={() => run(3)} loading={loading} status={status} />
+      <OutputSection outputs={outputs} />
+    </div>
+  )
+}
+
 // ─── MAIN VIEW ─────────────────────────────────────────────────────────────
 const PANELS = [
+  { id: 'song',      label: 'Song' },
   { id: 'prayer',    label: 'Prayer' },
   { id: 'hook',      label: 'Video Hook' },
   { id: 'caption',   label: 'Caption' },
@@ -463,6 +696,9 @@ export default function GhostwritingView() {
         {/* Panel content */}
         <div className="flex-1 overflow-y-auto p-6">
           <div className="max-w-2xl">
+            {active === 'song' && (
+              <SongPanel onSaved={addToHistory} />
+            )}
             {active === 'prayer' && (
               <PrayerPanel onSaved={addToHistory} />
             )}
