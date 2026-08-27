@@ -910,10 +910,32 @@ export const ARTIST_STYLES = [
     — vine → branches → fruit → "go out on a limb" (risk = where fruit grows = where faith lives)
     Every step is a logical extension of the one before it. The chain is the proof that the metaphor is real. Do NOT hop to a different metaphor — commit to the chain and let it go deeper.
 
+25. METAPHOR ECOSYSTEM: Instead of one semantic chain, build an entire vocabulary domain and mine it for 6-8 bars — every word in that domain hits a spiritual double meaning simultaneously.
+    Real example ("I Follow Jesus"): "God took my problems and made 'em all hit the gym / the way He made 'em all work out / Jesus resurrected me, that's a dead-lift / I just raised the bar again like a bench press / I'll never go under like anesthetics / They said I'm grinding too much / I said you not my dentist"
+    — work out / dead-lift / raised the bar / bench press / go under / grinding — every gym term doubles as spiritual truth. More powerful than a single chain because there are multiple entry points. Choose a domain rich enough to sustain 6+ bars.
+
+26. SCRIPTURE-AS-LOGICAL-IMPOSSIBILITY: Use one of God's own attributes from scripture to make a fear or failure state logically impossible.
+    Real example: "All consuming fire, how could I burn out?" — Hebrews 12:29 says God is an all-consuming fire. If God IS fire and you're on fire for God, burning out is a logical contradiction. The scripture doesn't just comfort — it makes the fear impossible by definition.
+    Structure: God is [attribute from scripture] → therefore [feared state] cannot logically exist.
+
+27. ENEMY EQUIVALENCE: Group human haters and the devil as sharing the same problem — both confused by the same person, both losing to the same God.
+    Real example: "My haters and Lucifer share the same struggle / They both don't know what they gon' do with the kid"
+    — levels up the haters (they're in the devil's company) and levels down the devil (he's no scarier than an internet hater). Both equally confused, both equally losing.
+
+28. IDIOM EXTENSION: Take a common failure idiom, accept it at face value for one bar, then extend it into a full narrative where Jesus recovers.
+    Real example ("Finally Found"): "I dropped the ball, Jesus picked up the ball and then we won the game" — owns the failure first ("dropped the ball"), then extends the sports metaphor: Jesus recovers the fumble and they win together. The failure becomes the setup for the miracle. Don't skip or deny the failure — own it, then let Jesus extend it.
+
+29. HUSTLE PHRASE FLIP: Take a common secular hustle expression and give it new meaning through faith — the phrase stays the same, the spiritual context rewrites it.
+    Real example: "I'll sleep when I die / But He keeps me alive" — normally a hustle phrase meaning sacrifice rest for success. Here: death is literally rest (eternal peace), and God keeps him active now. The flip happens silently — no explanation. The context rewrites the phrase.
+
+30. PREEMPTIVE OPPOSITION: Predict future cancellation or opposition in advance and frame it as confirmation that you're currently speaking truth. The anticipation itself is the badge.
+    Real example: "One day they gon' cancel Mike / I mean I speak too much truth" — calls the cancellation before it happens. Anyone willing to be canceled for truth has nothing to hide. Keep it brief — one or two bars, then move on.
+
 CADENCE RULES:
 - Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
 - Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
 - Song 3 (guest verse) style: tight and punchy — open with a challenge, fire 3-4 techniques in 10-12 bars, close by returning to the opening challenge (bookend)
+- Songs 5-6 style: sustained metaphor ecosystem over one domain → scripture-as-impossibility → enemy equivalence → triumph close
 - Use "Huh" and "Yeah" as breath punctuation, not filler
 - "What did I stutter" = emphatic callback — draw attention to the bar you just dropped
 - Street-adjacent vocabulary but never forced — conversational faith, not church language
