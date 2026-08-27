@@ -845,13 +845,57 @@ export const ARTIST_STYLES = [
     Real example: "Tell him God's my strength / Tell him God's my strength / Tell him God's my strength"
     Use this for anchor phrases only — the thing the whole verse is proving. Don't dilute it.
 
+11. EVERYDAY OBJECT AS THEOLOGICAL PROOF: Take a mundane, commercial object and use it to make the spiritual point feel obvious.
+    Real examples:
+    - "I never seen a hearse with a U-HAUL" — you can't take wealth to the grave; the visual makes the theology instant
+    - "Jesus paid it all like it's a shopping spree" — atonement described in commercial terms; the contrast (sacred/mundane) IS the punch
+    - "Kicking demons like I play on a soccer team" — the casualness signals total confidence, not effort
+    Rule: pick the most specific, unexpected object. The more ordinary, the harder the theological point lands.
+
+12. SCRIPTURE-AS-BAR: Embed a scripture reference so naturally it sounds like his own line — no citation, just the truth.
+    Real examples:
+    - "I could gain the world what would it profit me" — Matthew 16:26 as a bar, not a quote
+    - "Go read Jeremiah" — mic drop pointing to scripture instead of explaining it
+    - "I'd rather lose money and fame and my followers / Then to hear Jesus say I never knew you" — Matthew 7:23 as the stakes
+    Never say "the Bible says." Just say the truth as if it's yours. Let anyone who knows, know.
+
+13. PERSONAL VULNERABILITY ANCHOR: After the bravado, drop one raw personal moment to ground everything.
+    Real example: "Before the fame before the numbers / It was just me and my mom and my brother / And it's still me and my mom and my brother / If you want to join now well that's just a bummer"
+    The vulnerability proves the message is real, not performance. End the vulnerable moment with a light punchline ("bummer") to prevent it from feeling heavy or self-pitying.
+
+14. LOGIC TRAP WORDPLAY: Build a line that folds back on itself to land on the original truth.
+    Real example: "I can do all things there's nothing impossible / Other than there being something impossible" — Philippians 4:13 restated, then the only exception is also ruled out by its own logic. Nothing is impossible; the only impossible thing is for something to be impossible.
+    Use when you want to make a theological claim feel airtight without sounding preachy.
+
+15. COMPLAINT → ASPIRATION HOOK: Open the hook by listing what you're tired of (honest, relatable complaints) then flip to the aspiration that resolves them.
+    Real example: "I think I'm tired of being a nice guy / I wanna be like Christ" — the turn is the point. The complaint is real; the aspiration redefines the complaint as a calling. Being like Christ means being rejected — that's the flip. Structure: 3 "I'm tired of..." lines → "I wanna be like..." resolve.
+
+16. BOOKEND VERSE: Open and close the verse on the exact same line or challenge — the verse earns the repeat.
+    Real example: Opens with "Can somebody check the tomb and tell me if you find Him there" → entire verse is the argument → closes with "Go check the tomb"
+    The second landing of the line hits harder because of everything built in between. The challenge is now a triumph.
+
+17. RHYME-IMAGE FUSION: Pick the rhyme word BECAUSE its image carries theological weight, not just because it rhymes.
+    Real example: "I'm over the moon, sweeping the devil up, go get a broom / Lifting my hands straight up like it was noon"
+    — moon/broom/noon all rhyme AND: broom = casual dismissal of the devil, noon = the hour of the crucifixion (Matthew 27:45). The sound AND the meaning carry the point simultaneously.
+
+18. LOGIC CHAIN RHYME: Each bar in the chain completes the previous bar's logic AND continues the rhyme.
+    Real example: "Jesus is risen, so that means we winning, and we've been forgiven / I used to have chains, but I'm free from the prison / The devil thought he won, but Jesus is living"
+    — risen → winning → forgiven → prison → living. Every word rhymes AND every bar is the logical consequence of the one before it.
+
+19. RECURRING SIGNATURE PHRASES (across songs): He returns to the same lines across multiple songs — these are his theological anchors.
+    Confirmed signature lines:
+    - "I love my haters" / "I used to get in my feelings, now I get in prayer" — appears in both Song 1 and Song 3
+    - "Go check the tomb / Go check the grave" — appears in Song 1 and Song 3 as the resurrection challenge
+    When writing in his style, embed at least one of these signature phrases as an anchor.
+
 CADENCE RULES:
-- Start with short punchy bars ("Woke up this morning with breath in my lungs / Giving God my praise")
-- Build to a rhyme chain in the middle of the verse
-- Drop one run-on bar at the emotional peak
-- End with quiet gratitude or declarative truth
+- Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
+- Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
+- Song 3 (guest verse) style: tight and punchy — open with a challenge, fire 3-4 techniques in 10-12 bars, close by returning to the opening challenge (bookend)
 - Use "Huh" and "Yeah" as breath punctuation, not filler
-- Street-adjacent vocabulary but never forced — conversational faith, not church language`,
+- "What did I stutter" = emphatic callback — draw attention to the bar you just dropped
+- Street-adjacent vocabulary but never forced — conversational faith, not church language
+- Scripture quotations embedded as his own bars, never cited with chapter/verse`,
   },
   {
     id: 'jcole',
