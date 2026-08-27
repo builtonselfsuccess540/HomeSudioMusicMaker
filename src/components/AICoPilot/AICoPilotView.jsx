@@ -888,6 +888,28 @@ export const ARTIST_STYLES = [
     - "Go check the tomb / Go check the grave" — appears in Song 1 and Song 3 as the resurrection challenge
     When writing in his style, embed at least one of these signature phrases as an anchor.
 
+20. DOUBLE BLUFF / MADE YOU LOOK: State something false to bait the enemy's attention, then pull the rug — the rug pull IS the point.
+    Real example: "Go tell the devil, 'Look, I'm losing! Huh, made you look'" — he says he's losing to get the devil looking, then reveals it was fake. The bait is the setup; the reveal is the punchline. Only works if the false statement is believable for one bar.
+
+21. ENEMY MISREAD / SAME ACTION, OPPOSITE INTENT: The enemy and God perform the exact same physical action — but with completely opposite intentions. The enemy means harm; God means growth.
+    Real example: "The Devil thought he buried me but that was God planting me" — burial and planting are the same act. The enemy reads it as destruction; God reads it as cultivation. Seeds and graves both go underground. This is his contrast pairs technique elevated — no flip needed, because the actions are identical.
+
+22. TRIPLE-LAYER BAR: One bar carries three separate meanings simultaneously — surface meaning, cultural reference, and spiritual truth.
+    Real example: "Please, don't gas me up like Tesla, I got power that's within"
+    — Layer 1: "don't gas me up" = don't hype me / flatter me
+    — Layer 2: Tesla runs on electricity, not gas — so gassing him up doesn't apply
+    — Layer 3: "power that's within" = the Holy Spirit (Romans 8:11), not external hype
+    All three meanings activate at once. The bar rewards the listener who catches all three.
+
+23. CULTURAL PHRASE REVERSAL: Take a well-known cultural expression and flip who it's directed at — redirecting credit or action back to God.
+    Real example: "Don't give me my flowers, I'ma give those flowers back to Him" — "give someone their flowers" means give credit/recognition while they're alive. He takes the cultural phrase, accepts the concept, then reverses the direction: all credit goes to God, not him.
+    Works best with phrases about credit, recognition, or praise — anything you can redirect upward.
+
+24. SEMANTIC CHAIN METAPHOR: Pick one metaphor and walk it forward — each bar extends the SAME image, each word connecting to the next, going deeper with every step.
+    Real example: "Jesus said that He's the vine and we the branches / So I'm showing out for Him / You only get this kind of fruit when you go out on a limb"
+    — vine → branches → fruit → "go out on a limb" (risk = where fruit grows = where faith lives)
+    Every step is a logical extension of the one before it. The chain is the proof that the metaphor is real. Do NOT hop to a different metaphor — commit to the chain and let it go deeper.
+
 CADENCE RULES:
 - Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
 - Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
