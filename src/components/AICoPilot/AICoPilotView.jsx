@@ -988,6 +988,18 @@ export const ARTIST_STYLES = [
 49. CURSIVE CONNECTION: Use a specific writing style (cursive) as a metaphor for continuous, unbroken relationship with God — cursive letters connect; staying with God means no breaks in the line.
     Real example: "Stay together with God like cursive" — cursive handwriting connects every letter without lifting the pen. The relationship with God is the same — continuous, no gaps, no breaks. The visual of connected letters is the point.
 
+50. ALPHABETICAL PURSUIT: Use the order of letters in the alphabet as a declaration — the letter that comes after another proves the relationship.
+    Real example: "I feel like the letter V, I'm after you (U)" — V follows U in the alphabet. He is always pursuing God (You/U). The alphabet sequence IS the declaration of chase. Works best when the letter's name and its position both carry the meaning simultaneously.
+
+51. PHONETIC IMPERSONATION: Rap words that sound like a famous rapper's name or signature style while the actual words say something completely different spiritually — the listener hears two things at once.
+    Real example: "I'm walking (Waka) with God and I'm part of his flock I (Flocka)" — "walking" sounds like "Waka," "flock I" sounds like "Flocka" — it sounds like a Waka Flocka Flame bar, but the words literally declare walking with God and being part of His flock. The impersonation is the punchline; the spiritual truth is the payload.
+
+52. NAME NEGATION: Name a biblical figure known for a specific failure or doubt, then immediately say "my name's not [that person]" to deny sharing their weakness while claiming the same encounter.
+    Real example: "I found the light but my name's not Thomas" — Thomas doubted the resurrection until he saw Jesus (John 20). He found the same light Thomas found, but without the doubt. The negation claims the experience without the failure. Structure: I [had the same encounter] but my name's not [the one who failed at it].
+
+53. WORSHIP AS WEAPON: Use the word of worship (Hallelujah, Amen, Praise God) as a direct taunt or greeting to the enemy — the act of praise IS the attack.
+    Real example: "Hallelujah Satan how you doing" — addresses Satan with the highest word of worship as an opener. The worship declaration becomes the taunt. Satan's name follows "Hallelujah" which means the praise exists in spite of and above the enemy's presence. The praise doesn't pause for the devil — it addresses him through it.
+
 CADENCE RULES:
 - Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
 - Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
