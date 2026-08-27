@@ -942,11 +942,70 @@ Drop your bar:`
 
 const BAR_COUNTS = [8, 12, 16, 24, 32]
 
+const RHYTHM_STYLES = [
+  {
+    id: 'triplet',
+    label: 'Triplet Flow',
+    desc: 'Three syllables per beat pocket — rolling, tumbling forward, never landing on the obvious downbeat. Think Migos, Future.',
+    instruction: 'TRIPLET FLOW: Every beat pocket carries three syllables in a rolling da-da-DA pattern. The cadence tumbles forward relentlessly. Rhyme sounds land on the third syllable of each triplet group.',
+  },
+  {
+    id: 'doubletime',
+    label: 'Double-Time',
+    desc: 'Twice the syllable density — bars packed wall to wall, breathless and technical.',
+    instruction: 'DOUBLE-TIME: Pack twice the syllables into each bar as normal. Every beat contains 4–6 syllables. The pace is breathless. Multiple rhyme sounds per line, hitting on both strong and weak beats.',
+  },
+  {
+    id: 'boombap',
+    label: 'Boom Bap',
+    desc: 'Punchy on beats 2 and 4 — deliberate, weighted, each bar lands with authority.',
+    instruction: 'BOOM BAP: Strong emphasis on beats 2 and 4. Bars land with weight and deliberateness — each line feels like a full stop before the next. Conversational but authoritative. Think Nas, Biggie, Jay-Z.',
+  },
+  {
+    id: 'syncopated',
+    label: 'Syncopated',
+    desc: 'Key words land on the off-beat — jazz-influenced, satisfyingly unexpected.',
+    instruction: 'SYNCOPATED: Rhyme sounds and key words land on the off-beats rather than downbeats. The flow feels slightly off-kilter in a satisfying way — jazz phrasing applied to rap. Tension resolves in unexpected places.',
+  },
+  {
+    id: 'trap',
+    label: 'Trap / 808',
+    desc: 'Drawled and spacious — syllables stretched, heavy space between phrases.',
+    instruction: 'TRAP FLOW: Drawled, spacious delivery. Syllables are elongated. Intentional space between phrases — the rhythm is slow and confident, riding 808s. Key words hit hard then fade. Think Young Thug, Gunna.',
+  },
+  {
+    id: 'laidback',
+    label: 'Laid-Back',
+    desc: 'Behind the beat — arrives slightly late, effortless and unhurried.',
+    instruction: 'LAID-BACK: Every line arrives slightly late relative to the expected landing, creating a relaxed, effortless feel. Nothing is rushed. The phrasing sounds like the artist has all the time in the world. Think Kendrick\'s conversational sections.',
+  },
+  {
+    id: 'rapidfire',
+    label: 'Rapid Fire',
+    desc: 'Maximum syllables per bar — technical speed showcase, every pocket filled.',
+    instruction: 'RAPID FIRE: Maximize syllable count per bar. Every available pocket is filled. The bars are nearly impossible to deliver at normal speed. Rhyme sounds hit on multiple syllables per line — a pure technical showcase.',
+  },
+  {
+    id: 'melodic',
+    label: 'Melodic Rap',
+    desc: 'Between singing and rapping — syllable patterns suggest melody.',
+    instruction: 'MELODIC RAP: Bars float between spoken word and singing. The syllable patterns suggest melody — phrases that could be sung as easily as rapped. The rhythm has a musical lilt. Think Drake, Roddy Ricch, Juice WRLD.',
+  },
+  {
+    id: 'switch',
+    label: 'Flow Switch',
+    desc: 'Harry Mack\'s signature — the rhythm changes bar to bar, keeping the listener off-balance.',
+    instruction: 'FLOW SWITCH: Change cadence every 3–4 bars — shift from rapid-fire to laid-back, from triplet to boom bap. Vary syllable density dramatically between sections. The listener is constantly caught off-guard by the rhythm shift. This is Harry Mack\'s signature move.',
+  },
+]
+
 function WordDropModal({ onClose }) {
   const [words, setWords] = useState([])
   const [wordInput, setWordInput] = useState('')
   const [bars, setBars] = useState('')
   const [barCount, setBarCount] = useState(16)
+  const [rhythms, setRhythms] = useState(['triplet', 'boombap', 'switch'])
+  const [showRhythmDetail, setShowRhythmDetail] = useState(false)
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(false)
   const [saving, setSaving] = useState(false)
@@ -972,8 +1031,12 @@ function WordDropModal({ onClose }) {
     setBars('')
     try {
       const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+      const selectedRhythms = RHYTHM_STYLES.filter(r => rhythms.includes(r.id))
+      const rhythmBlock = selectedRhythms.length > 0
+        ? `\n\nRHYTHM INSTRUCTIONS — apply these cadence styles across the bars:\n${selectedRhythms.map(r => `- ${r.instruction}`).join('\n')}`
+        : ''
       const result = await model.generateContent(
-        `You are freestyling in the style of Harry Mack's street/public freestyles: clever wordplay, internal rhyme, punchlines built on double meanings, smooth cadence, confident delivery. You are given random crowd words. Weave ALL of them into a freestyle rap of exactly ${barCount} lines, using them roughly in order, spacing them evenly throughout, each landing as the anchor of a clever line or punchline. Transitions between words should feel natural and thematically connected. Do not use headers, intros, or explanations. Output ONLY the bars, one per line.
+        `You are freestyling in the style of Harry Mack's street/public freestyles: clever wordplay, internal rhyme, punchlines built on double meanings, confident delivery. You are given random crowd words. Weave ALL of them into a freestyle rap of exactly ${barCount} lines, using them roughly in order, spacing them evenly throughout, each landing as the anchor of a clever line or punchline. Transitions between words should feel natural and thematically connected. Do not use headers, intros, or explanations. Output ONLY the bars, one per line.${rhythmBlock}
 
 Words called out by the crowd, in order: ${words.join(', ')}`
       )
@@ -1042,6 +1105,56 @@ Words called out by the crowd, in order: ${words.join(', ')}`
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* Rhythm selector */}
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-xs font-mono text-studio-dim uppercase tracking-wider">Rhythm Style <span style={{ color: '#ffd23f' }}>({rhythms.length} active)</span></label>
+              <button
+                onClick={() => setShowRhythmDetail(v => !v)}
+                className="text-xs font-mono text-studio-dim hover:text-studio-cyan transition-colors"
+              >
+                {showRhythmDetail ? '▾ hide details' : '▸ show details'}
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {RHYTHM_STYLES.map(r => {
+                const active = rhythms.includes(r.id)
+                return (
+                  <button
+                    key={r.id}
+                    onClick={() => setRhythms(prev =>
+                      prev.includes(r.id)
+                        ? prev.length > 1 ? prev.filter(x => x !== r.id) : prev
+                        : [...prev, r.id]
+                    )}
+                    className="px-3 py-1.5 rounded-full text-xs font-mono border transition-all"
+                    style={{
+                      borderColor: active ? '#ffd23f' : '#3a3a3d',
+                      color: active ? '#ffd23f' : '#666688',
+                      background: active ? 'rgba(255,210,63,0.1)' : 'transparent',
+                    }}
+                  >
+                    {active ? '✓ ' : ''}{r.label}
+                  </button>
+                )
+              })}
+            </div>
+            {showRhythmDetail && (
+              <div className="mt-3 flex flex-col gap-2">
+                {RHYTHM_STYLES.filter(r => rhythms.includes(r.id)).map(r => (
+                  <div
+                    key={r.id}
+                    className="px-3 py-2 rounded-lg text-xs font-ui leading-5"
+                    style={{ background: 'rgba(255,210,63,0.06)', border: '1px solid rgba(255,210,63,0.2)' }}
+                  >
+                    <span className="font-semibold" style={{ color: '#ffd23f' }}>{r.label}: </span>
+                    <span className="text-studio-dim">{r.desc}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div>
