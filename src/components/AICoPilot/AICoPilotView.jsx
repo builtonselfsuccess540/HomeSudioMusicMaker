@@ -1293,12 +1293,80 @@ export function getStyleInstruction(artistId, customText) {
   return artist?.instruction || ''
 }
 
+const CYPHER_MODES = [
+  {
+    id: 'battle',
+    label: 'Battle',
+    color: '#ff2d55',
+    instruction: `BATTLE MODE — you are in a rap battle. Your bars must be sharper, more competitive, and more clever than the human's. Rules:
+- Match or exceed their syllable density — never come in soft
+- Pick one specific word or image from their bar and flip it back on them or build on it
+- End every 2-bar set with a punchline that lands with finality
+- Internal rhymes on every line minimum — at least one mid-bar rhyme hit per bar
+- Rhyme scheme: AABB — pairs of bars that rhyme with each other
+- No filler lines — every bar must advance the battle or land a point
+- The tone is confident, sharp, and a little dangerous — not angry, just undeniable`,
+  },
+  {
+    id: 'smooth',
+    label: 'Smooth',
+    color: '#00e5ff',
+    instruction: `SMOOTH MODE — laid-back, confident, effortless delivery. Rules:
+- Bars should feel like they're gliding over the beat, not attacking it
+- Use slant rhymes and multisyllabic matches — nothing forced, everything earned
+- Rhyme scheme: ABAB — alternating rhymes across 4 bars for a rolling, continuous feel
+- Include at least one double meaning per 2-bar set — the listener should catch a second layer on the rewind
+- Imagery should be vivid and specific — not abstract. Paint a scene, a feeling, a moment
+- Tone: cool, settled, unhurried — like someone who already won and doesn't need to prove it`,
+  },
+  {
+    id: 'spiritual',
+    label: 'Spiritual',
+    color: '#ffe600',
+    instruction: `SPIRITUAL MODE — faith-based bars with real conviction and zero corniness. Rules:
+- Every bar should carry a spiritual truth embedded in street or everyday language — no church-announcement phrasing
+- Biblical references are dropped without citation — the image does the work, not the chapter/verse
+- At least one contrast pair per 4-bar set: the worldly way vs. the God way, the old self vs. the new, the enemy's move vs. God's counter
+- Punchlines are theological flips — take a secular phrase and land on a spiritual truth
+- Rhyme scheme: extended monorhyme chain — ride one rhyme sound for as long as possible, 4-6 bars minimum
+- Tone: joyful aggression — this is someone who has already won and is reporting from the other side`,
+  },
+  {
+    id: 'storytelling',
+    label: 'Story',
+    color: '#00ff9d',
+    instruction: `STORYTELLING MODE — narrative bars with a clear character, scene, and arc. Rules:
+- Each 2-bar set advances a continuous story — don't reset between turns, build on the previous scene
+- Specific details make it real: name a place, a time, a smell, a sound — not vague descriptions
+- Every 4 bars should include a turn: something changes, a decision is made, something is revealed
+- Rhyme scheme: AABB couplets — clean paired rhymes that feel like chapters closing
+- No filler lines — every bar is a plot point or a character moment
+- Tone: cinematic, grounded, vivid — the listener should see the movie`,
+  },
+  {
+    id: 'freestyle',
+    label: 'Raw Freestyle',
+    color: '#b44fff',
+    instruction: `RAW FREESTYLE MODE — unfiltered, spontaneous, no rules except quality. Rules:
+- Match the exact energy and syllable density of the human's last bar
+- Lock onto any word, sound, or image from their bar and build from it — the connection should be audible
+- Rhyme scheme: whatever serves the moment — switch schemes between turns to keep it unpredictable
+- At least one wordplay or double meaning per turn
+- Internal rhymes minimum one per bar
+- No safe lines — every bar should feel like it was just discovered, not pre-written
+- Tone: alive, present, reactive — the best freestyle feels like the words are arriving just in time`,
+  },
+]
+
 function FreestyleModal({ onClose }) {
   const { profile } = useStyleProfile()
   const [bars, setBars] = useState([])
   const [userBar, setUserBar] = useState('')
   const [aiTyping, setAiTyping] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [mode, setMode] = useState('freestyle')
+  const [topic, setTopic] = useState('')
+  const [barsPerTurn, setBarsPerTurn] = useState(2)
   const bottomRef = useRef(null)
   const inputRef = useRef(null)
 
@@ -1309,6 +1377,8 @@ function FreestyleModal({ onClose }) {
   useEffect(() => {
     inputRef.current?.focus()
   }, [])
+
+  const selectedMode = CYPHER_MODES.find((m) => m.id === mode) || CYPHER_MODES[4]
 
   const handleDrop = async () => {
     const bar = userBar.trim()
@@ -1321,28 +1391,35 @@ function FreestyleModal({ onClose }) {
 
     try {
       const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
-      const sessionHistory = newBars.slice(-8).map((b) => `${b.role === 'user' ? 'Bulue' : 'AI'}: ${b.text}`).join('\n')
-      const themeNote = profile.themes.length > 0 ? `Bulue's themes: ${profile.themes.join(', ')}.` : ''
+      const sessionHistory = newBars.slice(-10).map((b) => `${b.role === 'user' ? 'Bulue' : 'AI'}: ${b.text}`).join('\n')
+      const themeNote = profile.themes.length > 0 ? `\nBulue's lyrical themes: ${profile.themes.join(', ')}.` : ''
+      const topicNote = topic.trim() ? `\nCypher topic/theme: ${topic.trim()}.` : ''
 
       const result = await model.generateContent(
-        `You are in a freestyle rap cypher with Bulue Berry. ${themeNote}
-Respond with EXACTLY ONE BAR (one line).
+        `You are in a live freestyle rap cypher with Bulue Berry.${themeNote}${topicNote}
 
-Session so far:
+${selectedMode.instruction}
+
+CYPHER SESSION SO FAR:
 ${sessionHistory}
 
-Rules for your response bar:
-- Respond TO or BUILD ON Bulue's last bar — same subject, matching energy
-- Match the syllable density and flow rhythm of the bar you're answering
-- Echo or rhyme with a word from Bulue's bar if it flows naturally
-- Sound like a real rapper, not generic or safe
-- ONE LINE ONLY — no labels, no punctuation at end, no explanation
+YOUR TASK:
+- Write EXACTLY ${barsPerTurn} bars in response to Bulue's last bar above
+- Each bar = one line of rap
+- React directly to what Bulue just said — pick up his words, his theme, or his energy
+- Apply the mode rules above precisely
+- NO labels, NO numbering, NO explanation, NO asterisks, NO quotation marks
+- Output ONLY the ${barsPerTurn} bars, one per line, nothing else
 
-Drop your bar:`
+Drop your ${barsPerTurn} bars now:`
       )
-      const aiBar = result.response.text().trim().split('\n')[0]
-        .replace(/^(AI:|Response:|Bar:)\s*/i, '').trim()
-      setBars((prev) => [...prev, { role: 'ai', text: aiBar }])
+
+      const rawLines = result.response.text().trim().split('\n')
+        .map((l) => l.replace(/^[\d\-\*\.\s"']+/, '').replace(/^(AI:|Bar\s*\d*:)\s*/i, '').trim())
+        .filter((l) => l.length > 0)
+      const aiLines = rawLines.slice(0, barsPerTurn)
+      const aiText = aiLines.join('\n')
+      setBars((prev) => [...prev, { role: 'ai', text: aiText }])
     } catch {
       setBars((prev) => [...prev, { role: 'ai', text: '(connection lost — try again)' }])
     } finally {
@@ -1351,64 +1428,117 @@ Drop your bar:`
   }
 
   const copySession = () => {
-    const text = bars.map((b) => `${b.role === 'user' ? 'YOU' : 'AI'}: ${b.text}`).join('\n')
+    const text = bars.map((b) => `${b.role === 'user' ? 'YOU' : 'AI'}:\n${b.text}`).join('\n\n')
     navigator.clipboard.writeText(text)
     setCopied(true)
     setTimeout(() => setCopied(false), 1800)
   }
 
+  const userCount = bars.filter((b) => b.role === 'user').length
+
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={onClose}>
       <div
         className="bg-studio-panel border border-studio-border rounded-2xl flex flex-col shadow-2xl"
-        style={{ width: 560, height: '80vh', borderTop: '3px solid #00e5ff' }}
+        style={{ width: 600, height: '85vh', borderTop: `3px solid ${selectedMode.color}` }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-studio-border">
-          <div>
-            <div className="font-display text-sm font-semibold text-studio-cyan">🎤 Freestyle Cypher</div>
-            <div className="text-xs text-studio-dim font-ui mt-0.5">Drop a bar — AI responds bar for bar</div>
+        <div className="px-5 pt-4 pb-3 border-b border-studio-border">
+          <div className="flex items-center justify-between mb-3">
+            <div>
+              <div className="font-display text-sm font-semibold" style={{ color: selectedMode.color }}>🎤 Freestyle Cypher</div>
+              <div className="text-xs text-studio-dim font-ui mt-0.5">
+                {userCount > 0 ? `${userCount} turn${userCount !== 1 ? 's' : ''} in` : 'Pick a mode and drop your first bar'}
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              {bars.length > 0 && (
+                <>
+                  <button onClick={copySession} className="text-xs font-mono text-studio-dim hover:text-white transition-colors">
+                    {copied ? '✓ copied' : 'copy'}
+                  </button>
+                  <button
+                    onClick={() => { setBars([]); setTopic('') }}
+                    className="text-xs font-mono text-studio-dim hover:text-red-400 transition-colors"
+                  >
+                    clear
+                  </button>
+                </>
+              )}
+              <button onClick={onClose} className="text-studio-dim hover:text-white text-lg leading-none">✕</button>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            {bars.length > 0 && (
+
+          {/* Mode chips */}
+          <div className="flex gap-1.5 flex-wrap mb-2">
+            {CYPHER_MODES.map((m) => (
               <button
-                onClick={copySession}
-                className="text-xs font-mono text-studio-dim hover:text-studio-cyan transition-colors"
+                key={m.id}
+                onClick={() => setMode(m.id)}
+                className="px-3 py-1 rounded-full text-xs font-ui font-semibold transition-all"
+                style={{
+                  background: mode === m.id ? m.color : 'transparent',
+                  border: `1px solid ${m.color}`,
+                  color: mode === m.id ? '#000' : m.color,
+                  opacity: mode === m.id ? 1 : 0.6,
+                }}
               >
-                {copied ? '✓ copied' : 'copy session'}
+                {m.label}
               </button>
-            )}
-            <button onClick={onClose} className="text-studio-dim hover:text-white text-lg leading-none">✕</button>
+            ))}
+            <div className="ml-auto flex items-center gap-1">
+              <span className="text-xs text-studio-dim font-mono">bars/turn:</span>
+              {[1, 2, 4].map((n) => (
+                <button
+                  key={n}
+                  onClick={() => setBarsPerTurn(n)}
+                  className="w-6 h-6 rounded text-xs font-mono font-bold transition-all"
+                  style={{
+                    background: barsPerTurn === n ? selectedMode.color : 'rgba(255,255,255,0.06)',
+                    color: barsPerTurn === n ? '#000' : '#888',
+                  }}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
           </div>
+
+          {/* Topic input */}
+          <input
+            type="text"
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            placeholder="Topic / theme (optional) — e.g. 'faith', 'grind', 'late nights'..."
+            className="w-full bg-studio-void border border-studio-border rounded-lg px-3 py-1.5 text-xs font-ui text-studio-text placeholder-studio-dim focus:outline-none focus:border-studio-cyan"
+          />
         </div>
 
         {/* Bars */}
         <div className="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-3">
           {bars.length === 0 && (
-            <div className="flex flex-col items-center justify-center h-full text-center gap-3 opacity-50">
+            <div className="flex flex-col items-center justify-center h-full text-center gap-3 opacity-40">
               <div className="text-4xl">🎤</div>
-              <div className="text-sm text-studio-dim font-ui">
-                Drop your first bar below to start the cypher.
-              </div>
+              <div className="text-sm text-studio-dim font-ui">Drop your first bar to start.</div>
             </div>
           )}
           {bars.map((b, i) => (
             <div key={i} className={`flex gap-3 ${b.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
               <div
-                className="w-7 h-7 rounded-full shrink-0 flex items-center justify-center font-display font-bold text-xs"
+                className="w-7 h-7 rounded-full shrink-0 flex items-center justify-center font-display font-bold text-xs mt-0.5"
                 style={{
-                  background: b.role === 'user' ? '#b44fff' : 'linear-gradient(135deg,#00e5ff,#b44fff)',
-                  color: '#fff',
+                  background: b.role === 'user' ? '#b44fff' : selectedMode.color,
+                  color: '#000',
                 }}
               >
                 {b.role === 'user' ? 'B' : 'AI'}
               </div>
               <div
-                className="max-w-[80%] rounded-xl px-4 py-2.5 font-ui text-sm leading-relaxed"
+                className="max-w-[82%] rounded-xl px-4 py-2.5 font-ui text-sm leading-relaxed whitespace-pre-line"
                 style={{
-                  background: b.role === 'user' ? 'rgba(180,79,255,0.12)' : 'rgba(0,229,255,0.07)',
-                  border: `1px solid ${b.role === 'user' ? 'rgba(180,79,255,0.3)' : 'rgba(0,229,255,0.2)'}`,
+                  background: b.role === 'user' ? 'rgba(180,79,255,0.1)' : 'rgba(0,0,0,0.25)',
+                  border: `1px solid ${b.role === 'user' ? 'rgba(180,79,255,0.25)' : 'rgba(255,255,255,0.08)'}`,
                   color: '#e0e0f0',
                 }}
               >
@@ -1420,17 +1550,11 @@ Drop your bar:`
             <div className="flex gap-3">
               <div
                 className="w-7 h-7 rounded-full flex items-center justify-center font-display font-bold text-xs text-black"
-                style={{ background: 'linear-gradient(135deg,#00e5ff,#b44fff)' }}
-              >
-                AI
-              </div>
+                style={{ background: selectedMode.color }}
+              >AI</div>
               <div className="bg-studio-surface border border-studio-border rounded-xl px-4 py-3 flex items-center gap-1.5">
                 {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    className="w-1.5 h-1.5 rounded-full bg-studio-cyan"
-                    style={{ animation: `vu-pulse 1s ease-in-out ${i * 0.2}s infinite` }}
-                  />
+                  <div key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: selectedMode.color, animation: `vu-pulse 1s ease-in-out ${i * 0.2}s infinite` }} />
                 ))}
               </div>
             </div>
@@ -1449,22 +1573,18 @@ Drop your bar:`
               onKeyDown={(e) => { if (e.key === 'Enter') handleDrop() }}
               placeholder="Drop your bar..."
               disabled={aiTyping}
-              className="flex-1 bg-studio-void border border-studio-border rounded-xl px-4 py-2.5 text-sm font-ui text-studio-text placeholder-studio-dim focus:outline-none focus:border-studio-cyan disabled:opacity-50"
+              className="flex-1 bg-studio-void border border-studio-border rounded-xl px-4 py-2.5 text-sm font-ui text-studio-text placeholder-studio-dim focus:outline-none disabled:opacity-50"
+              style={{ '--tw-ring-color': selectedMode.color }}
             />
             <button
               onClick={handleDrop}
               disabled={!userBar.trim() || aiTyping}
-              className="px-5 py-2.5 rounded-xl font-ui font-semibold text-sm text-black disabled:opacity-40"
-              style={{ background: 'linear-gradient(135deg,#00e5ff,#b44fff)' }}
+              className="px-5 py-2.5 rounded-xl font-ui font-bold text-xs text-black disabled:opacity-40"
+              style={{ background: selectedMode.color }}
             >
               Drop
             </button>
           </div>
-          {bars.length > 0 && (
-            <div className="text-xs text-studio-dim font-mono mt-2 text-center">
-              {bars.length} bar{bars.length !== 1 ? 's' : ''} traded · {bars.filter((b) => b.role === 'user').length} yours
-            </div>
-          )}
         </div>
       </div>
     </div>
