@@ -82,8 +82,8 @@ function getAnthropicClient() {
 }
 
 // Stream AI response — sends chunks back via 'ai:chunk', then 'ai:done' or 'ai:error'
-ipcMain.on('ai:stream', async (event, { messages, system, model, maxTokens, temperature }) => {
-  const requestId = Date.now().toString()
+ipcMain.on('ai:stream', async (event, { messages, system, model, maxTokens, temperature, requestId }) => {
+  if (!requestId) return
   try {
     const client = getAnthropicClient()
     const params = {
