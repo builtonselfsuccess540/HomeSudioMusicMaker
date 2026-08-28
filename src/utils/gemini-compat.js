@@ -43,9 +43,8 @@ class CompatChatSession {
           await window.electron.ai.stream(params, (chunk) => {
             fullText += chunk
           })
-          // yield the full text as a single chunk after stream completes
-          // This satisfies the caller's for-await loop
           self.messages.push({ role: 'assistant', content: fullText })
+          yield { text: () => fullText }
         })()
       }
     }
