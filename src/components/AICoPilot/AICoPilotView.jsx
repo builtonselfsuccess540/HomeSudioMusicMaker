@@ -791,7 +791,9 @@ export const ARTIST_STYLES = [
     icon: '✝',
     color: '#ffe600',
     desc: 'Biblical punchlines, internal rhyme chains, contrast pairs, self-aware humor',
-    instruction: `MIKE MALAGIES STYLE — apply every technique:
+    instruction: `MIKE MALAGIES STYLE — apply every technique. Two song sets studied; both analyses merged below.
+
+---
 
 ## 1. FLOW & CADENCE
 
@@ -968,7 +970,163 @@ No lament. Past struggles are mentioned in past tense as testimony, then moved o
 
 ---
 
-This style guide applies holistically — the theology, the humor, the confidence, and the wordplay are not separate features. They are one unified voice: the sound of someone who found something real and can't stop talking about it in the most creative ways possible.`,
+This style guide applies holistically — the theology, the humor, the confidence, and the wordplay are not separate features. They are one unified voice: the sound of someone who found something real and can't stop talking about it in the most creative ways possible.
+
+---
+
+## SECOND ANALYSIS — Additional songs ("I'ma Go Harder" set)
+
+## FLOW & CADENCE (additions)
+
+Pocket Preference: Mid-tempo, conversational pocket — largely on the beat with deliberate syncopated bursts during emphasis. Power comes from clarity and conviction, not velocity.
+
+Delivery Feel: Think spoken-word urgency with rap rhythm underneath. He talks AT you, not past you. Lines feel mid-thought — a man preaching to himself as much as to an audience.
+
+Rhythmic Quirk: He uses interjections mid-bar as beat-filler and emphasis tools — (Oof) is the clearest example. These aren't filler; they're personality anchors that make delivery feel human and unscripted.
+
+Dense run example: "God's got a, (Oof), plan for me, they can't handle me, God's hand on me / They can't stand the way I stand for God and how He stands with me" — syllables cascade rapidly before landing on the anchor rhyme.
+Sparse single-shot example: "But instead, I'ma pray" — four syllables dropped as a full stop after a dense setup. The sparseness IS the punchline.
+
+Cadence Rule: Build a dense 4-8 syllable cluster, then land a 3-5 syllable conclusion as the payoff. Never let long bars run without a short declarative following close behind.
+
+---
+
+## RHYME SCHEMES (additions)
+
+Chain Rhyme — the "-me" family:
+"plan for me / handle me / hand on me / stand for God / stands with me / praying for me / stands with me" — the "-me" sound recurs across 6+ consecutive lines. Once a sound family is established, milk it deliberately.
+
+Double-Locked Bar: "I don't curse in the verse, I don't cap when I rap"
+- "curse/verse" = internal multisyllabic rhyme
+- "cap/rap" = end rhyme on the same line
+Both pairs land in the same bar. This is a signature construction.
+
+Rhyme Scheme Template: Verse 1 — AABB with embedded internal rhyme, transitioning into AAAA chain during momentum-building passages. Verse 2 — extended monorhyme run then pivot to new sound family in the outro section.
+
+Rule: Never use a naked end rhyme with nothing inside the bar. Every line should have at least one internal sound echo — rhyming pair, assonance, or consonance cluster — even if subtle.
+
+---
+
+## WORDPLAY & DOUBLE MEANINGS (additions)
+
+Example — "You can't in Hell like an asthma attack"
+- Surface: You cannot find me in Hell.
+- Double layer: "Can't in Hell" sounds like "can't inhale" — an asthma attack is when you can't inhale. Hell = suffocation = inability to breathe. Works visually on paper AND aurally.
+- Technique: Homophonic wordplay where a phrase sounds like another phrase with a thematically related meaning.
+
+Example — "Satan be lying but he not Mufasa 'cause Jesus the Lion and the King"
+- Surface: Satan lies, Jesus is the real king.
+- Double layer: Mufasa = Lion King (pop culture). Jesus = Lion of Judah (Revelation 5:5). The secular reference and the biblical reference ARE the same word, colliding simultaneously.
+- Technique: Pop culture reference that accidentally IS the theological reference — two lanes, one image.
+
+Example — "RIP, I put my flesh in the grave"
+- RIP as triumph, not grief. The secular grief phrase becomes a spiritual victory cry over the old self.
+- Technique: Recontextualization — taking a culturally negative phrase and flipping its emotional valence through theological framing.
+
+---
+
+## PUNCHLINE STRUCTURE (additions)
+
+Misdirection into Contrast:
+Setup: "I really ain't scared of nothin' 'cause what you gon' do to me?"
+Payoff: "Send me to Heaven? Okay"
+The setup sounds like street bravado. The payoff is theological. Misdirect the secular listener, then land the faith statement.
+
+Logical Inversion:
+"The reason God's publicly blessing me is 'cause I do things in private that no one can see"
+Public result is the setup; private obedience is the payoff. He inverts the expected order — bragging about private discipline as the source of public blessing. Rewards listeners who know Matthew 6:6.
+
+Self-Aware Callback:
+"I'ma go harder, came a long way but I'ma go farther" — "harder" is both the hook AND a spiritual declaration. Hook and verse feel like one continuous thought.
+
+---
+
+## SPIRITUAL/BIBLICAL REFERENCES (additions)
+
+- Lazarus ("the same God that brought Lazarus back is living in me") — John 11. God of miracles is personally active NOW.
+- Elohim ("I know I'm not him but I know Elohim") — Hebrew name for God. Signals theological literacy beyond surface Christianity.
+- Jesus interceding ("Jesus is interceding and He praying for me") — Romans 8:34, Hebrews 7:25. Jesus as active, present-tense intercessor.
+- Guarding the heart ("I don't follow my heart, I guard it") — Proverbs 4:23. Counter-cultural flex against pop culture "follow your heart" narrative.
+- Boasting in the Lord ("I boast in the Lord, I brag about that") — 1 Corinthians 1:31. Scripture quoted directly as a rap flex.
+- Private obedience/public blessing ("I do things in private that no one can see") — Matthew 6:1-6. Sermon on the Mount embedded as a boast.
+
+Integration Style: Never footnoted or explained. Dropped with the same confidence as any other lyrical detail. Theological literacy in the listener is assumed.
+
+---
+
+## CONTRAST PAIRS (additions)
+
+| Left (Old/Enemy/Weakness) | Right (New/God/Victory) |
+|---|---|
+| Stressing | Praying |
+| Following my heart | Guarding my heart |
+| Satan lying | Jesus interceding |
+| Mufasa (false king) | Jesus (true Lion and King) |
+| Alcohol | The Spirit living in me |
+| Public boasting (self) | Private obedience (God) |
+| Hard (life's difficulty) | Harder (his response) |
+
+Contrast pairs are rarely stated as simple "but" statements. One side is often implied; the contrast lands as a realization. Example: "Life gets hard but I'ma go harder" — contrast embedded in the same word with a suffix carrying all the meaning.
+
+---
+
+## VOCABULARY & SIGNATURE PHRASES (additions)
+
+- "I'ma go harder" — never just "I'm working hard" — always the comparative harder, implying a standard being exceeded.
+- "Came a long way but I'ma go farther" — spatial metaphor (came/go, long/far) applied to spiritual growth.
+- "God's hand on me" — divine favor as physical contact/protection. Plain language, high theological content.
+- "I know I'm not him but I know Elohim" — humility/divine knowledge pairing. Denies being extraordinary while claiming access to the extraordinary.
+- "Meet you right where you're at" — pastoral register dropped mid-rap. Briefly soft and accessible before returning to confidence.
+
+Vocabulary Profile:
+- Predominantly everyday American English — no heavy slang, no regional dialect markers.
+- Theological terms inserted without warning: Elohim, interceding, confess and repent, boast in the Lord.
+- Comparative adjectives dominate: harder, farther, different, wider — always measuring growth against a previous state.
+- Present-tense dominance — creates immediacy and testimony feel over past-tense storytelling.
+
+What He Does NOT Say: No "on God" as filler slang (he keeps God's name meaningful, not casual). No "it's crazy." No abstract vague spirituality. No self-deprecation beyond acknowledging room for growth.
+
+---
+
+## HOOK CONSTRUCTION (additions)
+
+Bridge Breakdown — "I'ma Go Harder":
+(Harder, I'ma go, I'ma go harder)
+(I'ma go, I'ma go harder)
+(I gotta go harder)
+
+- Anchor phrase: "harder" — one word, the thesis of the entire song
+- Lead-in variation: "I'ma go / I gotta go" — subtle shift signals escalating urgency/necessity
+- Rhythmic repetition: double "I'ma go, I'ma go" before the anchor = wind-up punch
+- No melodic complexity required — works spoken/rapped with pure vocal conviction
+
+Stickiness Mechanism: "harder" answers the implicit question the verse asks: "What do you do when life gets hard?" The hook IS the thesis. Each return re-answers with increased conviction.
+
+---
+
+## EMOTIONAL TONE (additions)
+
+Humility and Confidence Coexist — this oscillation is a rhythmic feature, not a contradiction:
+- Humble: "I'm still not the person I know I could be"
+- Humble: "I know I'm not him"
+- Confident: "I haven't met someone who go hard as me"
+- The humble-then-bold pattern is structural.
+
+Tone Descriptors:
+- Settled — never anxious, never seeking approval
+- Testimonial — speaks from lived experience, not theory
+- Confrontational toward the enemy — direct, almost combative toward Satan
+- Pastoral toward the listener — gentles when addressing someone who might not know God yet
+- Competitive but redirected — competitive energy fully redirected toward spiritual discipline and artistic output
+
+"Fine with that" ("Send me to Heaven? Okay / Okay I'm fine with that") — casual acceptance of martyrdom signals a depth of peace that can't be performed. It has to be believed.
+
+---
+
+## FOUR-WORD TEST (summary fingerprint)
+
+If a line is: Specific. Theological. Confident. Plain. — it belongs in a Mike Malagies song.
+If it is vague, secular-flexing, emotionally unstable, or overly poetic without practical spiritual content — cut it.`,
 
   },
   {
