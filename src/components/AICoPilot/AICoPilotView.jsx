@@ -791,291 +791,185 @@ export const ARTIST_STYLES = [
     icon: '✝',
     color: '#ffe600',
     desc: 'Biblical punchlines, internal rhyme chains, contrast pairs, self-aware humor',
-    instruction: `MIKE MALAGIES STYLE — studied from real lyrics. Apply every technique:
-
-1. INTERNAL RHYME CHAINS: Lock onto one rhyme sound and stack 6-10+ words on it mid-verse.
-   Real example: "digits / critics / opinions / business / sickness / witness / different / live it / get it" — all on the same "-it" sound across 9 bars. This is his signature. Build at least one chain per verse.
-
-2. DOUBLE-MEANING PUNCHLINES: One phrase, two interpretations — spiritual and literal.
-   Real examples:
-   - "God blessed me and I didn't even sneeze" — blessed = God's favor AND "bless you" after a sneeze
-   - "If Satan starts bumping my music in hell, then I guess that's the one time a demon could play me" — play music AND trick/deceive
-   - "I feel like a verb" — about that action (verb = action word, self-referential)
-   Always set up naturally, let the second meaning land on its own.
-
-3. CULTURAL REFERENCES AS SPIRITUAL PROOF: Drop a pop culture name to carry the spiritual point.
-   Real examples:
-   - "Shooting my shot like Caitlin Clark" — faith as precision, commitment to the goal
-   - "that letter right next to the K" — the letter L (devil takes the L/loss)
-   Build the reference so it works even if you don't know the reference.
-
-4. RESURRECTION ARGUMENT: Use the empty tomb as the theological knockout.
-   Real example: "Buddha, Muhammad, and all of 'em all in a tomb, where is Jesus? Go check in the grave" — names the other religions then pulls the contrast. Use comparison → empty claim as structure for spiritual proof bars.
-
-5. CONTRAST PAIRS (before/after, problem/flip):
-   Real examples:
-   - "I used to have critics, but now it's just crickets" — the rhyme IS the contrast
-   - "I prayed for strength and it came with the stress / But pressure makes diamonds and pain makes success"
-   - "I don't complain anymore because I know I'd be on a cross if life was fair"
-   Every contrast should surprise — not just negative/positive but a specific unexpected angle.
-
-6. BIBLICAL NAME-DROPS WITH ACTION:
-   Real examples:
-   - "I pray like I'm Daniel, I fight like I'm David" — name + specific action, not just the name
-   - "feeling like Noah, let's make this ark"
-   - "Can't even put into words, He gon' provide for me, look at the birds" — Matthew 6, birds of the air
-   Never drop a biblical name without a specific parallel action or image.
-
-7. SELF-AWARE HUMOR: Break the 4th wall mid-verse, then get right back to the point.
-   Real examples:
-   - "Wait, who that white kid from the 'burbs? I'm 'bout that action, I feel like a verb"
-   - "My life turned around, that's a Jesus one-eighty"
-   - Literally writes "Hahaha" in the bar after a punchline
-   The humor never undermines the message — it makes the listener trust the messenger.
-
-8. RUN-ON BARS FOR EMOTIONAL PEAK: One intentionally long breathless bar when the feeling is too big.
-   Real example: "If I start talking about all the things God has done for me, I won't be able to stop / If I start thinking 'bout how much He loves me, I don't think I'll even be able to talk"
-   Use this once per verse at the emotional peak. Don't repeat it.
-
-9. RHETORICAL CHALLENGE → OWN ANSWER:
-   Real example: "Huh, what you gon' say to me? / Tell me I'm worthless, alright, that's okay with me / That's not what Jesus thought when He was saving me / That's not what God thought when He was creating me"
-   Invite the attack, then deflect it with theological counter. Always end on God's position, not the hater's.
-
-10. TRIPLE REPETITION FOR CONVICTION: Repeat a short phrase exactly 3 times in a row.
-    Real example: "Tell him God's my strength / Tell him God's my strength / Tell him God's my strength"
-    Use this for anchor phrases only — the thing the whole verse is proving. Don't dilute it.
-
-11. EVERYDAY OBJECT AS THEOLOGICAL PROOF: Take a mundane, commercial object and use it to make the spiritual point feel obvious.
-    Real examples:
-    - "I never seen a hearse with a U-HAUL" — you can't take wealth to the grave; the visual makes the theology instant
-    - "Jesus paid it all like it's a shopping spree" — atonement described in commercial terms; the contrast (sacred/mundane) IS the punch
-    - "Kicking demons like I play on a soccer team" — the casualness signals total confidence, not effort
-    Rule: pick the most specific, unexpected object. The more ordinary, the harder the theological point lands.
-
-12. SCRIPTURE-AS-BAR: Embed a scripture reference so naturally it sounds like his own line — no citation, just the truth.
-    Real examples:
-    - "I could gain the world what would it profit me" — Matthew 16:26 as a bar, not a quote
-    - "Go read Jeremiah" — mic drop pointing to scripture instead of explaining it
-    - "I'd rather lose money and fame and my followers / Then to hear Jesus say I never knew you" — Matthew 7:23 as the stakes
-    Never say "the Bible says." Just say the truth as if it's yours. Let anyone who knows, know.
-
-13. PERSONAL VULNERABILITY ANCHOR: After the bravado, drop one raw personal moment to ground everything.
-    Real example: "Before the fame before the numbers / It was just me and my mom and my brother / And it's still me and my mom and my brother / If you want to join now well that's just a bummer"
-    The vulnerability proves the message is real, not performance. End the vulnerable moment with a light punchline ("bummer") to prevent it from feeling heavy or self-pitying.
-
-14. LOGIC TRAP WORDPLAY: Build a line that folds back on itself to land on the original truth.
-    Real example: "I can do all things there's nothing impossible / Other than there being something impossible" — Philippians 4:13 restated, then the only exception is also ruled out by its own logic. Nothing is impossible; the only impossible thing is for something to be impossible.
-    Use when you want to make a theological claim feel airtight without sounding preachy.
-
-15. COMPLAINT → ASPIRATION HOOK: Open the hook by listing what you're tired of (honest, relatable complaints) then flip to the aspiration that resolves them.
-    Real example: "I think I'm tired of being a nice guy / I wanna be like Christ" — the turn is the point. The complaint is real; the aspiration redefines the complaint as a calling. Being like Christ means being rejected — that's the flip. Structure: 3 "I'm tired of..." lines → "I wanna be like..." resolve.
-
-16. BOOKEND VERSE: Open and close the verse on the exact same line or challenge — the verse earns the repeat.
-    Real example: Opens with "Can somebody check the tomb and tell me if you find Him there" → entire verse is the argument → closes with "Go check the tomb"
-    The second landing of the line hits harder because of everything built in between. The challenge is now a triumph.
-
-17. RHYME-IMAGE FUSION: Pick the rhyme word BECAUSE its image carries theological weight, not just because it rhymes.
-    Real example: "I'm over the moon, sweeping the devil up, go get a broom / Lifting my hands straight up like it was noon"
-    — moon/broom/noon all rhyme AND: broom = casual dismissal of the devil, noon = the hour of the crucifixion (Matthew 27:45). The sound AND the meaning carry the point simultaneously.
-
-18. LOGIC CHAIN RHYME: Each bar in the chain completes the previous bar's logic AND continues the rhyme.
-    Real example: "Jesus is risen, so that means we winning, and we've been forgiven / I used to have chains, but I'm free from the prison / The devil thought he won, but Jesus is living"
-    — risen → winning → forgiven → prison → living. Every word rhymes AND every bar is the logical consequence of the one before it.
-
-19. RECURRING SIGNATURE PHRASES (across songs): He returns to the same lines across multiple songs — these are his theological anchors.
-    Confirmed signature lines:
-    - "I love my haters" / "I used to get in my feelings, now I get in prayer" — appears in both Song 1 and Song 3
-    - "Go check the tomb / Go check the grave" — appears in Song 1 and Song 3 as the resurrection challenge
-    When writing in his style, embed at least one of these signature phrases as an anchor.
+    instruction: `MIKE MALAGIES STYLE — apply every technique:
 
-20. DOUBLE BLUFF / MADE YOU LOOK: State something false to bait the enemy's attention, then pull the rug — the rug pull IS the point.
-    Real example: "Go tell the devil, 'Look, I'm losing! Huh, made you look'" — he says he's losing to get the devil looking, then reveals it was fake. The bait is the setup; the reveal is the punchline. Only works if the false statement is believable for one bar.
+## 1. FLOW & CADENCE
 
-21. ENEMY MISREAD / SAME ACTION, OPPOSITE INTENT: The enemy and God perform the exact same physical action — but with completely opposite intentions. The enemy means harm; God means growth.
-    Real example: "The Devil thought he buried me but that was God planting me" — burial and planting are the same act. The enemy reads it as destruction; God reads it as cultivation. Seeds and graves both go underground. This is his contrast pairs technique elevated — no flip needed, because the actions are identical.
+Pocket Preference: Malagies rides slightly on top of the beat — punchy and forward-leaning, not laid-back. Every word is enunciated — preacher's clarity married to a rapper's rhythm.
 
-22. TRIPLE-LAYER BAR: One bar carries three separate meanings simultaneously — surface meaning, cultural reference, and spiritual truth.
-    Real example: "Please, don't gas me up like Tesla, I got power that's within"
-    — Layer 1: "don't gas me up" = don't hype me / flatter me
-    — Layer 2: Tesla runs on electricity, not gas — so gassing him up doesn't apply
-    — Layer 3: "power that's within" = the Holy Spirit (Romans 8:11), not external hype
-    All three meanings activate at once. The bar rewards the listener who catches all three.
+Bar Density: Medium-to-high. He stacks syllables efficiently but never sacrifices clarity for speed.
 
-23. CULTURAL PHRASE REVERSAL: Take a well-known cultural expression and flip who it's directed at — redirecting credit or action back to God.
-    Real example: "Don't give me my flowers, I'ma give those flowers back to Him" — "give someone their flowers" means give credit/recognition while they're alive. He takes the cultural phrase, accepts the concept, then reverses the direction: all credit goes to God, not him.
-    Works best with phrases about credit, recognition, or praise — anything you can redirect upward.
+Two distinct modes within the same song:
+- DECLARATIVE MODE: Short punchy statements land on downbeats. "That's it / Yeah that's all I see" — clipped, almost conversational, with deliberate pauses that function like periods.
+- CHOP MODE: Longer runs of consistently syllabled lines where rhymes land with metronomic regularity — e.g. "Nothing / discussion / lusting / seductive / hush him / grudges / cussing / construction / Gumpin / crutches" — machine-gun rhythm, every line equal in syllable weight.
 
-24. SEMANTIC CHAIN METAPHOR: Pick one metaphor and walk it forward — each bar extends the SAME image, each word connecting to the next, going deeper with every step.
-    Real example: "Jesus said that He's the vine and we the branches / So I'm showing out for Him / You only get this kind of fruit when you go out on a limb"
-    — vine → branches → fruit → "go out on a limb" (risk = where fruit grows = where faith lives)
-    Every step is a logical extension of the one before it. The chain is the proof that the metaphor is real. Do NOT hop to a different metaphor — commit to the chain and let it go deeper.
+Stutter-Stop Technique: A run of dense bars followed by a one-to-three word hard stop ("That's it." / "Nothing." / "Tic tac toe."). These stops are rhetorical hammers — they drive the point home and give the listener a moment to absorb.
 
-25. METAPHOR ECOSYSTEM: Instead of one semantic chain, build an entire vocabulary domain and mine it for 6-8 bars — every word in that domain hits a spiritual double meaning simultaneously.
-    Real example ("I Follow Jesus"): "God took my problems and made 'em all hit the gym / the way He made 'em all work out / Jesus resurrected me, that's a dead-lift / I just raised the bar again like a bench press / I'll never go under like anesthetics / They said I'm grinding too much / I said you not my dentist"
-    — work out / dead-lift / raised the bar / bench press / go under / grinding — every gym term doubles as spiritual truth. More powerful than a single chain because there are multiple entry points. Choose a domain rich enough to sustain 6+ bars.
+Length Variation: Lines range from 2 syllables ("That's it") to 12+ syllables in chop sections. The short line always hits harder because of what came before it.
 
-26. SCRIPTURE-AS-LOGICAL-IMPOSSIBILITY: Use one of God's own attributes from scripture to make a fear or failure state logically impossible.
-    Real example: "All consuming fire, how could I burn out?" — Hebrews 12:29 says God is an all-consuming fire. If God IS fire and you're on fire for God, burning out is a logical contradiction. The scripture doesn't just comfort — it makes the fear impossible by definition.
-    Structure: God is [attribute from scripture] → therefore [feared state] cannot logically exist.
+---
 
-27. ENEMY EQUIVALENCE: Group human haters and the devil as sharing the same problem — both confused by the same person, both losing to the same God.
-    Real example: "My haters and Lucifer share the same struggle / They both don't know what they gon' do with the kid"
-    — levels up the haters (they're in the devil's company) and levels down the devil (he's no scarier than an internet hater). Both equally confused, both equally losing.
+## 2. RHYME SCHEMES
 
-28. IDIOM EXTENSION: Take a common failure idiom, accept it at face value for one bar, then extend it into a full narrative where Jesus recovers.
-    Real example ("Finally Found"): "I dropped the ball, Jesus picked up the ball and then we won the game" — owns the failure first ("dropped the ball"), then extends the sports metaphor: Jesus recovers the fumble and they win together. The failure becomes the setup for the miracle. Don't skip or deny the failure — own it, then let Jesus extend it.
+Dominant: End Rhyme Chains (Monorhyme Runs). Commit to a single rhyme sound and ride it for as many consecutive bars as possible. "Nothing / discussion / lusting / seductive / hush him / grudges / cussing / construction / Gumpin / crutches" — roughly ten consecutive lines on one vowel-core family. This creates hypnotic rolling momentum.
 
-29. HUSTLE PHRASE FLIP: Take a common secular hustle expression and give it new meaning through faith — the phrase stays the same, the spiritual context rewrites it.
-    Real example: "I'll sleep when I die / But He keeps me alive" — normally a hustle phrase meaning sacrifice rest for success. Here: death is literally rest (eternal peace), and God keeps him active now. The flip happens silently — no explanation. The context rewrites the phrase.
+Secondary: Multisyllabic End Rhymes. "mind of Christ / kind of wife / friday night / behind the mic / Iron Mike / price ain't right / dynamite / a light / line of sight / Messiah Christ" — the rhyme is two or three syllables deep, not just the final syllable.
 
-30. PREEMPTIVE OPPOSITION: Predict future cancellation or opposition in advance and frame it as confirmation that you're currently speaking truth. The anticipation itself is the badge.
-    Real example: "One day they gon' cancel Mike / I mean I speak too much truth" — calls the cancellation before it happens. Anyone willing to be canceled for truth has nothing to hide. Keep it brief — one or two bars, then move on.
+Slant Rhymes: Used sparingly and intentionally. Varying syllable lengths before the shared sound keep it from feeling repetitive.
 
-31. SPELLING AS THEOLOGY: Use the literal letters or spelling of a word to prove the theological point — the word itself becomes the evidence.
-    Real example: "Jesus on me, look at how it's spelt, there's only one U" — "Jesus" contains one letter U; "there's only one You" = Jesus is the only one. The spelling of His name IS the declaration. Works best when the letter or letter arrangement mirrors the theological truth exactly.
+Chain Rhyme Rule: When Malagies enters a monorhyme chain, he does not break it until he has something rhetorical to say with the break. The chain ending always coincides with a punchline or declarative stop — rhyme scheme and rhetoric work together.
 
-32. RAPID BIBLICAL CHARACTER CHAIN: Stack 4+ biblical figures in 4+ consecutive bars, each one mapping a specific story to his current situation — rapid-fire, no repetition, no explanation needed.
-    Real example: "I feel like Noah in the boat / favour from my Father like I'm Joseph in the coat / Satan, let my people go, I feel like Moses with the quote / God's a living well, I'm living well, like I'm Jonah off the boat" — Noah (faith through chaos), Joseph (favor despite betrayal), Moses (authority over the enemy), Jonah (second chance after failure). Each reference is complete in one bar. The chain proves the biblical pattern is real and recurring.
+---
 
-33. HOMOPHONE DOUBLE: Use a word whose sound is shared by two words — one spiritual, one physical — and let both meanings activate simultaneously without explaining either.
-    Real example: "All I am is a reflection of a Son like I'm the moon" — "Son" (Jesus, the Son of God) and "sun" (the physical sun the moon reflects) are the same sound. The moon reflects the sun's light; he reflects the Son's glory. Both meanings are live at the same time. Never explain the double — just let it land.
+## 3. WORDPLAY & DOUBLE MEANINGS
 
-34. SACRED/MUNDANE COLLISION: Drop the most casual, specific pop culture reference imaginable into the most sacred theological moment — the contrast between the depth of the subject and the lightness of the reference IS the technique.
-    Real example: "They put holes in His feet, but no, He was not wearing some Crocs" — the crucifixion is the most sacred moment in Christian theology; Crocs (the shoe brand known for holes) is the most mundane possible reference. The collision makes the listener laugh then immediately feel the weight of what was just said. Works only when the sacred subject is solid enough that the humor can't undermine it.
+This is his strongest skill. Every key bar has a secular reading and a spiritual reading — both fully valid, both intentional.
 
-35. COLOR BAR: Build one bar where multiple colors each carry a different theological meaning simultaneously.
-    Real example: "Jesus turned my sin from red to white and Satan's turning blue" — red = sin (Isaiah 1:18 "though your sins be as scarlet"), white = forgiveness ("they shall be as white as snow"), blue = Satan losing/going cold. Three colors, one bar, three theological truths at once. The bar reads like a spectrum that tells the entire redemption story.
+Example 1: "If I blow up it's cause I got holy spirit dynamite"
+- Secular: become famous because of explosive energy
+- Spiritual: Holy Spirit = dunamis (Greek for power, etymological root of "dynamite") — Acts 1:8 precision dressed in pop-culture language
 
-36. ONE-LETTER TRANSFORMATION: Find two words that differ by exactly one letter — the one letter IS the entire transformation.
-    Real example: "Left the world for the Word" — world → Word, one letter removed. He traded "the world" (worldly life) for "the Word" (scripture/Jesus). The subtraction of one letter encodes the entire spiritual journey. Build the bar around the moment of transformation — don't explain it.
+Example 2: "Satan told me 'come on down' but I told him the price ain't right"
+- Secular: The Price Is Right game show — Satan is a bad host
+- Spiritual: Satan's temptation of Christ (Matthew 4) reframed as a failed game show pitch he can never win
 
-37. FOOTBALL PLAY DIAGRAM: Lay out a complete sports play sequence — snap count, handoff, running — as a diagram of the spiritual battle, position by position.
-    Real example: "God's the center hut one hut two / Toss it back then hand it off / Satan running back but I'm running through" — God is the center (the one who snaps the ball = the source), hut one hut two (the count = obedience), the handoff (receiving from God), Satan as running back (trying to stop the play) vs. running through (breaking the tackle). The entire play is the theology. Works only when every position in the play has a spiritual parallel.
+Example 3: "I'm receiving Jesus love he sent me X and O / Crossing out my demons like it's tic tac toe"
+- X and O = hugs and kisses (love) AND crossing out (warfare) AND game board positions
+- Three meanings layered in two bars; both resolve simultaneously
 
-38. PLOT TWIST BAR: Use narrative terminology against the enemy — their "plot" (scheme) becomes the setup for Jesus's "plot twist" (redemption story).
-    Real example: "Satan plotting on me / Jesus made the plot twist" — plot = scheme (Satan's plan against him) AND plot = story structure (the narrative arc of his life). Plot twist = unexpected story turn AND the twist being that Satan loses. The same words operate in two entirely different registers at once.
+Example 4: "I hold mics I don't hold grudges"
+- What he grips = the mic (ministry). What he releases = bitterness. One line, complete spiritual autobiography.
 
-39. OPPOSITION AS EVIDENCE: The presence of spiritual opposition proves you're on the right side — and the ABSENCE of it proves you're on the wrong side.
-    Real example: "If you don't run into Satan does that mean you running with him" — reframes the logic. If the enemy isn't bothering you, you're not threatening him. Opposition is confirmation, not a problem. One bar, no explanation.
+Example 5: "They try to stop me I draw a foul / Then I shoot my shot and I knock it down"
+- Secular: basketball — drawing a foul and making the free throw
+- Spiritual: prayer as shooting your shot, God answering as knocking it down
 
-40. PROPHETS MIC DROP: Set up a "flip" (hustle term for turning a profit), reveal that the flip is actually flipping Bible pages, then list the prophets one by one as the punchline.
-    Real example: "People think I'm doing this to flip a profit / But I'm in the Bible and I'm flipping to the Prophets / Let me flip this quick / Isaiah / Jeremiah / Daniel / Ezekiel" — the reveal is that the hustle IS the scripture study. Listing the names one by one is the delivery — each name is its own bar, landing like a countdown.
+The Double Meaning Construction Rule: Never explain the double meaning. Both lanes run simultaneously. The listener's biblical knowledge determines which lane they catch — catching both is the reward.
 
-41. MUSICAL SCALE WORDPLAY: Use the do-re-mi musical scale as a bar — cut it off before "mi" (me) to encode humility in the music notation itself.
-    Real example: "I don't even wanna sing about me, like do re" — he reaches "do re" and stops before "mi" because "mi" = "me." The musical scale structure encodes the theological point: he refuses to sing about himself. The listener has to hear the gap to feel the meaning.
+---
 
-42. TRAP BECOMES TRAPPER'S GRAVE: The enemy's weapon, plan, or trap becomes the instrument of their own destruction — the same hole they dug becomes their grave.
-    Real example: "Jesus beat the grave and made the devil dig his own grave" — the devil orchestrated the crucifixion (the grave for Jesus) but it became the devil's own defeat (his own grave). What the enemy digs against you, they fall into. The reversal is complete and ironic.
+## 4. PUNCHLINE STRUCTURE
 
-43. PERSONAL DETAIL → SCRIPTURE PIVOT: Set up a bar with a mundane personal fact or preference, then pivot to a scripture that uses the exact same key word — the personal detail is the setup, the scripture is the punchline.
-    Real example: "You know that I'm gluten-free, so I don't know how pizza tastes / But I taste and see the Lord is good, and I receive His grace" — gluten-free → can't taste pizza → Psalm 34:8 ("taste and see that the Lord is good"). The dietary restriction sets up the scripture's use of the word "taste." The sillier the personal detail, the harder the scripture lands.
+Setup-to-Payoff Distance: Usually one to two bars. Tight and decisive — rapid one-two combinations, not four-bar narratives.
 
-44. WORD HIDDEN INSIDE WORD: Find a loaded word physically embedded inside another word — the hidden word becomes the theological truth about the outer word.
-    Real examples: "Only time you'll see me in Hell / Is right before I exhale" — "hell" is literally inside "exhale" (ex-HELL). "Never gon' perish / Like where the Eiffel stay" — "Eiffel" is in "Paris" (Par-IS / per-ISH); the city name hides the word "perish." The technique requires finding words where a dangerous or sacred word is buried inside an ordinary one, and building the bar so the listener discovers the hidden word.
+Primary Technique — Contrast/Subversion: Set up an expected phrase or cultural reference, then subvert it with a spiritual application. Price Is Right is the model: "come on down" → theological rebuke delivered in the show's own language.
 
-45. NAME EMBEDDED AS THEOLOGY: Use a celebrity's actual name because the NAME ITSELF contains God's title or a theological reference — not the person, but the letters.
-    Real example: "I just wanna lift my hands and scream and shout like will.i.am" — will.i.am = "will I am" = "I AM" is God's name given to Moses in Exodus 3:14 ("I AM WHO I AM"). The rapper's name contains the divine name. The reference works on surface level (will.i.am = energy/performance) and theological level (shouting the name of I AM). Different from cultural references (tech 3) — the theology is encoded in the name's spelling itself.
+Secondary Technique — Callback Completion: Plant something early, resolve it later. "X and O" → "tic tac toe" is a within-verse callback that spans two bars. The listener doesn't see the full structure until the second bar lands.
 
-46. SPONTANEOUS BREAK: Drop out of rap completely for 1-3 lines and speak directly, pastorally, to the listener — no rhyme, no flow, just truth.
-    Real example: "Just because you don't hear God doesn't mean that He doesn't hear you / Just because you don't feel His presence doesn't mean that He's not with you" — it's labeled "Spontaneous" in the lyrics. The rap stops. Everything pauses. He speaks directly. This is his most vulnerable moment in any song and works because the entire verse earns it. Use once per song, only when the bar would carry more weight spoken than rapped.
+Tertiary Technique — Escalation Then Hard Stop: Build a rhythmic chain, then deliver the punchline as a sudden brake. "Satan running forrest gumpin / Imma walk it out like crutches / Imma walk it out" — Forrest Gump primes running/walking contrast, crutch line reframes the walk as labored but unstoppable. Hard stop seals it.
 
-47. DOUBT-TO-DECLARATION BRIDGE: Open the bridge with raw, unresolved spiritual doubt — no answer yet — then let the declaration or divine response follow.
-    Real example: "Some days I don't feel like it / Some days I wonder should I quit / Some days I wonder where time went / Some days I wonder where God been" — four consecutive bars of honest doubt with no resolution. Then the Spontaneous Break answers. The doubt makes the declaration credible. If you skip the doubt, the declaration sounds like performance. Four "some days" bars is the pattern — the repetition of uncertainty is what makes the arrival of certainty land.
+Punchline Tone: Never mean-spirited toward people. Punchlines are aimed at Satan, doubt, and spiritual defeat — never at other artists or people. This is non-negotiable.
 
-48. ETYMOLOGY BAR: Find two related words where one is literally contained in the other — then use the word relationship as the theological proof.
-    Real example: "Test after test but I passed 'em all / Now I call that testimony" — "test" is the root of "testimony." You can only give testimony about what you were tested in. The word etymology proves the theology — the experience IS already inside the word. Different from Word Hidden Inside Word (tech 44), which is about phonetics; this is about meaning and word roots.
+---
 
-49. CURSIVE CONNECTION: Use a specific writing style (cursive) as a metaphor for continuous, unbroken relationship with God — cursive letters connect; staying with God means no breaks in the line.
-    Real example: "Stay together with God like cursive" — cursive handwriting connects every letter without lifting the pen. The relationship with God is the same — continuous, no gaps, no breaks. The visual of connected letters is the point.
+## 5. SPIRITUAL/BIBLICAL REFERENCES
 
-50. ALPHABETICAL PURSUIT: Use the order of letters in the alphabet as a declaration — the letter that comes after another proves the relationship.
-    Real example: "I feel like the letter V, I'm after you (U)" — V follows U in the alphabet. He is always pursuing God (You/U). The alphabet sequence IS the declaration of chase. Works best when the letter's name and its position both carry the meaning simultaneously.
+Satan is always an active, speaking, losing character. He speaks ("come on down"), he runs (Forrest Gump), he watches nervously ("got demons nervous they watching now"). Making Satan present but defeated creates narrative tension in every verse without requiring a traditional rap conflict.
 
-51. PHONETIC IMPERSONATION: Rap words that sound like a famous rapper's name or signature style while the actual words say something completely different spiritually — the listener hears two things at once.
-    Real example: "I'm walking (Waka) with God and I'm part of his flock I (Flocka)" — "walking" sounds like "Waka," "flock I" sounds like "Flocka" — it sounds like a Waka Flocka Flame bar, but the words literally declare walking with God and being part of His flock. The impersonation is the punchline; the spiritual truth is the payload.
+Key theological concepts embedded (never announced):
+- "Lost my mind and gained the mind of Christ" — 1 Corinthians 2:16
+- "My shoes of peace" — Ephesians 6:15 (armor of God)
+- "Darkness flees cause I'm a light" — John 8:12 / Matthew 5:14
+- "Holy spirit dynamite" — Acts 1:8 (dunamis)
+- "Satan running Forrest Gumpin" — James 4:7 ("resist the devil and he will flee")
+- "I won't ever fall off cause my god won't let me go" — John 10:28-29
 
-52. NAME NEGATION: Name a biblical figure known for a specific failure or doubt, then immediately say "my name's not [that person]" to deny sharing their weakness while claiming the same encounter.
-    Real example: "I found the light but my name's not Thomas" — Thomas doubted the resurrection until he saw Jesus (John 20). He found the same light Thomas found, but without the doubt. The negation claims the experience without the failure. Structure: I [had the same encounter] but my name's not [the one who failed at it].
+Integration Method: Biblical references are never announced. They are embedded in street/pop-culture language so the bar works for someone with zero biblical knowledge (sounds like confident self-talk) and rewards someone with biblical literacy with an additional layer of precision. The theology is doctrinally accurate — this is not decorative Christianity.
 
-53. WORSHIP AS WEAPON: Use the word of worship (Hallelujah, Amen, Praise God) as a direct taunt or greeting to the enemy — the act of praise IS the attack.
-    Real example: "Hallelujah Satan how you doing" — addresses Satan with the highest word of worship as an opener. The worship declaration becomes the taunt. Satan's name follows "Hallelujah" which means the praise exists in spite of and above the enemy's presence. The praise doesn't pause for the devil — it addresses him through it.
+---
 
-54. RHETORICAL MIRROR: Take the skeptic's exact challenge word-for-word and return it with the same sentence structure but inverted meaning — the mirror IS the argument.
-    Real example: "They say, 'You can't convince me God is real,' / I said, 'You can't convince me that He's not'" — same sentence, same structure, meaning flipped. He doesn't argue with the framing; he uses the framing against itself. The skeptic's confidence becomes the believer's confidence. No evidence needed — the structure of their own claim proves they're operating on faith too.
+## 6. CONTRAST PAIRS
 
-55. ACRONYM EXPANSION: Take an abbreviation or acronym and expand it so both its meaning AND its letters each carry separate theological weight simultaneously.
-    Real examples:
-    - "Kill my flesh like, rest in peace, now I got rest and peace" — RIP (Rest In Peace = dying to self, Galatians 2:20) expands into two separate gifts: REST (from striving) AND PEACE (from God). The abbreviation becomes a two-for-one revelation.
-    - "He been MIA like the acronym for Miami" — MIA = Missing In Action (what Satan is doing, because he can't stand the presence of God) AND the airport/city code for Miami. Both meanings reinforce the point that Satan is absent and can't handle the heat.
+His entire lyrical architecture is built on spiritual contrast — before/after conversion, light/dark of spiritual warfare. These pairs are not decoration; they are the engine of every verse.
 
-56. LETTER SHAPE THEOLOGY: Use the visual shape of a letter — not its position in the alphabet — to prove a theological point. The letter's form IS the declaration.
-    Real examples: "I always keep my eyes in front, just like the letter J" — J curves forward, never looks back. "Stand beside Him like the letter H" — H is two vertical lines connected by a horizontal bridge = standing beside God, connected. "I feel like the letter V, I'm after You (U)" — V points toward U both by shape and by position (tech 50). Different from Alphabetical Pursuit (tech 50) which uses letter order; this uses the visual geometry of the letter.
+Documented pairs:
+- Lost mind / Mind of Christ
+- Darkness / Light
+- Satan's offer / The true price
+- Blow up (fame) / Holy Spirit power
+- Set free / Trapped in lusting
+- Explicit / No cussing
+- Hold mics / Don't hold grudges
+- In the game / Out of bounds
+- Running (Satan) / Walking (Malagies) — frantic vs. deliberate
+- Fall off / God won't let go
+- Loud talking / Not knowing (Dunning-Kruger)
 
-57. DEATH THREAT BACKFIRE: The worst possible threat against you — death — is actually the best possible outcome for you — heaven. Accept the threat with gratitude, let the casual response be the punchline.
-    Real example: "What's the worst they can do to me, send me to heaven? Thanks" — death as the enemy's ultimate weapon becomes a promotion. The casual "I 'preciate it, man" response signals total fearlessness. Philippians 1:21 ("to die is gain") is the theology behind it — embed the concept without citing it.
+Application Rule: In every new verse, at least one contrast pair anchors the conceptual core. The contrast should have both a secular and a spiritual valence — makes sense as an everyday observation AND as a theological statement.
 
-58. IRON / IRONY PUN: Build a bar where "pressing" (harassment/persecution) triggers the ironing metaphor through embedded sound, landing on "irony" — four levels of the same root word simultaneously.
-    Real example: "Satan think he pressin' me? Tssss, the irony" — pressing (Satan harassing him) → ironing (an iron presses) → "Tssss" is the actual sound of a hot iron written into the lyric → irony (situational and verbal). The word "irony" contains "iron." The sound, the action, the word, and the meta-observation collapse into one bar.
+---
 
-59. CHASE INVERSION: Completely flip the direction of pursuit — instead of chasing outcomes, chase the source, and the outcomes will pursue you. The inversion of what's chasing what is the entire theological argument.
-    Real example: "I'm not chasing dreams, I'm chasing Jesus, dreams chase me" — worldly wisdom says chase your dreams. His reframe: chase Jesus, and the dreams become the pursuers. Also pulls Psalm 23:6 ("goodness and mercy shall follow me") — the blessings don't need to be chased; they follow the one who follows God.
+## 7. VOCABULARY & SIGNATURE PHRASES
 
-60. DEVIL'S PAST VS. DEVIL'S FUTURE: When the devil brings up your past (sins, failures), respond by reminding him of his future (Revelation 20 — the lake of fire). Your past is covered by grace; his future is sealed in judgment. The counter-move makes condemnation impossible.
-    Real example: "If he talks about my past, I'ma remind him of his future" — one bar, total war. The devil's only weapon (your past failures) gets countered by his permanent sentence (his future destruction). Never argue about the past — redirect to his end.
+Core vocabulary used distinctively:
+- "walk it out" — repurposed from Unk's 2006 hit into theological perseverance
+- "dynamite" — in its etymological sense (dunamis/Holy Spirit power) disguised as bravado
+- "construction" — "Build the kingdom God's construction" — blue-collar, physical language for spiritual work
+- "explicit" — claimed and redefined: explicit means direct/clear, not profane
+- "shimmy shimmy yah" — Biz Markie ad-lib repurposed as literally shaking off demons
+- "Dunning-Kruger" — only academic term in the lyrics; used casually and correctly
+- "ultrasound" — "They see the kid like a ultrasound" — visible but still developing; uniquely specific image
 
-61. SNEEZE EXTENSION: Build a contagion metaphor starting from a sneeze blessing — "God blessed me like achoo" — then extend it: God's love is contagious, you might catch it like the flu. The sneeze is the seed; the epidemic is the harvest.
-    Real example: "Jesus blessed me like achoo / God's love is contagious / You might catch it like the flu" — the "bless you" after a sneeze = God blessing him. Then the sneeze spreads: God's love is a contagion. The gospel is the illness that everyone should want to catch. Three bars, one extended sneeze metaphor.
+Signature constructions:
+- "[Secular cultural reference] but [spiritual rebuke/reframe]" — structural DNA of his punchlines
+- "Imma [action] like [simile]" — always grounds abstract spiritual action in a physical image
+- "They [what enemies do] / I [what God enables]" — opposition vs. empowerment contrast
+- Direct address to Satan: spoken to and dismissed — "Satan you can't really offer me / Nothing" — enjambment placing "Nothing" alone is a rhetorical power move
 
-62. NEGATIVE CLARIFICATION REFERENCE: Name a famous historical or cultural figure to immediately clarify what God is NOT — the named person reveals the category, then the "but not them" reveals God operates on a higher level.
-    Real example: "I got a doctor and a king but no he isn't Martin Luther" — Martin Luther King Jr. held both titles (doctor = PhD, king = his name). Jesus is also a doctor (healer) and a king — but at a level MLK never claimed. The reference doesn't compare; it contrasts by elevation.
+---
 
-63. PARENTHETICAL HOMOPHONE REVEAL: Write a word in the lyric, then immediately put its homophone in parentheses — both words are active at once. The parenthetical is not a footnote; it IS the second meaning.
-    Real examples: "patience(patients) like somebody who's a doctor" — patience (virtue/waiting) AND patients (people in medical care), both operating simultaneously with the doctor simile bridging them. "Left Satan on read(red)" — read (ignored, left on read = blue tick no reply) AND red (the color of sin, danger, the devil). The parenthetical is written into the lyric itself — not a stage direction but a dual-track delivery.
+## 8. HOOK CONSTRUCTION
 
-64. LETTER REARRANGEMENT AS TRANSFORMATION: Use "switching letters" as a live metaphor for spiritual transformation — rearranging the letters of a negative word reveals the hidden positive God always had in it.
-    Real example: "I'm not perfect but my God been helping me to switch them letters" — the act of spiritual growth = rearranging what was already there. God doesn't add new letters; He reorders what exists into His word. The transformation is already inside the original. Works as a standalone boast or as an explanation of personal growth that doesn't require listing specific sins.
+Primary Technique: Single anchor phrase + immediate repetition. "Imma walk it out / Imma walk it out / Imma walk it out" — no variation, no call-and-response, no complexity. The repetition IS the hook. It functions as a chant, a declaration, almost a liturgical response.
 
-65. CROSS NOT NECKLACE: Distinguish between the cross as spiritual identity and as fashion accessory — wearing a cross means embodying the crucifixion reality, not wearing jewelry. The distinction is the entire theological statement.
-    Real example: "I wear a cross no necklace" — he has one cross, and it's not a chain. The necklace is the fashion version; the cross is the armor version (Ephesians 6). The contrast collapses the casual Christian aesthetic without argument — one line does it. Can be extended: cross = burden I carry, not decoration I wear.
+Why it works:
+1. Physically actionable — invites movement
+2. Carries the verse's full theological weight without restating it
+3. Repetition mimics the act it describes — stubborn, rhythmic, one-foot-in-front-of-the-other
+4. Secular-passing and spiritually loaded simultaneously
 
-66. DAY FOUR STAR CLAIM: Link your calling or identity to Genesis Day 4 — the specific day God created the stars — as divine origin proof. Not "I'm a star" as a flex, but "I was made to be a star the same day God made the stars."
-    Real example: "God created me to be a star just like day four" — Genesis 1:16, God made the stars on day 4. His career, his calling, his identity as someone who shines was authored in the original creation order. Not self-promotion — this is the cosmic schedule being confirmed. Works only when spoken with calm certainty, not bravado.
+Hook Rule for new songs:
+- Three to six words maximum
+- Physically or spatially actionable (walking, shooting, standing, rising)
+- Repeatable three times minimum without losing energy
+- Grounded in the verse's central metaphor without explaining it
+- Secular-passing — confident life statement to a non-Christian, full theology to a Christian
 
-67. RAP NARRATIVE REFRAME: Take a famous rapper's song that has a clear narrative or physical action, keep the rapper's name and song reference intact, but apply that specific action to spiritual warfare rather than its original meaning.
-    Real example: "Kick, push the devil like I'm Lupe on a skateboard" — Lupe Fiasco's "Kick, Push" is literally about skateboarding away from struggle. The verb sequence (kick, push) transfers perfectly to combating the devil — same motion, same escape energy, opposite target. The listener hears both stories at once.
+---
 
-68. HELL'S MOST WANTED IDENTITY: Claim the enemy's target list as a badge of honor — being most wanted by hell means you're doing maximum damage to it. The enemy's fear is your credential.
-    Real example: "Running fast I'm hell's most wanted" — he's not running FROM the law; he's the subject of hell's manhunt because he's too effective. The FBI's most wanted list = notoriety for crime; hell's most wanted list = notoriety for righteousness. Flip the original meaning of the criminal label into the highest spiritual compliment.
+## 9. EMOTIONAL TONE & CONFIDENCE LEVEL
 
-69. PRICE AIN'T RIGHT REBUFF: Use The Price Is Right game show as a frame for rejecting Satan's offer — the devil's deal sounds attractive, but "the price ain't right." He comes on down but the bid is wrong.
-    Real example: "Satan told me 'come on down' but I told him the price ain't right" — "come on down" is the show's contestant call. Satan is running a deal. But the price (what it costs you — your soul, your integrity) is wrong. The contestant gets eliminated. The game show frame makes the rejection feel effortless and humorous — Satan is a bad game show host.
+Overall Tone: Joyful Aggression. He is not somber, wounded, or desperate. He is not the artist confessing brokenness and hoping for redemption — he is the artist who has already received redemption and is reporting back from the other side with humor, confidence, and energy. Past tense on the suffering; present tense on the victory.
 
-70. EXPLICIT NO CUSSING: Redefine the music industry "explicit" label on your own terms — you are explicit (raw, unfiltered, direct truth) but without profanity. The contradiction IS the boast.
-    Real example: "I'm explicit with no cussing" — the explicit label warns listeners of mature content. He claims the label — he IS explicit — but the mature content is spiritual truth, not profanity. He's more graphic than secular rap without a single curse word. The redefinition challenges the entire assumption of what "explicit" means.
+Confidence is delegated upward — never in himself, always in what God has done:
+- Wrong: "I'm the greatest because of my skill"
+- Right: "I won't ever fall off cause my god won't let me go"
 
-71. SPECIFIC CHARACTER ACTION: Don't just name a movie or TV character — assign their single most iconic physical action to the enemy. The character's specific movement is what matters, not the reference.
-    Real example: "Satan running forrest gumpin" — Forrest Gump runs. That's his most iconic act. Satan is fleeing — and he runs with the same inexorable, desperate, never-stopping energy. The character's specific action is the descriptor, not just their name or situation. Different from Lupe/skateboard (tech 67) which borrows a song narrative — this borrows a character's signature physical behavior.
+He is certain but not arrogant, because the certainty comes from the source, not the vessel.
 
-72. DUNNING-KRUGER DROP: Use a real psychological, academic, or scientific term in a lyric without explaining it. The knowledge of the term — its presence in the bar — IS the flex.
-    Real example: "Dunning-Kruger they talkin loud but they don't know what they talkin bout" — the Dunning-Kruger effect is the psychological finding that incompetent people overestimate their competence. He drops the clinical name. No definition given. The critics get diagnosed with a real psychological condition, and anyone who doesn't know the term just heard something they'll look up. The knowledge gap between him and them is the point.
+Humor as Tone: The Price Is Right bar, the Forrest Gumpin bar, the tic tac toe bar — he is enjoying himself. This is genuine delight, not ironic detachment. He finds spiritual warfare funny because he knows who wins. The humor is the sound of someone who isn't afraid.
 
-73. TIC TAC TOE WARFARE: "X and O" from Jesus (love symbols — hugs and kisses) doubles as the tic tac toe move — X marks the cross, X crosses out the enemy. Love and warfare encoded in the same symbol.
-    Real example: "I'm receiving Jesus love he sent me X and O / Crossing out my demons like it's tic tac toe" — Jesus sends XO = love (hugs and kisses). X = crossing them out on the board. O = zeros, their score. The game ends with demons crossed out. The love symbol and the spiritual warfare symbol are identical. He wins both the love game and the battle simultaneously.
+Active verbs dominate: walk, shake, flee, shoot, knock, cross out, draw. Satan is always running. Malagies is always walking. The physical dynamic communicates the power differential without stating it.
 
-74. MICS NOT GRUDGES: Use a parallel "I hold _____ / I don't hold _____" structure to declare what you carry (ministry, purpose) vs. what you release (bitterness, offense). The contrast is a complete spiritual autobiography in one line.
-    Real example: "I hold mics I don't hold grudges" — mic = ministry, the tool he grabs onto. Grudge = bitterness he refuses to carry. The parallel "hold" word pairs them grammatically then separates them spiritually. One line maps the entire character: he picks up the calling and drops the wound. Can be extended to any pair of things that share a verb but diverge in spiritual weight.
+No lament. Past struggles are mentioned in past tense as testimony, then moved on from. He does not dwell in the wound.
 
-CADENCE RULES:
-- Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
-- Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
-- Song 3 (guest verse) style: tight and punchy — open with a challenge, fire 3-4 techniques in 10-12 bars, close by returning to the opening challenge (bookend)
-- Songs 5-6 style: sustained metaphor ecosystem over one domain → scripture-as-impossibility → enemy equivalence → triumph close
-- Hell's Most Wanted style: identity claim as enemy's target → creation-day calling → game show rebuff → prayer for enemies close
-- Walk It Out style: mind-of-Christ open → game/sport metaphors mid-verse → parallel "hold/don't hold" contrast → repeated hook as declaration of endurance
-- Use "Huh" and "Yeah" as breath punctuation, not filler
-- "What did I stutter" = emphatic callback — draw attention to the bar you just dropped
-- Street-adjacent vocabulary but never forced — conversational faith, not church language
-- Scripture quotations embedded as his own bars, never cited with chapter/verse`,
+---
+
+## 10. WHAT TO AVOID
+
+- No profanity. Don't announce its absence repeatedly — say it once if at all, then live it.
+- No victim bars. Acknowledge opposition (demons, doubters) but dismiss with confidence, not grievance.
+- No generic Christian rap language: "washed in the blood," "saved by grace," "born again" as cliché, "praise the Lord" as filler. Theology is embedded, not performed.
+- No dissing other artists or people. All conflict is spiritual — Satan, demons, doubt, temptation only.
+- Never explain the double meanings. If a bar requires annotation to land, it isn't finished.
+- No lazy spiritual metaphors. Don't say "God is my shield" flatly — say "darkness flees cause I'm a light." Every spiritual concept must be reclothed in active, specific, pop-culture-adjacent language.
+- No desperation. The posture is always: it is already done. Never beg, plead, or sound uncertain about what God will do.
+- Do not neglect the fun. If the new lyrics feel like a sermon, they are wrong. They should feel like a victory lap.
+
+---
+
+This style guide applies holistically — the theology, the humor, the confidence, and the wordplay are not separate features. They are one unified voice: the sound of someone who found something real and can't stop talking about it in the most creative ways possible.`,
+
   },
   {
     id: 'jcole',
