@@ -1008,11 +1008,70 @@ export const ARTIST_STYLES = [
     - "Kill my flesh like, rest in peace, now I got rest and peace" — RIP (Rest In Peace = dying to self, Galatians 2:20) expands into two separate gifts: REST (from striving) AND PEACE (from God). The abbreviation becomes a two-for-one revelation.
     - "He been MIA like the acronym for Miami" — MIA = Missing In Action (what Satan is doing, because he can't stand the presence of God) AND the airport/city code for Miami. Both meanings reinforce the point that Satan is absent and can't handle the heat.
 
+56. LETTER SHAPE THEOLOGY: Use the visual shape of a letter — not its position in the alphabet — to prove a theological point. The letter's form IS the declaration.
+    Real examples: "I always keep my eyes in front, just like the letter J" — J curves forward, never looks back. "Stand beside Him like the letter H" — H is two vertical lines connected by a horizontal bridge = standing beside God, connected. "I feel like the letter V, I'm after You (U)" — V points toward U both by shape and by position (tech 50). Different from Alphabetical Pursuit (tech 50) which uses letter order; this uses the visual geometry of the letter.
+
+57. DEATH THREAT BACKFIRE: The worst possible threat against you — death — is actually the best possible outcome for you — heaven. Accept the threat with gratitude, let the casual response be the punchline.
+    Real example: "What's the worst they can do to me, send me to heaven? Thanks" — death as the enemy's ultimate weapon becomes a promotion. The casual "I 'preciate it, man" response signals total fearlessness. Philippians 1:21 ("to die is gain") is the theology behind it — embed the concept without citing it.
+
+58. IRON / IRONY PUN: Build a bar where "pressing" (harassment/persecution) triggers the ironing metaphor through embedded sound, landing on "irony" — four levels of the same root word simultaneously.
+    Real example: "Satan think he pressin' me? Tssss, the irony" — pressing (Satan harassing him) → ironing (an iron presses) → "Tssss" is the actual sound of a hot iron written into the lyric → irony (situational and verbal). The word "irony" contains "iron." The sound, the action, the word, and the meta-observation collapse into one bar.
+
+59. CHASE INVERSION: Completely flip the direction of pursuit — instead of chasing outcomes, chase the source, and the outcomes will pursue you. The inversion of what's chasing what is the entire theological argument.
+    Real example: "I'm not chasing dreams, I'm chasing Jesus, dreams chase me" — worldly wisdom says chase your dreams. His reframe: chase Jesus, and the dreams become the pursuers. Also pulls Psalm 23:6 ("goodness and mercy shall follow me") — the blessings don't need to be chased; they follow the one who follows God.
+
+60. DEVIL'S PAST VS. DEVIL'S FUTURE: When the devil brings up your past (sins, failures), respond by reminding him of his future (Revelation 20 — the lake of fire). Your past is covered by grace; his future is sealed in judgment. The counter-move makes condemnation impossible.
+    Real example: "If he talks about my past, I'ma remind him of his future" — one bar, total war. The devil's only weapon (your past failures) gets countered by his permanent sentence (his future destruction). Never argue about the past — redirect to his end.
+
+61. SNEEZE EXTENSION: Build a contagion metaphor starting from a sneeze blessing — "God blessed me like achoo" — then extend it: God's love is contagious, you might catch it like the flu. The sneeze is the seed; the epidemic is the harvest.
+    Real example: "Jesus blessed me like achoo / God's love is contagious / You might catch it like the flu" — the "bless you" after a sneeze = God blessing him. Then the sneeze spreads: God's love is a contagion. The gospel is the illness that everyone should want to catch. Three bars, one extended sneeze metaphor.
+
+62. NEGATIVE CLARIFICATION REFERENCE: Name a famous historical or cultural figure to immediately clarify what God is NOT — the named person reveals the category, then the "but not them" reveals God operates on a higher level.
+    Real example: "I got a doctor and a king but no he isn't Martin Luther" — Martin Luther King Jr. held both titles (doctor = PhD, king = his name). Jesus is also a doctor (healer) and a king — but at a level MLK never claimed. The reference doesn't compare; it contrasts by elevation.
+
+63. PARENTHETICAL HOMOPHONE REVEAL: Write a word in the lyric, then immediately put its homophone in parentheses — both words are active at once. The parenthetical is not a footnote; it IS the second meaning.
+    Real examples: "patience(patients) like somebody who's a doctor" — patience (virtue/waiting) AND patients (people in medical care), both operating simultaneously with the doctor simile bridging them. "Left Satan on read(red)" — read (ignored, left on read = blue tick no reply) AND red (the color of sin, danger, the devil). The parenthetical is written into the lyric itself — not a stage direction but a dual-track delivery.
+
+64. LETTER REARRANGEMENT AS TRANSFORMATION: Use "switching letters" as a live metaphor for spiritual transformation — rearranging the letters of a negative word reveals the hidden positive God always had in it.
+    Real example: "I'm not perfect but my God been helping me to switch them letters" — the act of spiritual growth = rearranging what was already there. God doesn't add new letters; He reorders what exists into His word. The transformation is already inside the original. Works as a standalone boast or as an explanation of personal growth that doesn't require listing specific sins.
+
+65. CROSS NOT NECKLACE: Distinguish between the cross as spiritual identity and as fashion accessory — wearing a cross means embodying the crucifixion reality, not wearing jewelry. The distinction is the entire theological statement.
+    Real example: "I wear a cross no necklace" — he has one cross, and it's not a chain. The necklace is the fashion version; the cross is the armor version (Ephesians 6). The contrast collapses the casual Christian aesthetic without argument — one line does it. Can be extended: cross = burden I carry, not decoration I wear.
+
+66. DAY FOUR STAR CLAIM: Link your calling or identity to Genesis Day 4 — the specific day God created the stars — as divine origin proof. Not "I'm a star" as a flex, but "I was made to be a star the same day God made the stars."
+    Real example: "God created me to be a star just like day four" — Genesis 1:16, God made the stars on day 4. His career, his calling, his identity as someone who shines was authored in the original creation order. Not self-promotion — this is the cosmic schedule being confirmed. Works only when spoken with calm certainty, not bravado.
+
+67. RAP NARRATIVE REFRAME: Take a famous rapper's song that has a clear narrative or physical action, keep the rapper's name and song reference intact, but apply that specific action to spiritual warfare rather than its original meaning.
+    Real example: "Kick, push the devil like I'm Lupe on a skateboard" — Lupe Fiasco's "Kick, Push" is literally about skateboarding away from struggle. The verb sequence (kick, push) transfers perfectly to combating the devil — same motion, same escape energy, opposite target. The listener hears both stories at once.
+
+68. HELL'S MOST WANTED IDENTITY: Claim the enemy's target list as a badge of honor — being most wanted by hell means you're doing maximum damage to it. The enemy's fear is your credential.
+    Real example: "Running fast I'm hell's most wanted" — he's not running FROM the law; he's the subject of hell's manhunt because he's too effective. The FBI's most wanted list = notoriety for crime; hell's most wanted list = notoriety for righteousness. Flip the original meaning of the criminal label into the highest spiritual compliment.
+
+69. PRICE AIN'T RIGHT REBUFF: Use The Price Is Right game show as a frame for rejecting Satan's offer — the devil's deal sounds attractive, but "the price ain't right." He comes on down but the bid is wrong.
+    Real example: "Satan told me 'come on down' but I told him the price ain't right" — "come on down" is the show's contestant call. Satan is running a deal. But the price (what it costs you — your soul, your integrity) is wrong. The contestant gets eliminated. The game show frame makes the rejection feel effortless and humorous — Satan is a bad game show host.
+
+70. EXPLICIT NO CUSSING: Redefine the music industry "explicit" label on your own terms — you are explicit (raw, unfiltered, direct truth) but without profanity. The contradiction IS the boast.
+    Real example: "I'm explicit with no cussing" — the explicit label warns listeners of mature content. He claims the label — he IS explicit — but the mature content is spiritual truth, not profanity. He's more graphic than secular rap without a single curse word. The redefinition challenges the entire assumption of what "explicit" means.
+
+71. SPECIFIC CHARACTER ACTION: Don't just name a movie or TV character — assign their single most iconic physical action to the enemy. The character's specific movement is what matters, not the reference.
+    Real example: "Satan running forrest gumpin" — Forrest Gump runs. That's his most iconic act. Satan is fleeing — and he runs with the same inexorable, desperate, never-stopping energy. The character's specific action is the descriptor, not just their name or situation. Different from Lupe/skateboard (tech 67) which borrows a song narrative — this borrows a character's signature physical behavior.
+
+72. DUNNING-KRUGER DROP: Use a real psychological, academic, or scientific term in a lyric without explaining it. The knowledge of the term — its presence in the bar — IS the flex.
+    Real example: "Dunning-Kruger they talkin loud but they don't know what they talkin bout" — the Dunning-Kruger effect is the psychological finding that incompetent people overestimate their competence. He drops the clinical name. No definition given. The critics get diagnosed with a real psychological condition, and anyone who doesn't know the term just heard something they'll look up. The knowledge gap between him and them is the point.
+
+73. TIC TAC TOE WARFARE: "X and O" from Jesus (love symbols — hugs and kisses) doubles as the tic tac toe move — X marks the cross, X crosses out the enemy. Love and warfare encoded in the same symbol.
+    Real example: "I'm receiving Jesus love he sent me X and O / Crossing out my demons like it's tic tac toe" — Jesus sends XO = love (hugs and kisses). X = crossing them out on the board. O = zeros, their score. The game ends with demons crossed out. The love symbol and the spiritual warfare symbol are identical. He wins both the love game and the battle simultaneously.
+
+74. MICS NOT GRUDGES: Use a parallel "I hold _____ / I don't hold _____" structure to declare what you carry (ministry, purpose) vs. what you release (bitterness, offense). The contrast is a complete spiritual autobiography in one line.
+    Real example: "I hold mics I don't hold grudges" — mic = ministry, the tool he grabs onto. Grudge = bitterness he refuses to carry. The parallel "hold" word pairs them grammatically then separates them spiritually. One line maps the entire character: he picks up the calling and drops the wound. Can be extended to any pair of things that share a verb but diverge in spiritual weight.
+
 CADENCE RULES:
 - Song 1 style: short punchy bars → build to an internal rhyme chain → one run-on emotional bar → end with quiet gratitude
 - Song 2 style: open with a repeated complaint hook → rapid-fire cultural analogies → personal vulnerability anchor → declarative punchline close
 - Song 3 (guest verse) style: tight and punchy — open with a challenge, fire 3-4 techniques in 10-12 bars, close by returning to the opening challenge (bookend)
 - Songs 5-6 style: sustained metaphor ecosystem over one domain → scripture-as-impossibility → enemy equivalence → triumph close
+- Hell's Most Wanted style: identity claim as enemy's target → creation-day calling → game show rebuff → prayer for enemies close
+- Walk It Out style: mind-of-Christ open → game/sport metaphors mid-verse → parallel "hold/don't hold" contrast → repeated hook as declaration of endurance
 - Use "Huh" and "Yeah" as breath punctuation, not filler
 - "What did I stutter" = emphatic callback — draw attention to the bar you just dropped
 - Street-adjacent vocabulary but never forced — conversational faith, not church language
